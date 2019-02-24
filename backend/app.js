@@ -91,6 +91,9 @@ app.use('/api/filters', (req, res, next) => {
 /*   # Static                              */
 /******************************************/
 
+/*Static file locations (angular dist directory)*/
+app.use(express.static(path.join(__dirname, '../dist')));
+
 /*All other urls point to front end*/
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../dist/index.html'));
