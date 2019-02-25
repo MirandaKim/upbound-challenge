@@ -1,4 +1,4 @@
-export interface Campaign.Interface {
+export interface Campaign {
   id: string;
   campaignName: string;
 }
