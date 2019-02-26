@@ -25,7 +25,7 @@ export class CardListComponent implements OnInit {
 
   getCards(){
     console.log(`Retrieving cards from card list component`);
-    this.cardsService.getAllItems().subscribe((res) => {
+    this.cardsService.readAll().subscribe((res) => {
       let valid = res.hasOwnProperty('items');
       if(valid){
         this.cardList = res['items'];
