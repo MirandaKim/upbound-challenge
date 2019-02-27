@@ -14,6 +14,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { CardListComponent } from './components/card-list/card-list.component';
 import { CardComponent } from './components/card/card.component';
 import { CardMenuComponent } from './components/card-menu/card-menu.component';
+import { IconComponent } from './components/icon/icon.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { CardMenuComponent } from './components/card-menu/card-menu.component';
     CardListComponent,
     CardComponent,
     CardMenuComponent,
+    IconComponent,
   ],
   imports: [
     BrowserModule,
