@@ -18,6 +18,7 @@ import { CardMenuComponent } from './components/cards/card-menu/card-menu.compon
 import { CardFooterComponent } from './components/cards/card-footer/card-footer.component';
 import { IconComponent } from './components/icon/icon.component';
 import { CardStatusComponent } from './components/cards/card-status/card-status.component';
+import { CreateCardComponent } from './components/cards/create-card/create-card.component';
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import { CardStatusComponent } from './components/cards/card-status/card-status.
     IconComponent,
     CardFooterComponent,
     CardStatusComponent,
+    CreateCardComponent,
   ],
   imports: [
     BrowserModule,
