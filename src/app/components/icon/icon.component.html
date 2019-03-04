@@ -1,3 +1,7 @@
-<svg>
-  <use attr.xlink:href="assets/symbol-defs.svg#{{iconType}}"></use>
+<svg [ngClass]="[
+'icon--' + iconType,
+'icon--fill-' + iconColor,
+'icon--size-' + iconSize,
+'icon--fill-on-hover-' + iconColorOnHover]">
+  <use attr.xlink:href="assets/symbol-defs.svg#icon-{{iconType}}"></use>
 </svg>

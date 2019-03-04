@@ -1,11 +1,221 @@
+@import "src/scss/_variables.scss";
+
+
+/*Availible Colors:*/
+/*
+white,
+light-grey / light-gray,
+medium-grey / medium-grey,
+dark-grey / dark-gray,
+black,
+orange,
+dark-orange,
+red,
+green
+*/
+
+/*Availible Sizes:*/
+/*
+x-small,
+small,
+medium,
+large,
+x-large
+*/
+
+
+$iconSizeXSmall: 8px; // x-small
+$iconSizeSmall: 13px; // small
+$iconSizeMedium: 20px; // medium
+$iconSizeLarge: 30px; // large
+$iconSizeXLarge: 40px; // x-large
+
+/********************************************/
+/*   # Icon                                */
+/******************************************/
+
+app-icon {
+  display: inline-block;
+}
+
+/********************************************/
+/*   # SVG                                 */
+/******************************************/
+
 svg{
 
   /*display*/
   display: inline-block;
+  /*position*/
+  position: relative;
+  top: -1px;
   /*structure*/
-  width: 20px;
-  height: 20px;
+  width: $iconSizeMedium;
+  height: $iconSizeMedium;
   /*spacing*/
-  margin: 2px;
+  /*colors*/
+  fill: $colorMediumGrey;
 
+}
+
+/********************************************/
+/*   # Fill                                */
+/******************************************/
+
+.icon--fill {
+  /* Grayscale */
+  &-white {
+    fill: $colorWhite;
+  }
+  &-light-grey,
+  &-light-gray {
+    fill: $colorLightGrey;
+  }
+  &-medium-grey,
+  &-medium-gray{
+    fill: $colorMediumGrey;
+  }
+  &-dark-grey,
+  &-dark-gray{
+    fill: $colorDarkGrey;
+  }
+  /* Rainbow */
+  &-orange {
+    fill: $colorOrange;
+  }
+  &-dark-orange {
+    fill: $colorDarkOrange;
+  }
+  &-red {
+    fill: $colorRed;
+  }
+  &-green {
+    fill: $colorGreen;
+  }
+
+}
+
+/********************************************/
+/*   # Fill on Hover                       */
+/******************************************/
+
+.icon--fill-on-hover {
+  /* Grayscale */
+  &-white:hover {
+    fill: $colorWhite;
+  }
+  &-light-grey:hover,
+  &-light-gray:hover {
+    fill: $colorLightGrey;
+  }
+  &-med-grey:hover,
+  &-med-gray:hover{
+    fill: $colorMediumGrey;
+  }
+  &-dark-grey:hover,
+  &-dark-gray:hover{
+    fill: $colorDarkGrey;
+  }
+  /* Rainbow */
+  &-dark-orange:hover {
+    fill: $colorDarkOrange;
+  }
+  &-red:hover {
+    fill: $colorRed;
+  }
+  &-orange:hover {
+    fill: $colorOrange;
+  }
+  &-red:hover {
+    fill: $colorRed;
+  }
+  &-green:hover {
+    fill: $colorGreen;
+  }
+
+}
+
+/********************************************/
+/*   # Sizes                               */
+/******************************************/
+
+.icon--size {
+  &-x-small {
+    height: $iconSizeXSmall;
+    width: $iconSizeXSmall;
+  }
+  &-small {
+    height: $iconSizeSmall;
+    width: $iconSizeSmall;
+  }
+  &-medium {
+    height: $iconSizeMedium;
+    width: $iconSizeMedium;
+  }
+  &-large {
+    height: $iconSizeLarge;
+    width: $iconSizeLarge;
+  }
+  &-x-large {
+    height: $iconSizeXLarge;
+    width: $iconSizeXLarge;
+  }
+}
+
+/**********************
+*  > Size Overrides   *
+**********************/
+/*Include any size overrides specific to any icons here*/
+/*This is to be used when an icon seems out of scale with icons of the same size.*/
+
+.icon--people {
+  $peopleIconChangeBy: 3;
+  &.icon--size {
+    &-x-small {
+      height: $iconSizeXSmall + $peopleIconChangeBy;
+      width: $iconSizeXSmall + $peopleIconChangeBy;
+    }
+    &-small {
+      height: $iconSizeSmall + $peopleIconChangeBy;
+      width: $iconSizeSmall + $peopleIconChangeBy;
+    }
+    &-medium {
+      height: $iconSizeMedium + $peopleIconChangeBy;
+      width: $iconSizeMedium + $peopleIconChangeBy;
+    }
+    &-large {
+      height: $iconSizeLarge + $peopleIconChangeBy;
+      width: $iconSizeLarge + $peopleIconChangeBy;
+    }
+    &-x-large {
+      height: $iconSizeXLarge + $peopleIconChangeBy;
+      width: $iconSizeXLarge + $peopleIconChangeBy;
+    }
+  }
+}
+
+.icon--eye {
+  $eyeIconChangeBy: 5;
+  &.icon--size {
+    &-x-small {
+      height: $iconSizeXSmall + $eyeIconChangeBy;
+      width: $iconSizeXSmall + $eyeIconChangeBy;
+    }
+    &-small {
+      height: $iconSizeSmall + $eyeIconChangeBy;
+      width: $iconSizeSmall + $eyeIconChangeBy;
+    }
+    &-medium {
+      height: $iconSizeMedium + $eyeIconChangeBy;
+      width: $iconSizeMedium + $eyeIconChangeBy;
+    }
+    &-large {
+      height: $iconSizeLarge + $eyeIconChangeBy;
+      width: $iconSizeLarge + $eyeIconChangeBy;
+    }
+    &-x-large {
+      height: $iconSizeXLarge + $eyeIconChangeBy;
+      width: $iconSizeXLarge + $eyeIconChangeBy;
+    }
+  }
 }
