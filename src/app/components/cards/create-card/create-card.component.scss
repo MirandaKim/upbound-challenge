@@ -29,7 +29,8 @@
 
   /*hover*/
   &:hover {
-    border-color: $colorMediumGrey
+    // border-color: $colorMediumGrey
+    background-color: rgba($colorLighterGrey, .5);
   }
 
   /********************************************/
@@ -118,7 +119,7 @@
       /*typography*/
       text-decoration: none;
       /*colors*/
-      color: $colorBlack;
+      // color: $colorBlack;
 
     }
   }
