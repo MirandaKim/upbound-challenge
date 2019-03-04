@@ -1,3 +1,31 @@
 <div id="header" class="header">
-  header works!
+  <nav class="header__nav navbar navbar-extend-lg navbar-light bg-light">
+    <div class="container">
+
+      <div class="col">
+        <div class="header__campaign-filter">
+          <app-campaign-menu></app-campaign-menu>
+        </div>
+      </div>
+      <div class="col">
+        <div class="header__status-fitler">
+          <app-icon iconType="list" iconColor="dark-grey"></app-icon>
+          <span>Pending</span>
+        </div>
+      </div>
+      <div class="col text-right">
+        <div class="header__search-filter">
+          <app-icon iconType="search" iconColor="dark-grey"></app-icon>
+        </div>
+      </div>
+      <div class="col text-right">
+        <div class="header__date-filter">
+          <app-icon iconType="chevron-left" iconColor="red"></app-icon>
+          <app-icon iconType="calender" iconColor="red"></app-icon>
+          <app-icon iconType="chevron-right" iconColor="red"></app-icon>
+          <span class="date-filter__day-count">1d</span>
+        </div>
+      </div>
+    </div>
+  </nav>
 </div>

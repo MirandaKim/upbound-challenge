@@ -1,0 +1,22 @@
+@import "src/scss/_variables";
+
+.header {
+  /*spacing*/
+  margin-top: 9px;
+
+  &__nav {
+    /*borders*/
+    border-top-style: solid;
+    border-bottom-style: solid;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    /*colors*/
+    border-color: $colorLightGrey;
+
+    .container {
+      padding-bottom: 14px;
+      padding-top: 14px;
+    }
+  }
+
+}
