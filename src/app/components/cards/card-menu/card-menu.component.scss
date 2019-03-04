@@ -1,0 +1,111 @@
+@import "src/scss/_variables.scss";
+
+/********************************************/
+/*   # Card Menu                           */
+/******************************************/
+
+.card-menu {
+  /*spacing*/
+  margin: 0;
+  padding: 0;
+  /*list*/
+  list-style: none;
+
+  /********************************************/
+  /*   # Toggle                              */
+  /******************************************/
+
+  &__toggle {
+    /*structure*/
+    height: 25px;
+    width: 25px;
+    /*spacing*/
+    padding-top: 0;
+    padding-left: 5px;
+    margin-top: -1px;
+    /*borders*/
+    border-style: solid;
+    border-color: $colorLightGrey;
+    border-width: 1px;
+
+    /*override bootstrap dropdown menu toggle arrow*/
+    &::after {
+      display: none;
+    }
+  }
+
+  /********************************************/
+  /*   # Link List                           */
+  /******************************************/
+
+  &__link-list {
+
+    /*spacing*/
+    padding: 0;
+    margin-top: -2px;
+    /*borders*/
+    border-radius: 0;
+    border-style: solid;
+    border-color: $colorLightGrey;
+    /*shadows*/
+    box-shadow: 0 0 4px rgba(0, 0, 0, .2);
+
+    &.dropdown-menu {
+      /*structure*/
+      min-width: 8.1rem;
+    }
+
+  }
+
+  /********************************************/
+  /*   # Item                                */
+  /******************************************/
+
+  &__item {
+    /*spacing*/
+    padding: 0;
+
+
+  /******************
+  *  > Item Links   *
+  ******************/
+
+    a,
+    button {
+      /*spacing*/
+      padding-left: 14px;
+      padding-bottom: 9px;
+      padding-top: 9px;
+      /*borders*/
+      border-radius: 0;
+      border-style: none;
+      border-bottom-style: solid;
+
+    }
+  }
+
+  &__item:last-of-type button,
+  &__item:last-of-type a{
+    border-bottom-style: none;
+  }
+
+  /********************************************/
+  /*   # Icon                                */
+  /******************************************/
+
+  &__icon {
+    margin-right: 17px;
+  }
+
+  /********************************************/
+  /*   # Lable                               */
+  /******************************************/
+
+  &__lable {
+    /*typography*/
+    font-size: .9rem;
+    /*colors*/
+    color: $colorBlack;
+  }
+
+}

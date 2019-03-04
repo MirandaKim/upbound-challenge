@@ -1,0 +1,96 @@
+@import "src/scss/_variables.scss";
+
+/********************************************/
+/*   # Card                                */
+/******************************************/
+
+.card {
+  /*structure*/
+  width: 17rem;
+  /*spacing*/
+  margin-left: .9rem;
+  margin-right: .9rem;
+  margin-top: 2.5rem;
+  margin-bottom: 2.5rem;
+  /*borders*/
+  border-radius: $cardBorderRadius;
+  /*colors*/
+  border-color: rgb(238, 239, 240);
+  /*shadows*/
+  box-shadow: 2px 1px 0 rgb(235, 236, 237);
+
+  /********************************************/
+  /*   # Feature Image                       */
+  /******************************************/
+
+  &__feature-image{
+    /*structure*/
+    height: 10.63rem;
+    /*borders*/
+    border-top-left-radius: $cardBorderRadius;
+    border-top-right-radius: $cardBorderRadius;
+    /*colors*/
+    background-color: $colorLightGrey;
+    /*object*/
+    object-fit: cover;
+
+    /*********************
+    *  > Card Editable   *
+    *********************/
+
+    .card--editable & {
+      opacity: .6;
+    }
+  }
+
+  /********************************************/
+  /*   # Title                               */
+  /******************************************/
+
+  &__title {
+    /*structure*/
+    min-height: 3rem;
+    /*typography*/
+    font-size: 1rem;
+    line-height: 1.5;
+    letter-spacing: .27px;
+    font-weight: 200;
+    /*colors*/
+    color: $colorBlack;
+  }
+
+  /********************************************/
+  /*   # Body                                */
+  /******************************************/
+
+  &__body {
+    /*spacing*/
+    padding-top: 12px;
+    padding-bottom: 18px;
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  /********************************************/
+  /*   # Menu Wrapper                        */
+  /******************************************/
+
+  &__menu-wrapper {
+    /*display*/
+    visibility: hidden;
+    /*position*/
+    position: absolute;
+    top: 10px;
+    right: 10px;
+
+    /*********************
+    *  > Card Editable   *
+    *********************/
+
+    .card--editable & {
+      visibility: visible;
+    }
+  }
+
+
+}

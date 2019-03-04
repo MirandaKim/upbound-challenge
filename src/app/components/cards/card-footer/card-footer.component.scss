@@ -1,0 +1,41 @@
+@import "src/scss/_variables.scss";
+
+/********************************************/
+/*   # Card Footer                         */
+/******************************************/
+
+.card-footer {
+  /*spacing*/
+  padding-top: 12px;
+  padding-bottom: 9px;
+  /*borders*/
+  border-bottom-right-radius: $cardBorderRadius;
+  border-bottom-left-radius: $cardBorderRadius;
+  /*typography*/
+  font-weight: 100;
+  font-size: .75rem;
+  /*colors*/
+  border-color: transparent;
+  background-color: $colorLighterGrey;
+  color: $colorLightGrey;
+
+  /********************************************/
+  /*   # Icon                                */
+  /******************************************/
+
+  &__icon {
+    /*spacing*/
+    padding-right: 2px;
+  }
+}
+
+/********************************************/
+/*   # Column                              */
+/******************************************/
+
+.col {
+  /*spacing*/
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-right: 0;
+}

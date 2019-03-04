@@ -1,0 +1,12 @@
+<div class="card-states">
+  <div class="row">
+    <div class="col"><span class="prefix prefix--currency">$</span>5000 / Month</div>
+    <div class="col text-right">
+      <span class="card-states__workflow">{{ card.currentWorkflow | titlecase }}</span>
+      <span class="card-states__indi card-states__indi--{{card.currentWorkflow}}"></span>
+    </div>
+  </div>
+  <div class="card-states__progress progress">
+    <div class="card-states__progress-bar progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+  </div>
+</div>

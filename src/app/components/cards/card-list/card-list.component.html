@@ -1,10 +1,10 @@
-<ul class="card__list card-group">
+<ul class="card-list card-group">
 
-  <ng-template [ngIf]="cardList.length > 1" [ngIfElse]="loadingCards">
+  <!-- <ng-template [ngIf]="cardList.length > 1" [ngIfElse]="loadingCards"> -->
     <li *ngFor="let card of cardList">
       <app-card [card]="card"></app-card>
     </li>
-  </ng-template>
+  <!-- </ng-template>
   <ng-template #loadingCards>
     <ng-template [ngIf]="resReceived == false" [ngIfElse]="noCardsFound">
       <strong>LOADING CARDS...</strong>
@@ -12,5 +12,5 @@
     <ng-template #noCardsFound>
       <strong>Sorry, no cards were found.</strong>
     </ng-template>
-  </ng-template>
+  </ng-template> -->
 </ul>

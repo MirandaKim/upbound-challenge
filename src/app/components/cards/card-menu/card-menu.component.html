@@ -1,0 +1,17 @@
+<div ngbDropdown placement="bottom-right" class="dropdown card-menu" (openChange)="onOpenChange($event)">
+  <button ngbDropdownToggle class="card-menu__toggle btn btn-light rounded-0">
+    <app-icon class="icon" iconType="pencil" iconSize="small" iconColor="dark-orange"></app-icon>
+  </button>
+  <div ngbDropdownMenu class="dropdown-menu card-menu__link-list" >
+    <ng-container *ngFor="let item of listItems">
+      <div class="dropdown-item card-menu__item">
+        <a
+          class="btn list-group-item list-group-item-action {{ item.classes }}"
+          href="{{ item.destination }}">
+          <span class="card-menu__icon"><app-icon [iconType]="item.icon" iconColor="dark-grey"></app-icon></span>
+          <span class="card-menu__lable">{{ item.label }}</span>
+        </a>
+      </div>
+    </ng-container>
+  </div>
+</div>

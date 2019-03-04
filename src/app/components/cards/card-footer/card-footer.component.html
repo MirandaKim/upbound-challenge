@@ -1,0 +1,20 @@
+<div class="card-footer text-muted">
+  <ul class="list-inline row">
+    <li class="list-inline-item col">
+      <span class="card-footer__icon"><app-icon iconType="database" iconColor="black-grey" iconSize="small"></app-icon></span>
+      <!-- <span class="prefix prefix--currency">$</span> -->
+      <!-- {{ card.totalRevenue }} -->
+      <span>{{ 15000 | currency: 'USD' : 'symbol' : '1.0' }}</span>
+    </li>
+    <li class="list-inline-item col text-center">
+      <span class="card-footer__icon"><app-icon iconType="people" iconColor="medium-grey" iconSize="small"></app-icon></span>
+      <!-- {{ card.subscribers }} -->
+      <span>500</span>
+    </li>
+    <li class="list-inline-item col text-right">
+      <span class="card-footer__icon"><app-icon iconType="eye" iconColor="medium-grey" iconSize="small"></app-icon></span>
+      <!-- {{ card.views }} -->
+      <span>150 K</span>
+    </li>
+  </ul>
+</div>
