@@ -1,0 +1,77 @@
+/*
+Contains style overrides to Bootstrap's dropdown menu.
+*/
+
+/********************************************/
+/*   # Dropdown                            */
+/******************************************/
+
+.dropdown {
+
+  /********************************************/
+  /*   # Toggle                              */
+  /******************************************/
+
+  &-toggle {
+    &::after {
+      display: none;
+    }
+  }
+
+  /********************************************/
+  /*   # Menu                                */
+  /******************************************/
+
+  &-menu {
+    /*spacing*/
+    padding: 0;
+    /*shadows*/
+    box-shadow: 0 0 4px rgba(0, 0, 0, .2);
+  }
+
+  /********************************************/
+  /*   # Item                                */
+  /******************************************/
+
+  &-item {
+    /*spacing*/
+    padding: 0;
+
+    /*hover*/
+    &:hover {
+      background-color: transparent;
+    }
+
+  }
+
+  .dropdown &-item a,
+  .dropdown &-item button {
+    /*spacing*/
+    padding-left: 14px;
+    padding-bottom: 9px;
+    padding-top: 9px;
+    /*borders*/
+    border-radius: 0;
+    border-style: none;
+    border-bottom-style: solid;
+  }
+  &-item:hover a,
+  &-item:hover button {
+    background-color: $colorLighterGrey;
+
+  }
+
+  &-item:first-of-type button,
+  &-item:first-of-type a{
+    border-top-right-radius: .25rem;
+    border-top-left-radius: .25rem;
+  }
+
+  &-item:last-of-type button,
+  &-item:last-of-type a{
+    border-bottom-style: none;
+    border-bottom-left-radius: .25rem;
+    border-bottom-right-radius: .25rem;
+  }
+
+}
