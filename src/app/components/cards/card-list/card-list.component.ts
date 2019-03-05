@@ -51,9 +51,9 @@ export class CardListComponent implements OnInit {
   /******************************************/
 
   ngOnInit() {
-    this.getCards();
-    // this.cardList_full = this.testing();
-    // this.cardList_filtered = this.cardList_full;
+    // this.getCards();
+    this.cardList_full = this.testing();
+    this.cardList_filtered = this.cardList_full;
 
     this.filtersService.onFilterChange.subscribe((res) => {
       this.applyFilterChange(res);
