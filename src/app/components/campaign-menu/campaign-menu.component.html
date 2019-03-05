@@ -6,11 +6,10 @@
   <div ngbDropdownMenu class="drop-menu">
     <ng-container *ngFor="let item of listItems">
       <div class="dropdown-item drop-menu__item">
-        <a
-          class="btn list-group-item list-group-item-action {{ item.classes }}"
-          href="{{ item.destination }}">
+        <button (click)="onItemClick(item)"
+          class="btn list-group-item list-group-item-action {{ item.classes }}">
           <span class="card-menu__lable">{{ item.label }}</span>
-        </a>
+        </button>
       </div>
     </ng-container>
   </div>

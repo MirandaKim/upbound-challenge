@@ -1,7 +1,7 @@
 <ul class="card-list card-group">
 
   <!-- <ng-template [ngIf]="cardList.length > 1" [ngIfElse]="loadingCards"> -->
-    <li *ngFor="let card of cardList">
+    <li *ngFor="let card of cardList_filtered">
       <app-card [card]="card"></app-card>
     </li>
   <!-- </ng-template>

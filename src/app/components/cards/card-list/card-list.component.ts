@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CardsService } from 'src/app/services/cards.service';
 import { Card } from 'src/app/interfaces/card.interface';
+import { FiltersService } from 'src/app/services/filters.service';
+import { Filter } from 'src/app/interfaces/filter.interface';
 
 @Component({
   selector: 'app-card-list',
@@ -13,17 +15,35 @@ export class CardListComponent implements OnInit {
   /*   # Properties                          */
   /******************************************/
 
-  protected cardList: any[] = [];
+  protected cardList_full: any[] = [];
+  protected cardList_filtered: any[] = [];
+
+  protected allowedFilters = [
+    'campaignId'
+  ];
+  protected filters = {
+    campaignId: {
+      value: '',
+      filterKey: 'campaignId'
+    }
+  };
 
   protected resReceived = false;
   private cardsService: CardsService;
+
+  private filtersService: FiltersService;
+
 
   /********************************************/
   /*   # Constructor                         */
   /******************************************/
 
-  constructor(cardsService: CardsService) {
+  constructor(
+    cardsService: CardsService,
+    filtersService: FiltersService
+  ) {
     this.cardsService = cardsService;
+    this.filtersService = filtersService;
   }
 
   /********************************************/
@@ -31,8 +51,15 @@ export class CardListComponent implements OnInit {
   /******************************************/
 
   ngOnInit() {
-    // this.cardList = this.getCards();
-    this.cardList = this.testing();
+    this.getCards();
+    // this.cardList_full = this.testing();
+    // this.cardList_filtered = this.cardList_full;
+
+    this.filtersService.onFilterChange.subscribe((res) => {
+      this.applyFilterChange(res);
+      console.log('Hey! Filter Changed');
+      console.log(res);
+    });
   }
 
   /*
@@ -130,11 +157,10 @@ export class CardListComponent implements OnInit {
   *****************/
   /*
   Get Cards:
-  Access the API to return a list of cards
+  Access the API for a full list of cards
   */
 
-  protected getCards(): Card[]{
-    let cardList: Card[];
+  protected getCards(): void{
     /*Subscribe to Cards Service*/
     this.cardsService.readAll().subscribe((res) => {
       /*
@@ -142,18 +168,55 @@ export class CardListComponent implements OnInit {
       which should contain the cards. If the response is not valid,
       it is likely due to a 404.
       */
+      console.log(res);
       let valid = res.hasOwnProperty('items');
       if(valid){
-        cardList = res['items']; // get list of cards from response
-      }else {
-        cardList = []; // return empty array
+        this.cardList_full = res['items'];// get list of cards from response
+        this.cardList_filtered = this.cardList_full;
       }
       this.resReceived = true; // let the component know the get request is complete
     }, (error) => {
       console.log(error);
       this.resReceived = true; // let the component know the get request is complete
     });
-    return cardList;
+
+  }
+
+  protected applyFilterChange(changedFilter){
+    console.log('Apply Filter Change:')
+    console.log(changedFilter);
+    let valid = this.checkValidFilterChange(changedFilter);
+    if(valid){
+      this.filters[changedFilter.property].value = changedFilter.value;
+      this.filterDisplayList();
+    }else {
+      console.log('Filter not applied. Ignore.');
+    }
+  }
+
+  protected checkValidFilterChange(changedFilter){
+    let validProp = this.allowedFilters.indexOf(changedFilter.property) > -1;
+    return validProp;
+  }
+
+  protected filterDisplayList(){
+    // start with full list of cards
+    let filteredCards = this.cardList_full;
+    /*
+    For each of the allowed filters,
+    filter the list by the filter's value and make this the new filtered list of cards.
+    */
+    for(let i=0; i<this.allowedFilters.length; i++){
+      let filterType = this.allowedFilters[i];
+      let filterKey = this.filters[filterType]['filterKey'];
+      let filterValue = this.filters[filterType].value;
+      if(filterValue.length > 0) {
+        filteredCards = filteredCards.filter((card) => {
+          return card[filterKey] == filterValue;
+        });
+      }
+    }
+    this.cardList_filtered = filteredCards;
   }
 
 }
