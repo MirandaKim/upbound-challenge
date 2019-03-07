@@ -7,7 +7,7 @@ import { FilterListService } from 'src/app/services/filter-list.service';
 
 /**********************************************************/
 /*                                                       */
-/*   Filter List Service                                */
+/*   Card List                                          */
 /*                                                     */
 /******************************************************/
 /*
