@@ -6,6 +6,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CrudService } from './services/crud.service';
 import { CardsService } from './services/cards.service';
 import { CampaignsService } from './services/campaigns.service';
+import { FiltersService } from './services/filters.service';
+import { FilterListService } from './services/filter-list.service';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -44,6 +46,7 @@ import { CampaignMenuComponent } from './components/campaign-menu/campaign-menu.
     AppRoutingModule
   ],
   providers: [
+    FilterListService
   ],
   bootstrap: [AppComponent]
 })

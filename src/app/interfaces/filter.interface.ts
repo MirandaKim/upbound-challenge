@@ -3,5 +3,6 @@ export interface Filter {
   property: string;
   value: string|number|boolean;
   valueType: string;
+  condition: string;
   setLocation: string;
 }
