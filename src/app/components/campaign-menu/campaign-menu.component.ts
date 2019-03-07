@@ -243,7 +243,6 @@ export class CampaignMenuComponent implements OnInit {
   private changeFilter(itemIndex){
     let newValue = this.campaignList[itemIndex][this.filterValueProperty];
     let result = this.filtersService.changeFilter(this.filterId, newValue, this.filterCondition);
-    console.log(`Filter changed: ${result}`);
   }
 
   /********************************************/
