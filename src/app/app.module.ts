@@ -22,6 +22,8 @@ import { IconComponent } from './components/icon/icon.component';
 import { CardStatusComponent } from './components/cards/card-status/card-status.component';
 import { CreateCardComponent } from './components/cards/create-card/create-card.component';
 import { CampaignMenuComponent } from './components/campaign-menu/campaign-menu.component';
+import { CardFooterRejectedComponent } from './components/cards/card-footer-rejected/card-footer-rejected.component';
+import { CardFooterActiveComponent } from './components/cards/card-footer-active/card-footer-active.component';
 
 
 @NgModule({
@@ -38,6 +40,8 @@ import { CampaignMenuComponent } from './components/campaign-menu/campaign-menu.
     CardStatusComponent,
     CreateCardComponent,
     CampaignMenuComponent,
+    CardFooterRejectedComponent,
+    CardFooterActiveComponent,
   ],
   imports: [
     BrowserModule,

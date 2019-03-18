@@ -5,6 +5,10 @@
 /******************************************/
 
 .card-footer {
+  /*position*/
+  position: relative;
+  /*structure*/
+  min-height: 2.5rem;
   /*spacing*/
   padding-top: 12px;
   padding-bottom: 9px;
@@ -17,25 +21,6 @@
   /*colors*/
   border-color: transparent;
   background-color: $colorLighterGrey;
-  color: $colorLightGrey;
+  color: $colorMediumGrey;
 
-  /********************************************/
-  /*   # Icon                                */
-  /******************************************/
-
-  &__icon {
-    /*spacing*/
-    padding-right: 2px;
-  }
-}
-
-/********************************************/
-/*   # Column                              */
-/******************************************/
-
-.col {
-  /*spacing*/
-  padding-left: 10px;
-  padding-right: 10px;
-  margin-right: 0;
 }
