@@ -41,7 +41,7 @@ import { CardFooterActiveComponent } from './components/cards/card-footer-active
     CreateCardComponent,
     CampaignMenuComponent,
     CardFooterRejectedComponent,
-    CardFooterActiveComponent,
+    CardFooterActiveComponent
   ],
   imports: [
     BrowserModule,
