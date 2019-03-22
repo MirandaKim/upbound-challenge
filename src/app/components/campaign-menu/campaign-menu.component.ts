@@ -3,8 +3,6 @@ import { CampaignsService } from 'src/app/services/campaigns.service';
 import { Campaign } from 'src/app/interfaces/campaign.interface';
 import { MenuFilterComponent } from 'src/app/components/abstracts/menu-filter/menu-filter.component'
 import { FiltersService } from 'src/app/services/filters.service';
-import { FilterConditions } from 'src/app/enums/filter-conditions.enum';
-import * as $ from 'jquery';
 
 /**********************************************************/
 /*                                                       */
