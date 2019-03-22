@@ -24,6 +24,7 @@ import { CreateCardComponent } from './components/cards/create-card/create-card.
 import { CampaignMenuComponent } from './components/campaign-menu/campaign-menu.component';
 import { CardFooterRejectedComponent } from './components/cards/card-footer-rejected/card-footer-rejected.component';
 import { CardFooterActiveComponent } from './components/cards/card-footer-active/card-footer-active.component';
+import { SearchFilterComponent } from './components/search-filter/search-filter.component';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { CardFooterActiveComponent } from './components/cards/card-footer-active
     CreateCardComponent,
     CampaignMenuComponent,
     CardFooterRejectedComponent,
-    CardFooterActiveComponent
+    CardFooterActiveComponent,
+    SearchFilterComponent
   ],
   imports: [
     BrowserModule,
