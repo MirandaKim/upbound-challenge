@@ -1,12 +1,14 @@
 <!-- <app-icon iconType="list" iconColor="dark-grey"></app-icon>
 <span>Pending</span> -->
-
-
 <div ngbDropdown class="dropdown drop-menu">
   <button ngbDropdownToggle class="drop-menu__toggle btn btn-light">
-    <app-icon iconType="list" iconColor="dark-grey"></app-icon>
-    <!-- {{menuItems[selectedItemIndex]['label']}} -->
-    Pending
+    <span class="btn__icon btn__icon--left">
+      <app-icon iconType="list" iconSize="large" iconColor="dark-grey"></app-icon>
+    </span>
+    <span>
+      <!-- {{menuItems[selectedItemIndex]['label']}} -->
+      Pending
+    </span>
   </button>
   <div ngbDropdownMenu class="drop-menu">
     <!-- <ng-container > -->

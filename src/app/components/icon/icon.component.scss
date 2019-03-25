@@ -24,11 +24,11 @@ x-large
 */
 
 
-$iconSizeXSmall: 8px; // x-small
-$iconSizeSmall: 13px; // small
+$iconSizeXSmall: 9px; // x-small
+$iconSizeSmall: 14px; // small
 $iconSizeMedium: 20px; // medium
-$iconSizeLarge: 30px; // large
-$iconSizeXLarge: 40px; // x-large
+$iconSizeLarge: 22px; // large
+$iconSizeXLarge: 24px; // x-large
 
 /********************************************/
 /*   # Icon                                */
@@ -79,6 +79,9 @@ svg{
   &-dark-gray{
     fill: $colorDarkGrey;
   }
+  &-black {
+    fill: $colorBlack;
+  }
   /* Rainbow */
   &-orange {
     fill: $colorOrange;
@@ -115,6 +118,9 @@ svg{
   &-dark-grey:hover,
   &-dark-gray:hover{
     fill: $colorDarkGrey;
+  }
+  &-black:hover {
+    fill: $colorBlack;
   }
   /* Rainbow */
   &-dark-orange:hover {
@@ -160,6 +166,57 @@ svg{
     height: $iconSizeXLarge;
     width: $iconSizeXLarge;
   }
+
+
+
+  &-13 {
+    height: 13px;
+    width: 13px;
+  }
+  &-14 {
+    height: 14px;
+    width: 14px;
+  }
+  &-15 {
+    height: 15px;
+    width: 15px;
+  }
+  &-16 {
+    height: 16px;
+    width: 16px;
+  }
+  &-17 {
+    height: 17px;
+    width: 17px;
+  }
+  &-18 {
+    height: 18px;
+    width: 18px;
+  }
+  &-19 {
+    height: 19px;
+    width: 19px;
+  }
+  &-20 {
+    height: 20px;
+    width: 20px;
+  }
+  &-21 {
+    height: 21px;
+    width: 21px;
+  }
+  &-22 {
+    height: 22px;
+    width: 22px;
+  }
+  &-23 {
+    height: 23px;
+    width: 23px;
+  }
+  &-24 {
+    height: 24px;
+    width: 24px;
+  }
 }
 
 /**********************
@@ -169,7 +226,7 @@ svg{
 /*This is to be used when an icon seems out of scale with icons of the same size.*/
 
 .icon--people {
-  $peopleIconChangeBy: 3;
+  $peopleIconChangeBy: 2;
   &.icon--size {
     &-x-small {
       height: $iconSizeXSmall + $peopleIconChangeBy;

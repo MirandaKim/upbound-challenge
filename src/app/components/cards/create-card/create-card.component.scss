@@ -18,7 +18,7 @@
   padding: 0;
   /*borders*/
   border-radius: $cardBorderRadius;
-  border-width: 4px;
+  border-width: 3px;
   border-style: dotted;
   /*colors*/
   border-color: $colorLightGrey;
@@ -104,10 +104,12 @@
     height: 100%;
     width: 100%;
     /*padding*/
-    padding-top: 70%;
+    padding-top: 63%;
     /*typography*/
     text-align: center;
-    font-size: 1.2rem;
+    font-size: 1rem;
+    font-weight: 300;
+    letter-spacing: .2px;
     /*colors*/
     color: $colorDarkGrey;
 

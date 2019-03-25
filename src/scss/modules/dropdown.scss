@@ -16,6 +16,14 @@ Contains style overrides to Bootstrap's dropdown menu.
     &::after {
       display: none;
     }
+
+    &--outline {
+        /*borders*/
+        border-style: solid;
+        border-width: 1px;
+        /*colors*/
+        border-color: $colorLightGrey;
+    }
   }
 
   /********************************************/

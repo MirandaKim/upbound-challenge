@@ -1,7 +1,9 @@
 <div ngbDropdown class="dropdown drop-menu">
-  <button ngbDropdownToggle class="drop-menu__toggle btn btn-light">
-    {{menuItems[selectedItemIndex]['label']}}
-    <app-icon iconType="chevron-down" iconSize="small"></app-icon>
+  <button ngbDropdownToggle class="drop-menu__toggle btn btn--outline btn-light btn--smidge-larger">
+    <span class="btn__label">{{menuItems[selectedItemIndex]['label']}}</span>
+    <span class="btn__icon btn__icon--right">
+      <app-icon iconType="chevron-down" iconSize="x-small" iconColor="dark-grey"></app-icon>
+    </span>
   </button>
   <div ngbDropdownMenu class="drop-menu">
     <!-- <ng-container > -->

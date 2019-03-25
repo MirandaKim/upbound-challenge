@@ -1,4 +1,4 @@
-<div class="card-footer">
+<div class="card-footer card-footer--{{ card.currentWorkflow }}">
   <div [ngSwitch]="card.currentWorkflow">
     <div *ngSwitchCase="'active'">
       <app-card-footer-active card="card"></app-card-footer-active>

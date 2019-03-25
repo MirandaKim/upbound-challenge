@@ -1,0 +1,88 @@
+/*
+Contains overrides and additions to Bootstrap's btn styles.
+*/
+
+/********************************************/
+/*   # Button                              */
+/******************************************/
+
+.btn {
+
+  color: $colorDarkGrey;
+
+  /***************
+  *  > Outline   *
+  ***************/
+
+  &--outline {
+      /*borders*/
+      border-style: solid;
+      border-width: 1px;
+      /*colors*/
+      border-color: $colorLightGrey;
+  }
+
+  /*************
+  *  > Color   *
+  *************/
+
+  &-light {
+    &--transparent {
+      background-color: transparent;
+    }
+  }
+
+  /************
+  *  > Size   *
+  ************/
+
+  &--smidge-larger {
+    /*spacing*/
+    padding-left: 18px;
+    padding-right: 14px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    /*typography*/
+    font-size: 1.1rem;
+    letter-spacing: .6px;
+    font-weight: 100;
+    color: $colorBlack;
+  }
+
+  /********************************************/
+  /*   # Label                               */
+  /******************************************/
+
+  &__label {}
+
+  /********************************************/
+  /*   # Icon                                */
+  /******************************************/
+
+  &__icon {
+    /*position*/
+    position: relative;
+    /*spacing*/
+    margin-left: 5px;
+    margin-right: 5px;
+
+    &--left {
+      /*spacing*/
+      margin-right: 14px;
+      margin-left: 0;
+    }
+
+    &--right {
+      /*spacing*/
+      margin-right: 0;
+      margin-left: 18px;
+    }
+
+    &--px-down {
+      top: 1px;
+    }
+
+  }
+
+
+}
