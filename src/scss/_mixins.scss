@@ -1,0 +1,22 @@
+/********************************************/
+/*   # Text Styles                         */
+/******************************************/
+
+/*
+  Text Capsule
+  Give a small piece of text the shape of a capsule/pill.
+  WARNING: this is designed for a single line of text; if the element is more
+            than one line (or a fairly large font size) it may loose the capsule effect.
+*/
+@mixin textCapsule($bkgdColor: rgb(198, 199, 200), $textColor: rgb(248, 249, 250), $borderRadius: 1rem){
+  /*spacing*/
+  padding-left: 15px;
+  padding-right: 17px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  /*borders*/
+  border-radius: $borderRadius;
+  /*colors*/
+  background-color: $bkgdColor;
+  color: $textColor;
+}
