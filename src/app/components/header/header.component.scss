@@ -3,8 +3,12 @@
 .header {
   /*spacing*/
   margin-top: 9px;
+  margin-bottom: 2rem;
 
   &__nav {
+    /*spacing*/
+    padding-top: 0;
+    padding-bottom: 0;
     /*borders*/
     border-top-style: solid;
     border-bottom-style: solid;
@@ -14,8 +18,25 @@
     border-color: $colorLightGrey;
 
     .container {
+      padding-top: 19px;
       padding-bottom: 14px;
-      padding-top: 14px;
+    }
+  }
+
+  &__item {
+    /*display*/
+    display: inline-block;
+    /*position*/
+    position: relative;
+    /*spacing*/
+    padding-right: 17px;
+
+    &--right {
+      /*position*/
+      float: right;
+      /*spacing*/
+      padding-right: 0;
+      padding-left: 17px;
     }
   }
 

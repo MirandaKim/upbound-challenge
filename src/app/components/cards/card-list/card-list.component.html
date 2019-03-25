@@ -1,5 +1,5 @@
+<!-- <ul class="card-list card-group d-flex justify-content-between"> -->
 <ul class="card-list card-group">
-
   <!-- <ng-template [ngIf]="cardList.length > 1" [ngIfElse]="loadingCards"> -->
     <li *ngFor="let card of cardList_filtered">
       <app-card [card]="card"></app-card>

@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CampaignsService } from 'src/app/services/campaigns.service';
 import { Campaign } from 'src/app/interfaces/campaign.interface';
+import { MenuFilterComponent } from 'src/app/components/abstracts/menu-filter/menu-filter.component'
 import { FiltersService } from 'src/app/services/filters.service';
-import { FilterConditions } from 'src/app/enums/filter-conditions.enum';
-import * as $ from 'jquery';
 
 /**********************************************************/
 /*                                                       */
@@ -15,38 +14,37 @@ import * as $ from 'jquery';
 Display a list of campaigns from the campaigns api.
 This component provides a campaign filter when a campain is clicked from the template.
 
+Filtering is handled by the parent class MenuFilterComponent. This component
+collects the list of options (the list of campaigns), then uses logic from the
+parent class to create the "optionsList" with can be used in the template to create
+an html menu.
+
+See components/abstracts/menu-filter/menu-filter.component.ts for more info.
+
+
 *****************
 *   Contents:   *
 *****************
 
-  # Interfaces
   # Properties
+    > Campaign Info
+    > Menu Configs
+    > Filter Configs
+    > Services
   # Constructor
   # On Init
   # Protected
-    > Configs
-    > Get Cards
-  # Private
-    > Change Filter
+    > Get Campaigns
   # For Testing
 
 ******************/
-
-/********************************************/
-/*   # Interfaces                          */
-/******************************************/
-
-interface CampaignMenuItem {
-  label: string; // Name of campaign as displayed in the html template
-  dataIndex: number; // index of campaign in list returned from api
-}
 
 @Component({
   selector: 'app-campaign-menu',
   templateUrl: './campaign-menu.component.html',
   styleUrls: ['./campaign-menu.component.scss']
 })
-export class CampaignMenuComponent implements OnInit {
+export class CampaignMenuComponent extends MenuFilterComponent implements OnInit {
 
   /********************************************/
   /*   # Properties                          */
@@ -56,37 +54,28 @@ export class CampaignMenuComponent implements OnInit {
   *  > Campaign Info   *
   *********************/
 
-  protected campaignList: Campaign[]; // list of campaigns from the campaigns api
-  protected listItems: CampaignMenuItem[]; // list of campaign information for the html template to create a menu
+  protected optionsList: Campaign[] = []; // list of campaigns from the campaigns api, which will be used as filter options
 
-  protected idProperty: string = 'id'; // name of property that holds the id value in campaign objects
-  protected labelProperty: string = 'campaignName'; // name of property that holds the name value in campaign objects
-  protected showAllLabel: string = "All Campaigns"; // Label for the menu item with represents an upset filter (e.g. "All")
+  /********************
+  *  > Menu Configs   *
+  ********************/
 
-  /**************
-  *  > States   *
-  **************/
-  protected selectedItemIndex; // currently selected campaign index
+  protected optionLabelProperty: string = 'campaignName'; // name of property that holds the value that will be used as the option label
+  protected optionValueProperty: string = 'id'; // property in the campaign data to ge the value for the filter
+  protected optionShowAllLabel: string = "All Campaigns"; // Label for the menu item with represents an upset filter (e.g. "All")
 
   /**********************
   *  > Filter Configs   *
   **********************/
-  protected filterIsSet: boolean = false; // is a filter currently set
-  protected filterId: string; // id for filter as returned by the FiltersService
-  protected initialFilterValue: string = ""; // Filter value when filter is initially created (empty string represents an unset filter)
 
-  protected filterSetLocation: string = 'campaign-menu'; // location id used to represent this component in the FiltersService
-  protected filterProperty: string = 'campaignId'; // property this filter is intended to represent (as seen in cards data)
-  protected filterValueProperty: string = this.idProperty; // property in the campaign data to ge the value for the filter
-  protected filterValueType: string = 'string'; // type of value
-  protected filterCondition: string = FilterConditions[0]; // match
+  protected filterLocationIdDefault: string = 'campaign-menu'; // location id used to represent this component in the FiltersService
+  protected filterProperty: string = 'campaignId'; // property this filter is intended to affect/represent
 
   /****************
   *  > Services   *
   ****************/
 
-  protected campaignsService: CampaignsService;
-  protected filtersService: FiltersService;
+  protected campaignsService: CampaignsService; // API for accessing list of campaigns
 
   /********************************************/
   /*   # Constructor                         */
@@ -94,10 +83,9 @@ export class CampaignMenuComponent implements OnInit {
 
   constructor(
     campaignsService: CampaignsService,
-    filtersService: FiltersService
+    filtersService: FiltersService // get the filters service for super component
   ) {
-    this.campaignsService = campaignsService;
-    this.filtersService = filtersService;
+    super(filtersService);
   }
 
   /********************************************/
@@ -109,27 +97,13 @@ export class CampaignMenuComponent implements OnInit {
     Get Campaign Data
     */
     // this.getCampaigns(); // DON'T DELETE! this is the actual api call, apply this when not testing
-    this.campaignList = this.getCampaignList_test(); // not the actual data--use instead of api for testing
-    /*
-    Organize campaigns into a list for the menu template.
-    This includes an 'All Campaigns' selection at the top (index: 0)
-    */
-    this.listItems = this.createItemList();
-    /*
-    Set currently selected campaign.
-    Initial index set to 0 for all campaigns.
-    */
-    this.selectedItemIndex = 0;
-    /*
-    Create filter to emit an event when the selected campaign is changed
-    */
-    this.createFilter();
+    this.optionsList = this.getCampaignList_test(); // not the actual data--use instead of api for testing
+    this.createMenu(); // this creates the menu items and sets up the filter events
   }
 
   /********************************************/
   /*   # Protected                           */
   /******************************************/
-
 
   /*********************
   *  > Get Campaigns   *
@@ -142,107 +116,17 @@ export class CampaignMenuComponent implements OnInit {
   protected getCampaigns(): void {
     let campaigns: Campaign[];
     this.campaignsService.readAll().subscribe((res) => {
+      // check if the response does include a list of items
       let valid = res.hasOwnProperty('items');
       if(valid) {
-        this.campaignList = res['items'];
+        this.optionsList = res['items'];
       }else{
-        this.campaignList = [];
+        this.optionsList = [];
       }
     }, (err) => {
       console.log(`ERROR (campaign-menu.component.ts):`);
       console.log(err);
     });
-  }
-
-  /************************
-  *  > Create Item List   *
-  ************************/
-
-  /*
-  Create Item List
-  Create the inforamtion to generate the campaign menu in the template.
-  This loops through the list of campaigns and pulls out the information needed for the template.
-  This also adds an emtpy campaign to the top of the list intended to reset the campaign filter.
-  */
-  protected createItemList(): CampaignMenuItem[]{
-    /*
-    Create initial menu item
-    */
-    let itemList: CampaignMenuItem[] = [
-      {
-        label: this.showAllLabel, // Name of campaign as displayed in the html template
-        dataIndex: -1 // set as -1 as it's not a valid campaign option
-      }
-    ];
-    /*
-    Loop through each and create a menu item for each campaign
-    */
-    $(this.campaignList).each((index) => {
-      let item = {
-        label: this.campaignList[index][this.labelProperty], // name
-        dataIndex: index // index of campaign in list returned from api
-      };
-      itemList.push(item);
-    });
-    return itemList;
-  }
-
-  /*********************
-  *  > Create Filter   *
-  *********************/
-
-  /*
-  Create Filter:
-  Add a filter for filtering campaigns in the FitlersService (filters.service.ts).
-  This filter is used to emit an event when a new campaign is selected in this component.
-  */
-  protected createFilter(){
-    let filterId = this.filtersService.createFilter(
-      this.filterProperty,
-      this.initialFilterValue,
-      this.filterValueType,
-      this.filterCondition,
-      this.filterSetLocation
-    );
-    this.filterIsSet = true;
-    this.filterId = filterId;
-  }
-
-  /*********************
-  *  > On Item Click   *
-  *********************/
-
-  /*
-  On Item Click
-  When a user clicks the one of the campaigns:
-    - Change the value of the campaign filter
-    - If the clicked campaign's index is -1,
-      this represents all the cmapaigns and the filter will be unset.
-  */
-  protected onItemClick(item){
-    this.selectedItemIndex = item.dataIndex + 1;
-    if(item.dataIndex > -1) {
-      this.changeFilter(item.dataIndex);
-    }else{
-      this.filtersService.resetFilter(this.filterId);
-    }
-  }
-
-  /********************************************/
-  /*   # Private                             */
-  /******************************************/
-
-  /*********************
-  *  > Change Filter   *
-  *********************/
-
-  /*
-  Change Filter
-  Change the value of the campaign filter by providing the campaign's index
-  */
-  private changeFilter(itemIndex){
-    let newValue = this.campaignList[itemIndex][this.filterValueProperty];
-    let result = this.filtersService.changeFilter(this.filterId, newValue, this.filterCondition);
   }
 
   /********************************************/

@@ -1,3 +1,11 @@
+/*
+Contains style overrides to Bootstrap's progress bar.
+*/
+
+/********************************************/
+/*   # Progress                            */
+/******************************************/
+
 .progress {
   /*display*/
   display: block;
@@ -9,6 +17,10 @@
   /*colors*/
   background-color: $colorLightGrey;
 }
+
+/********************************************/
+/*   # Progress Bar                        */
+/******************************************/
 
 .progress-bar {
   /*structure*/

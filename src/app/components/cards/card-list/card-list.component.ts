@@ -288,7 +288,7 @@ export class CardListComponent implements OnInit {
             "description": "Seattle, Washington, USA"
           }
         ],
-        "currentWorkflow": "paused",
+        "currentWorkflow": "rejected",
         "campaignEndDate": "2017-02-28T18:59:59.999Z",
         "id": "c3d444c3d2774263ab93598fb0705374",
         "userId": "5d6117b9ae114c83bb53cfdd8c722e78",
@@ -327,7 +327,7 @@ export class CardListComponent implements OnInit {
             "description": "Seattle, Washington, USA"
           }
         ],
-        "currentWorkflow": "paused",
+        "currentWorkflow": "active",
         "campaignEndDate": "2017-02-28T18:59:59.999Z",
         "id": "c3d444c3d2774263ab93598fb0705374",
         "userId": "5d6117b9ae114c83bb53cfdd8c722e78",

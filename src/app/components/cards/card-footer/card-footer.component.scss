@@ -5,9 +5,14 @@
 /******************************************/
 
 .card-footer {
+  /*position*/
+  position: relative;
+  /*structure*/
+  height: 2.4rem;
   /*spacing*/
-  padding-top: 12px;
-  padding-bottom: 9px;
+  padding-top: 8px;
+  padding-left: 18px;
+  padding-right: 18px;
   /*borders*/
   border-bottom-right-radius: $cardBorderRadius;
   border-bottom-left-radius: $cardBorderRadius;
@@ -17,25 +22,6 @@
   /*colors*/
   border-color: transparent;
   background-color: $colorLighterGrey;
-  color: $colorLightGrey;
+  color: $colorMediumGrey;
 
-  /********************************************/
-  /*   # Icon                                */
-  /******************************************/
-
-  &__icon {
-    /*spacing*/
-    padding-right: 2px;
-  }
-}
-
-/********************************************/
-/*   # Column                              */
-/******************************************/
-
-.col {
-  /*spacing*/
-  padding-left: 10px;
-  padding-right: 10px;
-  margin-right: 0;
 }

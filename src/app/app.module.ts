@@ -22,6 +22,10 @@ import { IconComponent } from './components/icon/icon.component';
 import { CardStatusComponent } from './components/cards/card-status/card-status.component';
 import { CreateCardComponent } from './components/cards/create-card/create-card.component';
 import { CampaignMenuComponent } from './components/campaign-menu/campaign-menu.component';
+import { CardFooterRejectedComponent } from './components/cards/card-footer-rejected/card-footer-rejected.component';
+import { CardFooterActiveComponent } from './components/cards/card-footer-active/card-footer-active.component';
+import { SearchFilterComponent } from './components/search-filter/search-filter.component';
+import { StatusMenuComponent } from './components/status-menu/status-menu.component';
 import { DateSelectorComponent } from './components/date-selector/date-selector.component';
 
 
@@ -39,7 +43,11 @@ import { DateSelectorComponent } from './components/date-selector/date-selector.
     CardStatusComponent,
     CreateCardComponent,
     CampaignMenuComponent,
-    DateSelectorComponent,
+    CardFooterRejectedComponent,
+    CardFooterActiveComponent,
+    SearchFilterComponent,
+    StatusMenuComponent,
+    DateSelectorComponent
   ],
   imports: [
     BrowserModule,

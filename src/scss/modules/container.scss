@@ -1,0 +1,14 @@
+/*
+Contains style overrides to Bootstrap's container class.
+*/
+
+/********************************************/
+/*   # Container                           */
+/******************************************/
+
+.container {
+
+  @media (min-width: 1400px) {
+    max-width: 1300px;
+  }
+}

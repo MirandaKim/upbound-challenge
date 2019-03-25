@@ -1,8 +1,13 @@
+<!-- <app-icon iconType="list" iconColor="dark-grey"></app-icon>
+<span>Pending</span> -->
 <div ngbDropdown class="dropdown drop-menu">
-  <button ngbDropdownToggle class="drop-menu__toggle btn btn--outline btn-light btn--smidge-larger">
-    <span class="btn__label">{{menuItems[selectedItemIndex]['label']}}</span>
-    <span class="btn__icon btn__icon--right">
-      <app-icon iconType="chevron-down" iconSize="x-small" iconColor="dark-grey"></app-icon>
+  <button ngbDropdownToggle class="drop-menu__toggle btn btn-light">
+    <span class="btn__icon btn__icon--left">
+      <app-icon iconType="list" iconSize="large" iconColor="dark-grey"></app-icon>
+    </span>
+    <span>
+      <!-- {{menuItems[selectedItemIndex]['label']}} -->
+      Pending
     </span>
   </button>
   <div ngbDropdownMenu class="drop-menu">

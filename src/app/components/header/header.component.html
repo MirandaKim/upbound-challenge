@@ -1,21 +1,17 @@
 <div id="header" class="header">
   <nav class="header__nav navbar navbar-extend-lg navbar-light bg-light">
     <div class="container">
-
       <div class="col">
-        <div class="header__campaign-filter">
-          <app-campaign-menu></app-campaign-menu>
+        <div class="header__item header__campaign-filter">
+          <app-campaign-menu locationId="header-campaign-menu"></app-campaign-menu>
+        </div>
+        <div class="header__item header__status-fitler">
+          <app-status-menu locationId="header-status-menu"></app-status-menu>
         </div>
       </div>
       <div class="col">
-        <div class="header__status-fitler">
-          <app-icon iconType="list" iconColor="dark-grey"></app-icon>
-          <span>Pending</span>
-        </div>
-      </div>
-      <div class="col text-right">
-        <div class="header__search-filter">
-          <app-icon iconType="search" iconColor="dark-grey"></app-icon>
+        <div class="header__item header__search-filter">
+          <app-search-filter></app-search-filter>
         </div>
       </div>
       <div class="col text-right">
