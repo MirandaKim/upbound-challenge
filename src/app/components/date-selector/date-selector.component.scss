@@ -1,0 +1,109 @@
+@import "src/scss/_variables";
+@import "src/scss/mixins";
+
+/********************************************/
+/*   # Date Selector                       */
+/******************************************/
+
+.date-selector {
+  /*position*/
+  position: relative;
+  top: 3px;
+
+  /********************************************/
+  /*   # Date Loop                           */
+  /******************************************/
+
+  &__select-date {
+    /*display*/
+    display: inline-block;
+    /*position*/
+    position: relative;
+    /*structure*/
+    width: 14.4rem;
+    /*spacing*/
+    padding-left: 25px;
+    padding-right: 25px;
+    /*typography*/
+    text-align: center;
+
+    /*************
+    *  > Ranged  *
+    *************/
+
+    .date-selector--ranged & {
+      width: 18.5rem;
+    }
+
+  }
+
+  /********************************************/
+  /*   # Selected Date                       */
+  /******************************************/
+
+  &__selected-date-full {
+    /*display*/
+    display: inline-block;
+    /*typography*/
+    font-weight: 300;
+    /*colors*/
+    color: $colorRed;
+  }
+
+  /********************************************/
+  /*   # Calender Icon                       */
+  /******************************************/
+
+  &__calender-icon {
+    /*display*/
+    display: inline-block;
+    /*spacing*/
+    margin-right: 8px;
+  }
+
+  /********************************************/
+  /*   # Shift Icon                          */
+  /******************************************/
+
+  &__shift-icon {
+    /*display*/
+    display: inline-block;
+    /*position*/
+    position: absolute;
+    // top: -1px;
+    /*spacing*/
+    padding-top: 0;
+    padding-bottom: 0;
+    padding-left: 5px;
+    padding-right: 5px;
+
+    &--left {
+      left: 1px;
+    }
+
+    &--right {
+      right: 1px;
+    }
+  }
+
+  /********************************************/
+  /*   # Day Count                           */
+  /******************************************/
+
+  &__day-count {
+    /*mixins*/
+    @include textCapsule($colorRed, $colorWhite);
+    /*display*/
+    display: inline-block;
+    /*position*/
+    position: relative;
+    top: -2px;
+    /*spacing*/
+    margin-left: 20px;
+    /*typography*/
+    font-size: .7rem;
+    font-weight: 300;
+  }
+
+
+}

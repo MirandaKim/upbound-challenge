@@ -1,4 +1,16 @@
-<app-icon iconType="chevron-left" iconColor="red"></app-icon>
-<app-icon iconType="calender" iconColor="red"></app-icon>
-<app-icon iconType="chevron-right" iconColor="red"></app-icon>
-<span class="date-filter__day-count">1d</span>
+<div class="date-selector">
+  <div class="date-selector__select-date">
+    <button class="btn date-selector__shift-icon date-selector__shift-icon--left">
+      <app-icon iconType="chevron-left" iconColor="red" iconSize="x-small"></app-icon>
+    </button>
+    <div class="date-selector__calender-icon"><app-icon iconType="calender" iconColor="red" iconSize="18"></app-icon></div>
+    <div class="date-selector__selected-date-full">
+        <!-- <span>{{ today | date:'EEEE, MMM d' }}</span><span>th</span> -->
+        Today, Jan 10th
+    </div>
+    <button class="btn date-selector__shift-icon date-selector__shift-icon--right">
+      <app-icon iconType="chevron-right" iconColor="red" iconSize="x-small"></app-icon>
+    </button>
+  </div>
+  <span class="date-selector__day-count">1d</span>
+</div>
