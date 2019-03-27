@@ -1,1 +1,15 @@
-<app-icon iconType="search" iconColor="dark-grey" iconSize="x-large"></app-icon>
+<div [ngClass]="{
+  'search-filter': true,
+  'search-filter--active': inputValue.length > 0,
+  'search-filter--bar-hidden': inputValue.length === 0
+}">
+  <div class="search-filter__bar">
+    <input id="card-search" type="text" [value]="inputValue" (input)="onTextInput($event)" placeholder="{{inputPlaceHolder}}" class="search-filter__input">
+    <button class="search-filter__cancel" (click)="onCancelClick()">
+      <app-icon iconType="x" iconSize="tiny" iconColor="white"></app-icon>
+    </button>
+  </div>
+  <div class="search-filter__icon">
+    <app-icon iconType="search" iconColor="dark-grey" iconSize="x-large"></app-icon>
+  </div>
+</div>

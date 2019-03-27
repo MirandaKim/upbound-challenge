@@ -1,0 +1,153 @@
+@import 'src/scss/_mixins';
+@import 'src/scss/_variables';
+
+/**********************************************************/
+/*                                                       */
+/*   Search Filter (search-filter.component.scss)       */
+/*                                                     */
+/******************************************************/
+/*
+
+*****************
+*   Contents:   *
+*****************
+
+  # Search Filter
+  # Bar
+  # Input
+    > Hover
+  # Icon
+  # Cancel
+    > Hover
+    > Icon
+
+******************/
+
+/********************************************/
+/*   # Search Fitler                       */
+/******************************************/
+
+.search-filter {
+
+  /********************************************/
+  /*   # Bar                                 */
+  /******************************************/
+
+  &__bar {
+    /*display*/
+    display: inline-block;
+    /*position*/
+    position: relative;
+    /*spacing*/
+    margin-right: 10px;
+    /*transitions*/
+    transition-property: opacity;
+    transition-duration: 500ms;
+
+    .search-filter--bar-hidden &{
+      opacity: 0;
+    }
+    .search-filter--bar-hidden:hover &{
+      opacity: 1;
+    }
+  }
+
+  /********************************************/
+  /*   # Input                               */
+  /******************************************/
+
+  &__input {
+    /*display*/
+    display: inline-block;
+    /*spacing*/
+    padding-right: 15px;
+    padding-left: 5px;
+    margin-right: 10px;
+    /*borders*/
+    border-style: none;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    /*typography*/
+    font-weight: 300;
+    /*colors*/
+    background-color: transparent;
+    border-color: transparent;
+    /*transitions*/
+    transition-property: border-color;
+    transition-duration: 500ms;
+
+    /*************
+    *  > Hover   *
+    *************/
+
+    .search-filter:hover &{
+      /*colors*/
+      border-bottom-color: $colorLightGrey;
+    }
+
+  }
+
+  /********************************************/
+  /*   # Icon                                */
+  /******************************************/
+
+  &__icon {
+    /*display*/
+    display: inline-block;
+  }
+
+  /********************************************/
+  /*   # Cancel                              */
+  /******************************************/
+
+  &__cancel {
+    /*display*/
+    display: inline-block;
+    opacity: 0;
+    /*position*/
+    position: absolute;
+    right: 4px;
+    top: 6px;
+    /*structure*/
+    height: 14px;
+    width: 14px;
+    /*spacing*/
+    padding: 0;
+    margin: 0;
+    /*bordres*/
+    border-style: none;
+    border-radius: 50%;
+    /*colors*/
+    background-color: $colorLightGrey;
+    /*transitions*/
+    transition-property: opacity;
+    transition-duration: 500ms;
+
+    /*************
+    *  > Hover   *
+    *************/
+
+    .search-filter:hover & {
+      opacity: 1;
+    }
+
+    &:hover {
+      background-color: $colorOrange;
+    }
+
+    /************
+    *  > Icon   *
+    ************/
+
+    app-icon {
+      /*display*/
+      display: block;
+      /*position*/
+      position: relative;
+      top: -5px;
+    }
+
+  }
+
+
+}
