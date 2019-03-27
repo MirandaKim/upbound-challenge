@@ -137,9 +137,9 @@ export abstract class MenuFilterComponent extends FiltererComponent {
     */
     this.selectedItemIndex = 0;
     /*
-    Create filter to emit an event when the selected campaign is changed
+    Register/Create filter to emit an event when the selected campaign is changed
     */
-    this.createFilter();
+    this.registerFilter();
   }
 
 

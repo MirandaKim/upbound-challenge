@@ -21,7 +21,7 @@ with can be used to extend a component and make its content create a filter valu
 - From the child class inject FiltersService and pass to parent class via super(...)
 - Within the child class, set the values for any abstract properties from this component (e.g. filterProperty)
 - Within the child class, override any additional properties from this component as needed (e.g. initialFilterValue)
-- When ready (e.g. ngOnInit), call this.createFilter to enable a filter based on
+- When ready (e.g. ngOnInit), call this.registerFilter to enable a filter based on
 - You can then use this.changeFilter(value) and this.resetFilter to manage the value of the created filter.
 
 *****************
@@ -35,7 +35,7 @@ with can be used to extend a component and make its content create a filter valu
     > Services
   # Constructor
   # Protected
-    > Create Filter
+    > Register Filter
     > Reset Filter
     > Change Filter
 
@@ -90,17 +90,17 @@ export abstract class FiltererComponent {
   /*   # Protected                           */
   /******************************************/
 
-  /*********************
-  *  > Create Filter   *
-  *********************/
+  /***********************
+  *  > Register Filter   *
+  ***********************/
 
   /*
   Create Filter:
   Add a filter for filtering campaigns in the FiltersService (filters.service.ts).
   This filter is used to emit an event when a new campaign is selected in this component.
   */
-  protected createFilter(){
-    let filterId = this.filtersService.createFilter(
+  protected registerFilter(){
+    let filterId = this.filtersService.registerFilter(
       this.filterProperty,
       this.initialFilterValue,
       this.filterValueType,

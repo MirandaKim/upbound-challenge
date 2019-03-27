@@ -88,7 +88,7 @@ export class SearchFilterComponent extends FiltererComponent implements OnInit {
   /******************************************/
 
   ngOnInit() {
-    this.createFilter(); // register a filter with the FiltersService
+    this.registerFilter(); // register a filter with the FiltersService
   }
 
   /********************************************/

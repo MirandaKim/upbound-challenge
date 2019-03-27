@@ -14,15 +14,15 @@ This service keeps track of all the current filters,
 which can be accessed/modified/deleted/created from the outside and emits event
 to inform listening components/services of the change.
 
-This service returns a filter id when a fitler is created,
+This service returns a filter id when a filter is created,
 which can be used to edit the filter (it's value or condition).
 
 *************************
-*   Creating a Filter   *
+*   Register a Filter   *
 *************************
 
-Create a fitler with the initial values, condition, and property it's intended to filter
-with the this.createFilter(...) method. This returns a filter id with can be used to
+Register/Create a filter with the initial values, condition, and property it's intended to filter
+with the this.registerFilter(...) method. This returns a filter id with can be used to
 get, edit, or delete the filter. An event will be emitted when a filter is created or changed.
 
 **************************
@@ -30,7 +30,7 @@ get, edit, or delete the filter. An event will be emitted when a filter is creat
 **************************
 
 You can get filters by calling one of the below get methods
-(this.getFilters(...) or this.getFitlerById(...))
+(this.getFilters(...) or this.getfilterById(...))
 or by listening to the onFilterChange event.
 
 *************************
@@ -51,7 +51,7 @@ or use the reset method (this.resetFilter(...)) instead of deleting it.
   # Constructor
   # Public
     > Get Filters
-    > Create Filter
+    > Register Filter
     > Change Filter
     > Reset Filter
     > Delete Filter
@@ -126,13 +126,13 @@ export class FiltersService {
     return match;
   }
 
-  /*********************
-  *  > Create Filter   *
-  *********************/
+  /***********************
+  *  > Register Filter   *
+  ***********************/
 
   /*
-  Create Filter:
-  Create a new filter to add to the master list of filters.
+  Register Filter:
+  Register/Create a new filter to add to the master list of filters.
   Include all initial values.
   This will emit an event to let those listening know that there is a new filter.
 
@@ -142,9 +142,9 @@ export class FiltersService {
   condition: the filter condition (e.g. 'match', 'is-not', 'include') See enums/filter-conditions.enum.ts for all conditions
   setLocation: provide a location/id for where this filter is being set so components can pick filters based on where they came from.
 
-  Returns a filter id (string) for your newly created filter which can be used to change/delete your fitler.
+  Returns a filter id (string) for your newly created filter which can be used to change/delete your filter.
   */
-  public createFilter(property: string, value: string|number|boolean, valueType: string, condition: string, setLocation: string): string{
+  public registerFilter(property: string, value: string|number|boolean, valueType: string, condition: string, setLocation: string): string{
     this.filterCt++;
     let id = this.filterCt.toString();
     let filter: Filter = {
@@ -234,7 +234,7 @@ export class FiltersService {
   ********************/
   /*
   Find Filters:
-  Find any and all fitlers for a specific property (optionally from a specific location).
+  Find any and all filters for a specific property (optionally from a specific location).
   Returns a list of filters with the correct match.
   */
   protected findFilters(property: string, setLocation: string = ''): Filter[]{
