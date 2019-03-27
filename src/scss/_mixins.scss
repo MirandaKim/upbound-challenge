@@ -20,3 +20,18 @@
   background-color: $bkgdColor;
   color: $textColor;
 }
+
+/********************************************/
+/*   # Animations                          */
+/******************************************/
+
+@mixin rotateForever($speed: 1000ms, $counterClockwise: false){
+  /*animation*/
+  animation: rotateClockwise;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  animation-duration: $speed;
+  @if $counterClockwise {
+    animation-direction: reverse;
+  }
+}
