@@ -1,40 +1,135 @@
 @import "src/scss/_variables.scss";
 
-
-/*Availible Colors:*/
+/**********************************************************/
+/*                                                       */
+/*   Icon (icon.component.scss)                         */
+/*                                                     */
+/******************************************************/
 /*
-white,
-light-grey / light-gray,
-medium-grey / medium-grey,
-dark-grey / dark-gray,
-black,
-orange,
-dark-orange,
-red,
-green
-*/
 
-/*Availible Sizes:*/
+************************
+*   Availible Colors   *
+************************
+
+See $iconColors under 'Variables' for list of availible icon colors.
+
+***********************
+*   Availible Sizes   *
+***********************
+
+See $iconAlphaSizes under 'Variables' for list of availible alpha sizes (e.g. 'small', 'medium', 'large', ...)
+See $iconSizeRangeStart and $iconSizeRangeEnd under 'Variables' for range of availible integer sizes (e.g. '13', '14', '15')
+
+*****************
+*   Contents:   *
+*****************
+
+  # Variables
+    > Icon Colors
+    > Icon Sizes
+    > Icon Size Overrides
+  # Icon
+  # SVG
+  # Fill
+  # Fill on Hover
+  # Sizes
+    > Alpha Sizes
+    > Integer Sizes
+    > Size Overrides
+
+******************/
+
+
+/********************************************/
+/*   # Variables                           */
+/******************************************/
+
+/******************
+*  > Icon Colors  *
+******************/
+
 /*
-x-small,
-small,
-medium,
-large,
-x-large
+  Colors:
+  List of color identifiers and their color value.
+  Feel free to add more key/value pairs--sass generates the classes.
+  EXAMPLE:
+    'black': rgb(0, 0, 0) will become the class icon--fill-black,
+    which will make the icon's fill rgb(0, 0, 0)
+
 */
+$iconColors: (
+  // Grayscale
+  'white': $colorWhite,
+  'light-grey': $colorLightGrey,
+  'light-gray': $colorLightGrey,
+  'medium-grey': $colorMediumGrey,
+  'medium-gray': $colorMediumGrey,
+  'dark-grey': $colorDarkGrey,
+  'dark-gray': $colorDarkGrey,
+  'black': $colorBlack,
+  // Rainbow
+  'orange': $colorOrange,
+  'dark-orange': $colorDarkOrange,
+  'red': $colorRed,
+  'green': $colorGreen
+);
 
+/*****************
+*  > Icon Sizes  *
+*****************/
 
-$iconSizeXSmall: 9px; // x-small
-$iconSizeSmall: 14px; // small
-$iconSizeMedium: 20px; // medium
-$iconSizeLarge: 22px; // large
-$iconSizeXLarge: 24px; // x-large
+/*
+  Default Size: the size of the icon if no other icon size class is added.
+*/
+$iconDefaultSize: 20px;
+
+/*
+  Alpha Sizes:
+  List of size identifiers and their size value.
+  Feel free to add more key/value pairs--sass generates the classes.
+  EXAMPLE:
+    'tiny': 6px will become the class icon--size-tiny,
+    which will make an icon 6x6
+*/
+$iconAlphaSizes: (
+  'tiny': 6px,
+  'x-small': 9px,
+  'small': 14px,
+  'medium': 20px,
+  'large': 22px,
+  'x-large': 24px
+);
+
+/*
+  Range used to generate icon size integer classes
+  (e.g. icon--size-13 will give you a 13x13 icon)
+*/
+$iconSizeRangeStart: 5; // smallest pixel value
+$iconSizeRangeEnd: 25; // largest pixel value
+
+/**************************
+*  > Icon Size Overrides  *
+**************************/
+
+/*
+  List of icons to create size overrides for.
+  Property is icon identifier, and value is the change ratio.
+  (to make icon smaller, use a change ratio < 1)
+  (to make icon larger, use a change ratio > 1)
+  Ex: 14px * 1.
+*/
+$iconAlphaSizeOverrideRatios: (
+  'people': 1.15,
+  'eye': 1.36
+);
+
 
 /********************************************/
 /*   # Icon                                */
 /******************************************/
 
 app-icon {
+  /*display*/
   display: inline-block;
 }
 
@@ -43,19 +138,16 @@ app-icon {
 /******************************************/
 
 svg{
-
   /*display*/
   display: inline-block;
   /*position*/
   position: relative;
   top: -1px;
   /*structure*/
-  width: $iconSizeMedium;
-  height: $iconSizeMedium;
-  /*spacing*/
+  width: $iconDefaultSize;
+  height: $iconDefaultSize;
   /*colors*/
   fill: $colorMediumGrey;
-
 }
 
 /********************************************/
@@ -63,37 +155,13 @@ svg{
 /******************************************/
 
 .icon--fill {
-  /* Grayscale */
-  &-white {
-    fill: $colorWhite;
-  }
-  &-light-grey,
-  &-light-gray {
-    fill: $colorLightGrey;
-  }
-  &-medium-grey,
-  &-medium-gray{
-    fill: $colorMediumGrey;
-  }
-  &-dark-grey,
-  &-dark-gray{
-    fill: $colorDarkGrey;
-  }
-  &-black {
-    fill: $colorBlack;
-  }
-  /* Rainbow */
-  &-orange {
-    fill: $colorOrange;
-  }
-  &-dark-orange {
-    fill: $colorDarkOrange;
-  }
-  &-red {
-    fill: $colorRed;
-  }
-  &-green {
-    fill: $colorGreen;
+  /*
+  Loop through each icon color to create an icon color class for each availible color.
+  */
+  @each $iconColorProp, $iconColorVal in $iconColors {
+    &-#{$iconColorProp} {
+      fill: $iconColorVal;
+    }
   }
 
 }
@@ -103,40 +171,13 @@ svg{
 /******************************************/
 
 .icon--fill-on-hover {
-  /* Grayscale */
-  &-white:hover {
-    fill: $colorWhite;
-  }
-  &-light-grey:hover,
-  &-light-gray:hover {
-    fill: $colorLightGrey;
-  }
-  &-med-grey:hover,
-  &-med-gray:hover{
-    fill: $colorMediumGrey;
-  }
-  &-dark-grey:hover,
-  &-dark-gray:hover{
-    fill: $colorDarkGrey;
-  }
-  &-black:hover {
-    fill: $colorBlack;
-  }
-  /* Rainbow */
-  &-dark-orange:hover {
-    fill: $colorDarkOrange;
-  }
-  &-red:hover {
-    fill: $colorRed;
-  }
-  &-orange:hover {
-    fill: $colorOrange;
-  }
-  &-red:hover {
-    fill: $colorRed;
-  }
-  &-green:hover {
-    fill: $colorGreen;
+  /*
+  Loop through each icon color to create an icon color hover class for each availible color.
+  */
+  @each $iconColorProp, $iconColorVal in $iconColors {
+    &-#{$iconColorProp}:hover {
+      fill: $iconColorVal;
+    }
   }
 
 }
@@ -146,77 +187,37 @@ svg{
 /******************************************/
 
 .icon--size {
-  &-x-small {
-    height: $iconSizeXSmall;
-    width: $iconSizeXSmall;
-  }
-  &-small {
-    height: $iconSizeSmall;
-    width: $iconSizeSmall;
-  }
-  &-medium {
-    height: $iconSizeMedium;
-    width: $iconSizeMedium;
-  }
-  &-large {
-    height: $iconSizeLarge;
-    width: $iconSizeLarge;
-  }
-  &-x-large {
-    height: $iconSizeXLarge;
-    width: $iconSizeXLarge;
+
+  /*******************
+  *  > Alpha Sizes   *
+  *******************/
+
+  /*
+  Loop through each alpha size to create a list of icon size classes
+  (ex: .icon--size-small)
+  */
+  @each $alphaSizeProp, $alphaSizeVal in $iconAlphaSizes {
+    &-#{$alphaSizeProp} {
+      height: $alphaSizeVal;
+      width: $alphaSizeVal;
+    }
   }
 
+  /*********************
+  *  > Integer Sizes   *
+  *********************/
 
+  /*
+  Create a range of icon size classes
+  (e.g. icon--size-13, icon--size-14, icon--size-15...)
+  */
+  @for $iSize from $iconSizeRangeStart through $iconSizeRangeEnd {
+    &-#{$iSize} {
+      height: #{$iSize}px;
+      width: #{$iSize}px;
+    }
+  }
 
-  &-13 {
-    height: 13px;
-    width: 13px;
-  }
-  &-14 {
-    height: 14px;
-    width: 14px;
-  }
-  &-15 {
-    height: 15px;
-    width: 15px;
-  }
-  &-16 {
-    height: 16px;
-    width: 16px;
-  }
-  &-17 {
-    height: 17px;
-    width: 17px;
-  }
-  &-18 {
-    height: 18px;
-    width: 18px;
-  }
-  &-19 {
-    height: 19px;
-    width: 19px;
-  }
-  &-20 {
-    height: 20px;
-    width: 20px;
-  }
-  &-21 {
-    height: 21px;
-    width: 21px;
-  }
-  &-22 {
-    height: 22px;
-    width: 22px;
-  }
-  &-23 {
-    height: 23px;
-    width: 23px;
-  }
-  &-24 {
-    height: 24px;
-    width: 24px;
-  }
 }
 
 /**********************
@@ -225,54 +226,18 @@ svg{
 /*Include any size overrides specific to any icons here*/
 /*This is to be used when an icon seems out of scale with icons of the same size.*/
 
-.icon--people {
-  $peopleIconChangeBy: 2;
-  &.icon--size {
-    &-x-small {
-      height: $iconSizeXSmall + $peopleIconChangeBy;
-      width: $iconSizeXSmall + $peopleIconChangeBy;
-    }
-    &-small {
-      height: $iconSizeSmall + $peopleIconChangeBy;
-      width: $iconSizeSmall + $peopleIconChangeBy;
-    }
-    &-medium {
-      height: $iconSizeMedium + $peopleIconChangeBy;
-      width: $iconSizeMedium + $peopleIconChangeBy;
-    }
-    &-large {
-      height: $iconSizeLarge + $peopleIconChangeBy;
-      width: $iconSizeLarge + $peopleIconChangeBy;
-    }
-    &-x-large {
-      height: $iconSizeXLarge + $peopleIconChangeBy;
-      width: $iconSizeXLarge + $peopleIconChangeBy;
-    }
-  }
-}
-
-.icon--eye {
-  $eyeIconChangeBy: 5;
-  &.icon--size {
-    &-x-small {
-      height: $iconSizeXSmall + $eyeIconChangeBy;
-      width: $iconSizeXSmall + $eyeIconChangeBy;
-    }
-    &-small {
-      height: $iconSizeSmall + $eyeIconChangeBy;
-      width: $iconSizeSmall + $eyeIconChangeBy;
-    }
-    &-medium {
-      height: $iconSizeMedium + $eyeIconChangeBy;
-      width: $iconSizeMedium + $eyeIconChangeBy;
-    }
-    &-large {
-      height: $iconSizeLarge + $eyeIconChangeBy;
-      width: $iconSizeLarge + $eyeIconChangeBy;
-    }
-    &-x-large {
-      height: $iconSizeXLarge + $eyeIconChangeBy;
-      width: $iconSizeXLarge + $eyeIconChangeBy;
+@each $iconName, $iconChangeRatio in $iconAlphaSizeOverrideRatios {
+  .icon--#{$iconName} {
+    &.icon--size {
+      /*
+      Loop through each alpha size to create an override for the icon
+      */
+      @each $alphaSizeProp, $alphaSizeVal in $iconAlphaSizes {
+        &-#{$alphaSizeProp} {
+          height: $iconChangeRatio * $alphaSizeVal;
+          width: $iconChangeRatio * $alphaSizeVal;
+        }
+      }
     }
   }
 }
