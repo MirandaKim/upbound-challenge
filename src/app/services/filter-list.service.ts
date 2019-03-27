@@ -13,6 +13,8 @@ Service to filter a list of items (objects).
 - Use the filter output from the FiltersService to apply filter values and conditions
 - Filter a list of items based on the applied filter values and conditions
 
+*** Note: the include filter is now case insensitive. See "Filter By Condition: Includes" below.
+
 *******************
 *   How to use:   *
 *******************
@@ -265,9 +267,11 @@ export class FilterListService {
   */
   private filterByCondition_includes(filteredItems, filterProperty): Object[]{
     let itemProperty = this.filterDetails[filterProperty]['itemProperty'];
+    let filterVal = this.filterDetails[filterProperty].value.toLowerCase();
     return filteredItems.filter((item) => {
       try{
-        return item[itemProperty].includes(this.filterDetails[filterProperty].value);
+        let checkVal = item[itemProperty].toLowerCase();
+        return checkVal.includes(filterVal);
       }catch(error){
         console.log(error)
         return false;
