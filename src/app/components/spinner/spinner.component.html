@@ -1,0 +1,11 @@
+<div class="spinner__wrapper">
+  <div *ngIf="spinnerOverlay" class="spinner__overlay spinner__overlay--{{ spinnerPosition }}"
+  [ngClass]="{
+    'spinner__overlay--dark': spinnerOverlayDark
+  }"></div>
+  <div class="spinner spinner--{{spinnerPosition}} spinner--size-{{ spinnerSize }}">
+    <div class="spinner__rotation">
+      <app-icon iconType="spinner" iconSize="parent" iconColor="{{ spinnerColor }}"></app-icon>
+    </div>
+  </div>
+</div>

@@ -27,6 +27,7 @@ import { CardFooterActiveComponent } from './components/cards/card-footer-active
 import { SearchFilterComponent } from './components/search-filter/search-filter.component';
 import { StatusMenuComponent } from './components/status-menu/status-menu.component';
 import { DateSelectorComponent } from './components/date-selector/date-selector.component';
+import { SpinnerComponent } from './components/spinner/spinner.component';
 
 
 @NgModule({
@@ -47,7 +48,8 @@ import { DateSelectorComponent } from './components/date-selector/date-selector.
     CardFooterActiveComponent,
     SearchFilterComponent,
     StatusMenuComponent,
-    DateSelectorComponent
+    DateSelectorComponent,
+    SpinnerComponent
   ],
   imports: [
     BrowserModule,

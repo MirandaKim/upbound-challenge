@@ -1,0 +1,152 @@
+@import "src/scss/_mixins";
+
+/**********************************************************/
+/*                                                       */
+/*   Spinner (spinner.component.scss)                   */
+/*                                                     */
+/******************************************************/
+/*
+
+*****************
+*   Contents:   *
+*****************
+
+  # Variables
+    > Sizes
+  # Wrapper
+  # Spinner
+    > Center Parent
+    > Fixed
+  # Spinner Size Overrides
+  # Rotation
+  # Overlay
+    > Fixed
+    > Dark
+
+******************/
+
+/********************************************/
+/*   # Variables                           */
+/******************************************/
+
+/*************
+*  > Sizes   *
+*************/
+
+$spinnerDefaultSize: 100px;
+
+$spinnerSizes: (
+  'x-small': 20px,
+  'small': 50px,
+  'medium': 100px,
+  'large': 150px,
+  'x-large': 200px
+);
+
+/********************************************/
+/*   # Wrapper                             */
+/******************************************/
+
+.spinner__wrapper {}
+
+/********************************************/
+/*   # Spinner                             */
+/******************************************/
+
+.spinner {
+  /*position*/
+  position: absolute;
+  top: calc(50% - #{$spinnerDefaultSize}/2);
+  left: calc(50% - #{$spinnerDefaultSize}/2);
+  /*structure*/
+  height: 100px;
+  width: 100px;
+
+  /*********************
+  *  > Center Parent   *
+  *********************/
+
+  &--center-parent {
+    position: absolute;
+  }
+
+  /*************
+  *  > Fixed   *
+  *************/
+
+  &--fixed {
+    position: fixed;
+  }
+
+  /********************************************/
+  /*   # Spinner Size Overrides              */
+  /******************************************/
+
+  &--size {
+    /*
+    Loop through each availible size to create size classes for the spinner
+    */
+    @each $sSizeProp, $sSizeVal in $spinnerSizes {
+      &-#{$sSizeProp}{
+        /*position*/
+        top: calc(50% - #{$sSizeVal}/2);
+        left: calc(50% - #{$sSizeVal}/2);
+        /*structure*/
+        height: $sSizeVal;
+        width: $sSizeVal;
+      }
+    }
+  }
+
+  /********************************************/
+  /*   # Rotation                            */
+  /******************************************/
+
+  /*this is the part that rotates*/
+  &__rotation {
+    /*mixins*/
+    @include rotateForever();
+    /*display*/
+    display: block;
+    /*position*/
+    position: absolute;
+    top: -25%;
+    left: 0;
+
+  }
+
+  /********************************************/
+  /*   # Overlay                             */
+  /******************************************/
+
+  &__overlay {
+    /*position*/
+    position: absolute;
+    top: 0;
+    left: 0;
+    /*structure*/
+    height: 100%;
+    width: 100%;
+    /*colors*/
+    background-color: rgba(255, 255, 255, .3);
+
+    /*************
+    *  > Fixed   *
+    *************/
+
+    &--fixed {
+      position: fixed;
+    }
+
+    /************
+    *  > Dark   *
+    ************/
+
+    &--dark {
+      background-color: rgba(0, 0, 0, .3);
+    }
+
+  }
+
+
+}
