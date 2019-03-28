@@ -4,9 +4,17 @@
 /******************************************/
 
 .card-list {
+  /*position*/
+  position: relative;
   /*spacing*/
   margin: 0;
   padding: 0;
-  /*list*/
-  list-style: none;
+
+  &__cards {
+    /*spacing*/
+    margin: 0;
+    padding: 0;
+    /*list*/
+    list-style: none;
+  }
 }

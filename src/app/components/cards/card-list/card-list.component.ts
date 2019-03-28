@@ -61,6 +61,7 @@ export class CardListComponent implements OnInit {
   private filtersService: FiltersService; // Service used for tracking filters
   private filterListService: FilterListService; // Service for filtering list of cards
 
+  private testResponseDelay: number = 1000;
 
   /********************************************/
   /*   # Constructor                         */
@@ -335,6 +336,9 @@ export class CardListComponent implements OnInit {
         "updatedAt": "2017-02-06T11:16:44.344Z"
       }
     ];
+    setTimeout(() => {
+      this.apiResponseReceived = true;
+    }, this.testResponseDelay);
     return testCards;
   }
 

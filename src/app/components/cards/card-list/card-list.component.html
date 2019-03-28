@@ -1,19 +1,16 @@
 <!-- <ul class="card-list card-group d-flex justify-content-between"> -->
-<ul class="card-list card-group">
-  <!-- <ng-template [ngIf]="cardList.length > 1" [ngIfElse]="loadingCards"> -->
-    <li *ngFor="let card of cardList_filtered">
-      <app-card [card]="card"></app-card>
+<div class="card-list">
+  <ul class="card-list__cards card-group">
+    <ng-template [ngIf]="apiResponseReceived === true">
+      <li *ngFor="let card of cardList_filtered">
+        <app-card [card]="card"></app-card>
+      </li>
+    </ng-template>
+    <li>
+      <app-create-card></app-create-card>
     </li>
-  <!-- </ng-template>
-  <ng-template #loadingCards>
-    <ng-template [ngIf]="resReceived == false" [ngIfElse]="noCardsFound">
-      <strong>LOADING CARDS...</strong>
-    </ng-template>
-    <ng-template #noCardsFound>
-      <strong>Sorry, no cards were found.</strong>
-    </ng-template>
-  </ng-template> -->
-  <li>
-    <app-create-card></app-create-card>
-  </li>
-</ul>
+  </ul>
+  <ng-template [ngIf]="apiResponseReceived === false">
+    <app-spinner color="orange" size="medium" position="fixed" overlay="true"></app-spinner>
+  </ng-template>
+</div>
