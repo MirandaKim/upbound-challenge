@@ -1,10 +1,10 @@
 <div class="card-footer card-footer--{{ card.currentWorkflow }}">
   <div [ngSwitch]="card.currentWorkflow">
     <div *ngSwitchCase="'active'">
-      <app-card-footer-active card="card"></app-card-footer-active>
+      <app-card-footer-active [card]="card"></app-card-footer-active>
     </div>
-    <div *ngSwitchCase="'rejected'">
-      <app-card-footer-rejected card="card"></app-card-footer-rejected>
+    <div *ngSwitchCase="'declined'">
+      <app-card-footer-rejected [card]="card"></app-card-footer-rejected>
     </div>
   </div>
 </div>

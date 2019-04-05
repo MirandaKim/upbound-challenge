@@ -6,8 +6,8 @@
   }">
   <img class="card__feature-image card-img-top" alt="" src="{{ card.primaryMediaUrl }}">
   <div class="card__body card-body">
-    <!-- <h5 class="card__title card-title">{{ (card.cardTitle.length > maxTitleStrLength ) ? (card.cardTitle | slice : 0 : maxTitleStrLength) + '...' : card.cardTitle }}</h5> -->
-    <h5 class="card__title card-title">{{ (testTitle.length > maxTitleStrLength ) ? (testTitle | slice : 0 : maxTitleStrLength) + '...' : testTitle }}</h5>
+    <h5 class="card__title card-title">{{ (card.cardTitle.length > maxTitleStrLength ) ? (card.cardTitle | slice : 0 : maxTitleStrLength) + '...' : card.cardTitle }}</h5>
+    <!-- <h5 class="card__title card-title">{{ (testTitle.length > maxTitleStrLength ) ? (testTitle | slice : 0 : maxTitleStrLength) + '...' : testTitle }}</h5> -->
     <app-card-status [card]="card"></app-card-status>
   </div>
   <app-card-footer [card]="card"></app-card-footer>
