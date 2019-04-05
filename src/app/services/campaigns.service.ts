@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { CrudService } from 'src/app/services/crud.service';
+import { Campaign } from 'src/app/interfaces/campaign.interface';
 
 /**********************************************************/
 /*                                                       */
@@ -33,6 +34,7 @@ export class CampaignsService extends CrudService  {
 
   protected readAllUri: string = '/api/campaigns';
   protected readByIdUri: string = '/api/campaigns/';
+  protected updateAllUri: string = '/api/campaigns/update'; // currently not supported
 
   /********************************************/
   /*   # Constructor                         */

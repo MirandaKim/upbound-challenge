@@ -31,7 +31,8 @@ export class CardsService extends CrudService {
   /******************************************/
 
   protected readAllUri: string = '/api/cards';
-  protected readByIdUri: string = 'api/cards/';
+  protected readByIdUri: string = '/api/cards/';
+  protected updateAllUri: string = '/api/cards/update';
 
   /********************************************/
   /*   # Constructor                         */

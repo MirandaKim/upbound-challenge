@@ -5,6 +5,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { CrudService } from './services/crud.service';
 import { CardsService } from './services/cards.service';
+import { CardManagerService } from './services/card-manager.service';
 import { CampaignsService } from './services/campaigns.service';
 import { FiltersService } from './services/filters.service';
 import { FilterListService } from './services/filter-list.service';

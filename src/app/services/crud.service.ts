@@ -1,4 +1,5 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 /**********************************************************/
 /*                                                       */
@@ -44,6 +45,9 @@ export abstract class CrudService {
 
   protected abstract readAllUri: string; // ex: '/api/items'
   protected abstract readByIdUri: string; // ex: '/api/items/'
+  protected abstract updateAllUri: string = ''; // ex: '/api/items/update'
+
+  protected httpOptions = {};
 
   /*The following properties are on hold till C U and D functionality is coded*/
   // protected abstract createUri: string; // on hold for createItem method
@@ -56,6 +60,12 @@ export abstract class CrudService {
 
   constructor(httpClient) {
     this.httpClient = httpClient;
+
+    this.httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json'
+      })
+    };
   }
 
   /********************************************/
@@ -111,8 +121,17 @@ export abstract class CrudService {
   *** Note: this is not currently functional
   */
   public updateItem(id, values){
+    console.log(values);
     //@TODO - write funcitonality for updating json data
     console.log(`WARNING: logic for updating json data is not a current feature.`)
+  }
+
+  /*
+  Update All:
+  This will replace the entire content with the provided list.
+  */
+  public updateAll(updatedList: any[]): Observable<Object> {
+    return this.httpClient.post(this.updateAllUri, JSON.stringify(updatedList), this.httpOptions);
   }
 
   /**************
