@@ -3,6 +3,7 @@ const express = require('express');
 const fs = require('fs');
 const path = require('path');
 const JSONFileManager = require('./modules/JSONFileManager.module');
+const bodyParser = require('body-parser');
 
 const app = express();
 
@@ -20,6 +21,7 @@ const app = express();
 *****************
 
   # Utilities
+  # JSON Config
   # APIs
     > Campaigns
     > Cards
@@ -42,7 +44,20 @@ const getFileItems = (fileName) => {
   let fileAddress = path.join(__dirname, fileName);
   const items = JSONFileManager.readAll(fileAddress)
   return items;
-}
+};
+
+const writeFile = (fileName, content) => {
+    let fileAddress = path.join(__dirname, fileName);
+    const result = JSONFileManager.writeFile(fileAddress, content);
+    return result;
+};
+
+/********************************************/
+/*   # JSON Config                         */
+/******************************************/
+
+// Allow for reading a significant chunk of JSON data in the requset.
+app.use(express.json({limit: '10mb', extended: true}));
 
 /********************************************/
 /*   # APIs                                */
@@ -65,13 +80,29 @@ app.use('/api/campaigns', (req, res, next) => {
 *  > Cards   *
 *************/
 
+const cardsDataFile = 'data/cards.json';
+
+/*use url to write/override list of cards*/
+app.use('/api/cards/update', (req, res, next) => {
+  console.log('UPDATING... (app.js)');
+  let updatedItems = writeFile(cardsDataFile, req);
+  res.status(200).json({
+    message: 'Card items updated successfully!',
+    items: updatedItems
+  });
+  console.log('Content Updated.')
+});
+
+
 /*use url to get list of cards*/
 app.use('/api/cards', (req, res, next) => {
-  let items = getFileItems('data/cards.json');
+  console.log('READING... (app.js)');
+  let items = getFileItems(cardsDataFile);
   res.status(200).json({
     message: `Card items fetched successfully!`,
     items: items
   });
+  console.log('Content Read.')
 });
 
 /***************

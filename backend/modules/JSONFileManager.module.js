@@ -38,6 +38,7 @@ const readAll = (fileName) => {
     return items;
   }catch(e){
     _logError(e);
+    return [];
   }
 }
 
@@ -67,8 +68,10 @@ Write JSON content to the file.
 This is meant to override any existing content.
 */
 const writeFile = (fileName, items) => {
-  // @TODO - Functionality on hold until required
-  console.log('Sorry, write file is not currently active.');
+  console.log('Welcome to JSON write file:');
+  console.log('This functionality is still under construction and DOES NOT modify any actual data at this time.');
+  let newRead = readAll(fileName);
+  return newRead;
 }
 
 /*
