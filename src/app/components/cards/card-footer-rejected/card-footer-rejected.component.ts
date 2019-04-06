@@ -9,24 +9,57 @@ import { CardManagerService } from 'src/app/services/card-manager.service';
 })
 export class CardFooterRejectedComponent implements OnInit {
 
+  /********************************************/
+  /*   # Properties                          */
+  /******************************************/
+
+  /*************
+  *  > Input   *
+  *************/
+
   @Input()
-  protected card: Card;
+  protected card: Card; // get the card data from parent component
+
+  /***************
+  *  > Configs   *
+  ***************/
+
   protected cardIdKey: string = 'id'; // property of a Card object where the card's id is stored
   protected cardStatusKey: string = 'currentWorkflow'; // property of a Card object where the card's status is stored
   protected statusPendingValue: string = 'pending'; // Value of a card's status when the card is 'pending'--used for resubmitting card.
 
-  protected cardManagerService: CardManagerService;
+  /****************
+  *  > Services   *
+  ****************/
+
+  protected cardManagerService: CardManagerService; // service for reading/updating card data
+
+  /********************************************/
+  /*   # Properties                          */
+  /******************************************/
 
   constructor(cardManagerService: CardManagerService) {
     this.cardManagerService = cardManagerService;
   }
 
+  /********************************************/
+  /*   # Properties                          */
+  /******************************************/
+
   ngOnInit() {}
+
+  /********************************************/
+  /*   # Protected                           */
+  /******************************************/
 
   protected resubmitCard(){
     this.card[this.cardStatusKey] = this.statusPendingValue;
     this.cardManagerService.updateCards();
   }
+
+  /********************************************/
+  /*   # Events                              */
+  /******************************************/
 
   protected onResubmitClick(){
     this.resubmitCard();
