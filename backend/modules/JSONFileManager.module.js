@@ -31,15 +31,19 @@ Functions intened to create/read/update/delete content from JSON files.
 /*
 Read All:
 Read all items from a JSON file and return as a parsed JS object.*/
-const readAll = (fileName) => {
+const readAll = (fileName, results = {}) => {
+  let items = [];
   try{
     let contentStr = fs.readFileSync(fileName, 'utf-8');
-    let items = JSON.parse(contentStr);
-    return items;
+    items = JSON.parse(contentStr);
+    results.success = true;
+    results.message = "File items fetched successfully.";
   }catch(e){
     _logError(e);
-    return [];
+    results.success = false;
+    results.message = "Unable to read file content.";
   }
+  return items;
 }
 
 /*
@@ -67,17 +71,20 @@ Write File:
 Write JSON content to the file.
 Override file conent with new JSON string.
 
-Error Handling: if the update fails, this function will reutrn the current contents of the file. 
+Error Handling: if the update fails, this function will reutrn the current contents of the file.
 */
-const writeFile = (fileName, content) => {
+const writeFile = (fileName, content, results = {}) => {
   try {
     let jStr = JSON.stringify(content); // convert object to a JSON string
     fs.writeFileSync(fileName, jStr); // override file content with updated string
   }catch(e){
-    console.log(`Write File (JSONFileManager): unable to write to file ${fileName}`);
-    console.log(e);
+    _logError(e);
+    results.message = "File items update failed. Attempting to return existing file content.";
+    results.success = false;
     return newRead = readAll(fileName);
   }
+  results.message = 'File items updated successfully.';
+  results.success = true;
   return content;
 }
 

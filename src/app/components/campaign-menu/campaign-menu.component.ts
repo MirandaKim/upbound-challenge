@@ -3,6 +3,7 @@ import { CampaignsService } from 'src/app/services/campaigns.service';
 import { Campaign } from 'src/app/interfaces/campaign.interface';
 import { MenuFilterComponent } from 'src/app/components/abstracts/menu-filter/menu-filter.component'
 import { FiltersService } from 'src/app/services/filters.service';
+import { CrudResponse } from 'src/app/interfaces/crud-response.interface';
 
 /**********************************************************/
 /*                                                       */
@@ -115,11 +116,10 @@ export class CampaignMenuComponent extends MenuFilterComponent implements OnInit
   */
   protected getCampaigns(): void {
     let campaigns: Campaign[];
-    this.campaignsService.readAll().subscribe((res) => {
+    this.campaignsService.readAll().subscribe((res: CrudResponse) => {
       // check if the response does include a list of items
-      let valid = res.hasOwnProperty('items');
-      if(valid) {
-        this.optionsList = res['items'];
+      if(res.items) {
+        this.optionsList = res.items;
       }else{
         this.optionsList = [];
       }

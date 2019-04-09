@@ -1,6 +1,7 @@
 import { Injectable, EventEmitter, Output } from '@angular/core';
 import { CardsService } from 'src/app/services/cards.service';
 import { Card } from 'src/app/interfaces/card.interface';
+import { CrudResponse } from 'src/app/interfaces/crud-response.interface';
 
 /**********************************************************/
 /*                                                       */
@@ -142,7 +143,7 @@ export class CardManagerService {
            Each update may override the entire file of cards.
   */
   public updateCards(): void{
-    this.cardsService.updateAll(this.cardList).subscribe((res: {message: string, items: any[]}) => {
+    this.cardsService.updateAll(this.cardList).subscribe((res: CrudResponse) => {
       if(res.items){
         this.cardList = res.items;
         this.onCardListReceived(); // Emit an event for the updated list of cards
@@ -184,14 +185,14 @@ export class CardManagerService {
   */
   protected accessCards(){
     /*Subscribe to Cards Service*/
-    this.cardsService.readAll().subscribe((res) => {
+    this.cardsService.readAll().subscribe((res: CrudResponse) => {
       /*
       Valid: check if the response has the property 'items',
       which should contain the cards. If the response is not valid,
       it is likely due to a 404.
       */
-      if(res['items']){
-        this.cardList = res['items'];// get list of cards from response
+      if(res.items){
+        this.cardList = res.items;// get list of cards from response
       }
       this.onCardListReceived(); // trigger card list received event
     }, (error) => {

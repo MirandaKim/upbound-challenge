@@ -40,15 +40,15 @@ const app = express();
 > Get File Items
 Get content from JSON file
 */
-const getFileItems = (fileName) => {
+const getFileItems = (fileName, results = {}) => {
   let fileAddress = path.join(__dirname, fileName);
-  const items = JSONFileManager.readAll(fileAddress)
+  const items = JSONFileManager.readAll(fileAddress, results)
   return items;
 };
 
-const writeFile = (fileName, content) => {
+const writeFile = (fileName, content, results = {}) => {
     let fileAddress = path.join(__dirname, fileName);
-    const result = JSONFileManager.writeFile(fileAddress, content);
+    const result = JSONFileManager.writeFile(fileAddress, content, results);
     return result;
 };
 
@@ -69,9 +69,11 @@ app.use(express.json({limit: '10mb', extended: true}));
 
 /*Access url to get list of campaigns*/
 app.use('/api/campaigns', (req, res, next) => {
-  let items = getFileItems('data/campaigns.json');
+  let readResults = {};
+  let items = getFileItems('data/campaigns.json', readResults);
   res.status(200).json({
-    message: `Campaign items fetched successfully!`,
+    success: readResults.success,
+    message: readResults.message,
     items: items
   });
 });
@@ -85,9 +87,11 @@ const cardsDataFile = 'data/cards.json';
 /*use url to write/override list of cards*/
 app.use('/api/cards/update', (req, res, next) => {
   console.log('UPDATING... (app.js)');
-  let updatedItems = writeFile(cardsDataFile, req.body);
+  const updateResults = {};
+  let updatedItems = writeFile(cardsDataFile, req.body, updateResults);
   res.status(200).json({
-    message: 'Card items updated successfully!',
+    success: updateResults.success,
+    message: updateResults.message,
     items: updatedItems
   });
   console.log('Content Updated.')
@@ -97,9 +101,11 @@ app.use('/api/cards/update', (req, res, next) => {
 /*use url to get list of cards*/
 app.use('/api/cards', (req, res, next) => {
   console.log('READING... (app.js)');
-  let items = getFileItems(cardsDataFile);
+  const readResults = {};
+  let items = getFileItems(cardsDataFile, readResults);
   res.status(200).json({
-    message: `Card items fetched successfully!`,
+    success: readResults.success,
+    message: readResults.message,
     items: items
   });
   console.log('Content Read.')
