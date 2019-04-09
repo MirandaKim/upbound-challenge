@@ -131,7 +131,7 @@ export abstract class CrudService {
   This will replace the entire content with the provided list.
   */
   public updateAll(updatedList: any[]): Observable<Object> {
-    return this.httpClient.post(this.updateAllUri, JSON.stringify(updatedList), this.httpOptions);
+    return this.httpClient.post(this.updateAllUri, updatedList, this.httpOptions);
   }
 
   /**************

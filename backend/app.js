@@ -85,7 +85,7 @@ const cardsDataFile = 'data/cards.json';
 /*use url to write/override list of cards*/
 app.use('/api/cards/update', (req, res, next) => {
   console.log('UPDATING... (app.js)');
-  let updatedItems = writeFile(cardsDataFile, req);
+  let updatedItems = writeFile(cardsDataFile, req.body);
   res.status(200).json({
     message: 'Card items updated successfully!',
     items: updatedItems

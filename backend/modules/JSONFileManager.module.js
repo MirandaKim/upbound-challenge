@@ -65,13 +65,20 @@ const getItems = (fileName, property, value) => {
 /*
 Write File:
 Write JSON content to the file.
-This is meant to override any existing content.
+Override file conent with new JSON string.
+
+Error Handling: if the update fails, this function will reutrn the current contents of the file. 
 */
-const writeFile = (fileName, items) => {
-  console.log('Welcome to JSON write file:');
-  console.log('This functionality is still under construction and DOES NOT modify any actual data at this time.');
-  let newRead = readAll(fileName);
-  return newRead;
+const writeFile = (fileName, content) => {
+  try {
+    let jStr = JSON.stringify(content); // convert object to a JSON string
+    fs.writeFileSync(fileName, jStr); // override file content with updated string
+  }catch(e){
+    console.log(`Write File (JSONFileManager): unable to write to file ${fileName}`);
+    console.log(e);
+    return newRead = readAll(fileName);
+  }
+  return content;
 }
 
 /*
