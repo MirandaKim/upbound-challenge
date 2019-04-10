@@ -90,7 +90,7 @@ export class CardManagerService {
   *  > Testing Config   *
   **********************/
 
-  private testResponseDelay: number = 1000; // delay the return of data by the given milliseconds, this is to mimic processing time.
+  private testResponseDelay: number = 4000; // delay the return of data by the given milliseconds, this is to mimic processing time.
   private testing: boolean = true; // is the site being tested (i.e. should test data be allowed to display)
 
   /********************************************/
@@ -197,8 +197,19 @@ export class CardManagerService {
       this.onCardListReceived(); // trigger card list received event
     }, (error) => {
       console.log(error);
-      if(this.testing) this.cardList = this.getTestData(); // if testing is set to true, use the test card values.
-      this.onCardListReceived(); // trigger card list received event, even if the list is empty
+      /*
+      If testing is set to true, emit a list of test data,
+      else emit an empty array.
+      */
+      if(this.testing){
+        this.cardList = this.getTestData(); // if testing is set to true, use the test card values.
+        setTimeout(() => {
+          this.onCardListReceived(); // emit test data
+        }, this.testResponseDelay);
+      }else{
+        this.cardList = [];
+        this.onCardListReceived(); // emit empty array
+      }
     });
   }
 
@@ -400,9 +411,6 @@ export class CardManagerService {
         "updatedAt": "2017-02-06T11:16:44.344Z"
       }
     ]`;
-    setTimeout(() => {
-      this.apiResponseReceived = true;
-    }, this.testResponseDelay);
     return JSON.parse(testCards);
   }
 
