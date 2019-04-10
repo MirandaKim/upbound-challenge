@@ -1,67 +1,35 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Card } from 'src/app/interfaces/card.interface';
 import { CardManagerService } from 'src/app/services/card-manager.service';
+import { CardEditerComponent } from 'src/app/components/abstracts/card-editer/card-editer.component';
 
 @Component({
   selector: 'app-card-footer-rejected',
   templateUrl: './card-footer-rejected.component.html',
   styleUrls: ['./card-footer-rejected.component.scss']
 })
-export class CardFooterRejectedComponent implements OnInit {
+export class CardFooterRejectedComponent extends CardEditerComponent implements OnInit {
 
   /********************************************/
-  /*   # Properties                          */
-  /******************************************/
-
-  /*************
-  *  > Input   *
-  *************/
-
-  @Input()
-  protected card: Card; // get the card data from parent component
-
-  /***************
-  *  > Configs   *
-  ***************/
-
-  protected cardIdKey: string = 'id'; // property of a Card object where the card's id is stored
-  protected cardStatusKey: string = 'currentWorkflow'; // property of a Card object where the card's status is stored
-  protected statusPendingValue: string = 'pending'; // Value of a card's status when the card is 'pending'--used for resubmitting card.
-
-  /****************
-  *  > Services   *
-  ****************/
-
-  protected cardManagerService: CardManagerService; // service for reading/updating card data
-
-  /********************************************/
-  /*   # Properties                          */
+  /*   # Constructor                          */
   /******************************************/
 
   constructor(cardManagerService: CardManagerService) {
-    this.cardManagerService = cardManagerService;
+    super(cardManagerService);
   }
 
   /********************************************/
-  /*   # Properties                          */
+  /*   # On Init                             */
   /******************************************/
 
   ngOnInit() {}
-
-  /********************************************/
-  /*   # Protected                           */
-  /******************************************/
-
-  protected resubmitCard(){
-    this.card[this.cardStatusKey] = this.statusPendingValue;
-    this.cardManagerService.updateCards();
-  }
 
   /********************************************/
   /*   # Events                              */
   /******************************************/
 
   protected onResubmitClick(){
+    this.card[this.cardStatusKey] = this.statusPendingValue;
     this.resubmitCard();
   }
 
