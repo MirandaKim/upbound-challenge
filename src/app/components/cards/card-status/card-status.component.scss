@@ -13,55 +13,6 @@
   color: $colorMediumGrey;
 
   /********************************************/
-  /*   # Workflow                            */
-  /******************************************/
-
-  &__workflow {
-    /*spacing*/
-    margin-right: 8px;
-    /*typography*/
-    font-size: .7rem;
-  }
-
-  /********************************************/
-  /*   # Indicator                           */
-  /******************************************/
-
-  &__indi {
-    /*display*/
-    display: inline-block;
-    /*structure*/
-    height: 8px;
-    width: 8px;
-    /*border*/
-    border-radius: 50%;
-    /*colors*/
-    background-color: $colorLightGrey;
-
-    &--live,
-    &--active {
-      /*colors*/
-      background-color: $colorGreen;
-    }
-
-    &--paused,
-    &--pending,
-    &--saved {
-      /*colors*/
-      background-color: $colorOrange;
-    }
-
-    &--rejected,
-    &--declined,
-    &--terminated,
-    &--expired {
-      /*colors*/
-      background-color: $colorRed;
-    }
-
-  }
-
-  /********************************************/
   /*   # Progress                            */
   /******************************************/
 

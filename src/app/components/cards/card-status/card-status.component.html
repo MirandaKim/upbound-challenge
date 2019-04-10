@@ -2,8 +2,7 @@
   <div class="row">
     <div class="col"><span class="prefix prefix--currency">$</span>5000 / Month</div>
     <div class="col text-right">
-      <span class="card-states__workflow">{{ card.currentWorkflow | titlecase }}</span>
-      <span class="card-states__indi card-states__indi--{{card.currentWorkflow}}"></span>
+      <app-card-workflow [card]="card"></app-card-workflow>
     </div>
   </div>
   <div class="card-states__progress progress">

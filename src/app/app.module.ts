@@ -29,6 +29,7 @@ import { SearchFilterComponent } from './components/search-filter/search-filter.
 import { StatusMenuComponent } from './components/status-menu/status-menu.component';
 import { DateSelectorComponent } from './components/date-selector/date-selector.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
+import { CardWorkflowComponent } from './components/cards/card-workflow/card-workflow.component';
 
 
 @NgModule({
@@ -50,7 +51,8 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
     SearchFilterComponent,
     StatusMenuComponent,
     DateSelectorComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    CardWorkflowComponent
   ],
   imports: [
     BrowserModule,
