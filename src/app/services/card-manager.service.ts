@@ -90,7 +90,7 @@ export class CardManagerService {
   *  > Testing Config   *
   **********************/
 
-  private testResponseDelay: number = 4000; // delay the return of data by the given milliseconds, this is to mimic processing time.
+  private testResponseDelay: number = 0; // delay the return of data by the given milliseconds, this is to mimic processing time.
   private testing: boolean = true; // is the site being tested (i.e. should test data be allowed to display)
 
   /********************************************/

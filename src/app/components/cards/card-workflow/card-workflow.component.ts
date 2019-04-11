@@ -3,6 +3,11 @@ import { Card } from 'src/app/interfaces/card.interface';
 import { CardManagerService } from 'src/app/services/card-manager.service';
 import { CardEditerComponent } from 'src/app/components/abstracts/card-editer/card-editer.component';
 
+interface WorkFlowMenuOption {
+  label: string;
+  workflow: string;
+}
+
 @Component({
   selector: 'app-card-workflow',
   templateUrl: './card-workflow.component.html',
@@ -20,7 +25,7 @@ export class CardWorkflowComponent extends CardEditerComponent implements OnInit
         workflow: 'paused'
       },
       {
-        lable: 'Terminate',
+        label: 'Terminate',
         workflow: 'terminated'
       }
     ],
@@ -28,6 +33,12 @@ export class CardWorkflowComponent extends CardEditerComponent implements OnInit
       {
         label: 'Activate',
         workflow: 'active'
+      }
+    ],
+    saved: [
+      {
+        label: 'Submit',
+        workflow: 'pending'
       }
     ]
   }
@@ -37,6 +48,11 @@ export class CardWorkflowComponent extends CardEditerComponent implements OnInit
   }
 
   ngOnInit() {
+  }
+
+  protected onOptionClick(menuOption: WorkFlowMenuOption){
+    this.card[this.cardStatusKey] = menuOption.workflow;
+    this.resubmitCard();
   }
 
 }

@@ -1,4 +1,19 @@
 <div class="card-workflow">
-  <span class="card-workflow__label">{{ card.currentWorkflow | titlecase }}</span>
-  <span class="card-workflow__indi card-workflow__indi--{{card.currentWorkflow}}"></span>
+  <div class="" *ngIf="workflowMenuOptions[card.currentWorkflow]; else noWorkflowDropdown">
+    <div ngbDropdown class="dropdown drop-menu">
+      <button ngbDropdownToggle class="drop-menu__toggle btn btn--stelth">
+        <span class="card-workflow__label">{{ card.currentWorkflow | titlecase }}</span>
+        <span class="card-workflow__indi card-workflow__indi--{{card.currentWorkflow}}"></span>
+      </button>
+      <ul ngbDropdownMenu class="drop-menu">
+        <li *ngFor="let option of workflowMenuOptions[card.currentWorkflow]" class="dropdown-item drop-menu__item">
+          <button (click)="onOptionClick(option)">{{ option.label }}</button>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <ng-template #noWorkflowDropdown>
+    <span class="card-workflow__label">{{ card.currentWorkflow | titlecase }}</span>
+    <span class="card-workflow__indi card-workflow__indi--{{card.currentWorkflow}}"></span>
+  </ng-template>
 </div>
