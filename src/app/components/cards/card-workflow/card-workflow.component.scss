@@ -1,16 +1,41 @@
 @import 'src/scss/_variables';
 
+/********************************************/
+/*   # Workflow                            */
+/******************************************/
+
 .card-workflow {
 
   /********************************************/
-  /*   # Workflow                            */
+  /*   # Label                               */
   /******************************************/
 
   &__label {
+    max-width: 100%;
     /*spacing*/
     margin-right: 8px;
     /*typography*/
     font-size: .7rem;
+    font-weight: 200;
+    letter-spacing: .6px;
+    /*colors*/
+    color: $colorMediumGrey;
+
+  }
+
+  /*********************
+  *  > Card Editable   *
+  *********************/
+
+  &--editable &__dropdown &__label {
+    /*display*/
+    // display: inline-block;
+    // max-width: 16px;
+    // max-height: 0;
+    // overflow: hidden;
+    /*spacing*/
+    // margin: 0;
+    // padding: 0;
   }
 
   /********************************************/
@@ -49,6 +74,34 @@
       background-color: $colorRed;
     }
 
+  }
+
+  /********************************************/
+  /*   # Dropdown                            */
+  /******************************************/
+
+  &__dropdown {
+    /*position*/
+    position: relative;
+    right: -5px;
+    /*spacing*/
+    margin-top: -2px;
+
+  }
+
+  /********************************************/
+  /*   # Menu Toggle                         */
+  /******************************************/
+
+  &__menu-toggle {
+
+    /*********************
+    *  > Card Editable   *
+    *********************/
+
+    .card-workflow--editable &  {
+      border-color: $colorLightGrey;
+    }
   }
 
 }

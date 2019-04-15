@@ -15,6 +15,9 @@ export class CardStatusComponent implements OnInit {
   @Input()
   card: Card;
 
+  @Input()
+  cardEditable: boolean = false;
+
   /********************************************/
   /*   # Constructor                         */
   /******************************************/

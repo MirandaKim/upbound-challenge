@@ -49,6 +49,32 @@ Contains overrides and additions to Bootstrap's btn styles.
     color: $colorBlack;
   }
 
+  /**************
+  *  > Stelth   *
+  **************/
+
+  /*
+  The button won't appear as a button (visually) until hovered
+  */
+  &--stelth {
+    /*position*/
+    position: relative;
+    /*spacing*/
+    margin-bottom: -3px;
+    padding-top: 0;
+    padding-bottom: 4px;
+    padding-left: 4px;
+    padding-right: 4px;
+    /*typography*/
+    line-height: 1;
+    /*borders*/
+    border-color: transparent;
+
+    &:hover {
+      background-color: $colorLighterGrey;
+    }
+  }
+
   /********************************************/
   /*   # Label                               */
   /******************************************/

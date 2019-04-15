@@ -35,7 +35,13 @@ Contains style overrides to Bootstrap's dropdown menu.
     padding: 0;
     /*shadows*/
     box-shadow: 0 0 4px rgba(0, 0, 0, .2);
+
+    &--narrow {
+      min-width: 7rem;
+    }
+
   }
+
 
   /********************************************/
   /*   # Item                                */

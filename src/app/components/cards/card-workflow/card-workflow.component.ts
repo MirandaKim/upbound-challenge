@@ -18,6 +18,9 @@ export class CardWorkflowComponent extends CardEditerComponent implements OnInit
   @Input()
   card: Card;
 
+  @Input()
+  cardEditable: boolean = false;
+
   protected workflowMenuOptions = {
     active: [
       {

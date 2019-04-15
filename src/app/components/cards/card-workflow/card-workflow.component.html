@@ -1,16 +1,16 @@
-<div class="card-workflow">
-  <div class="" *ngIf="workflowMenuOptions[card.currentWorkflow]; else noWorkflowDropdown">
-    <div ngbDropdown class="dropdown drop-menu">
-      <button ngbDropdownToggle class="drop-menu__toggle btn btn--stelth">
-        <span class="card-workflow__label">{{ card.currentWorkflow | titlecase }}</span>
-        <span class="card-workflow__indi card-workflow__indi--{{card.currentWorkflow}}"></span>
-      </button>
-      <ul ngbDropdownMenu class="drop-menu">
-        <li *ngFor="let option of workflowMenuOptions[card.currentWorkflow]" class="dropdown-item drop-menu__item">
-          <button (click)="onOptionClick(option)">{{ option.label }}</button>
-        </li>
-      </ul>
-    </div>
+<div class="card-workflow" [ngClass]="{
+  'card-workflow--editable': cardEditable
+}">
+  <div ngbDropdown *ngIf="workflowMenuOptions[card.currentWorkflow]; else noWorkflowDropdown" class="dropdown drop-menu card-workflow__dropdown">
+    <button ngbDropdownToggle class="drop-menu__toggle btn btn--stelth card-workflow__menu-toggle">
+      <span class="card-workflow__label">{{ card.currentWorkflow | titlecase }}</span>
+      <span class="card-workflow__indi card-workflow__indi--{{card.currentWorkflow}}"></span>
+    </button>
+    <ul ngbDropdownMenu class="drop-menu dropdown-menu--narrow">
+      <li *ngFor="let option of workflowMenuOptions[card.currentWorkflow]" class="dropdown-item drop-menu__item">
+        <button (click)="onOptionClick(option)" class="btn list-group-item list-group-item-action">{{ option.label }}</button>
+      </li>
+    </ul>
   </div>
   <ng-template #noWorkflowDropdown>
     <span class="card-workflow__label">{{ card.currentWorkflow | titlecase }}</span>
