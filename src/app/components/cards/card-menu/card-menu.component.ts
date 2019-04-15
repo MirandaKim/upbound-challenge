@@ -1,5 +1,12 @@
 import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
-import * as $ from 'jquery';
+
+interface cardMenuItem {
+  label: string;
+  icon: string;
+  classes: string;
+  destination?: string;
+  onClickCallback?: ()=>void;
+}
 
 @Component({
   selector: 'app-card-menu',
@@ -24,7 +31,7 @@ export class CardMenuComponent implements OnInit {
   @Input()
   cardSelectorId: string;
 
-  protected listItems: any[];
+  protected listItems: cardMenuItem[];
 
   /********************************************/
   /*   # Constructor                         */
@@ -45,25 +52,27 @@ export class CardMenuComponent implements OnInit {
         label: 'Edit',
         icon: 'pencil-paper',
         classes: '',
-        destination: '#'
+        destination: '/edit?id=' + this.cardId
       },
       {
         label: 'Publish',
         icon: 'check-circle',
         classes: '',
-        destination: '#'
+        onClickCallback: () => {
+
+        }
       },
       {
         label: 'Share',
         icon: 'share',
         classes: '',
-        destination: '#'
+        onClickCallback: () => {}
       },
       {
         label: 'Delete',
         icon: 'trash',
         classes: '',
-        destination: '#'
+        onClickCallback: () => {}
       }
     ];
   }
@@ -87,6 +96,14 @@ export class CardMenuComponent implements OnInit {
     this.isMenuOpen = isOpen;
     this.menuToggle.emit(this.isMenuOpen);
 
+  }
+
+  /*********************
+  *  > On Item Click   *
+  *********************/
+
+  protected onItemClick(item: cardMenuItem){
+    if(item.onClickCallback) item.onClickCallback();
   }
 
 
