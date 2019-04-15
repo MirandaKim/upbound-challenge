@@ -19,7 +19,7 @@ export class CardComponent implements OnInit {
 
 
   protected cardEditable: boolean = false;
-  protected cardMenuOpen: boolean = false;
+  protected cardMenusOpenCt: number = 0;
 
   /********************************************/
   /*   # Constructor                         */
@@ -59,8 +59,23 @@ export class CardComponent implements OnInit {
   *  > On Menu Button Click   *
   ****************************/
 
-  protected onMenuBottonClick(event){
-    this.cardMenuOpen = event;
+  protected onMenuBottonClick(isOpen: boolean){
+    this.menuIsToggled(isOpen);
   }
 
+  protected onStatusMenuButtonClick(isOpen: boolean){
+    this.menuIsToggled(isOpen);
+  }
+
+  /********************************************/
+  /*   # Private                             */
+  /******************************************/
+
+  private menuIsToggled(isOpen: boolean){
+    if(isOpen){
+      this.cardMenusOpenCt ++;
+    }else{
+      this.cardMenusOpenCt --;
+    }
+  }
 }

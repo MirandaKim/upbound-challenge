@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Card } from 'src/app/interfaces/card.interface';
 import { CardManagerService } from 'src/app/services/card-manager.service';
 import { CardEditerComponent } from 'src/app/components/abstracts/card-editer/card-editer.component';
@@ -20,6 +20,10 @@ export class CardWorkflowComponent extends CardEditerComponent implements OnInit
 
   @Input()
   cardEditable: boolean = false;
+
+  @Output()
+  menuToggle = new EventEmitter<boolean>();
+  protected isMenuOpen: boolean = false;
 
   protected workflowMenuOptions = {
     active: [
@@ -56,6 +60,11 @@ export class CardWorkflowComponent extends CardEditerComponent implements OnInit
   protected onOptionClick(menuOption: WorkFlowMenuOption){
     this.card[this.cardStatusKey] = menuOption.workflow;
     this.resubmitCard();
+  }
+
+  protected onOpenChange(isOpen: boolean){
+    this.isMenuOpen = isOpen;
+    this.menuToggle.emit(this.isMenuOpen);
   }
 
 }

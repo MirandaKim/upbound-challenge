@@ -1,7 +1,9 @@
 <div class="card-workflow" [ngClass]="{
   'card-workflow--editable': cardEditable
 }">
-  <div ngbDropdown *ngIf="workflowMenuOptions[card.currentWorkflow]; else noWorkflowDropdown" class="dropdown drop-menu card-workflow__dropdown">
+  <div ngbDropdown *ngIf="workflowMenuOptions[card.currentWorkflow]; else noWorkflowDropdown"
+  class="dropdown drop-menu card-workflow__dropdown"
+  (openChange)="onOpenChange($event)">
     <button ngbDropdownToggle class="drop-menu__toggle btn btn--stelth card-workflow__menu-toggle">
       <span class="card-workflow__label">{{ card.currentWorkflow | titlecase }}</span>
       <span class="card-workflow__indi card-workflow__indi--{{card.currentWorkflow}}"></span>

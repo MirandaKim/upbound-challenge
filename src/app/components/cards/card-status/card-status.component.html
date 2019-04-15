@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col"><span class="prefix prefix--currency">$</span>5000 / Month</div>
     <div class="col text-right">
-      <app-card-workflow [card]="card" [cardEditable]="cardEditable"></app-card-workflow>
+      <app-card-workflow [card]="card" [cardEditable]="cardEditable" (menuToggle)="onMenuToggle($event)"></app-card-workflow>
     </div>
   </div>
   <div class="card-states__progress progress">

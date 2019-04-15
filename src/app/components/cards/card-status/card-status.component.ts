@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Card } from 'src/app/interfaces/card.interface';
 
 @Component({
@@ -18,6 +18,9 @@ export class CardStatusComponent implements OnInit {
   @Input()
   cardEditable: boolean = false;
 
+  @Output()
+  menuToggled = new EventEmitter <boolean>();
+
   /********************************************/
   /*   # Constructor                         */
   /******************************************/
@@ -29,6 +32,10 @@ export class CardStatusComponent implements OnInit {
   /******************************************/
 
   ngOnInit() {
+  }
+
+  protected onMenuToggle(isOpen: boolean){
+    this.menuToggled.emit(isOpen);
   }
 
 }
