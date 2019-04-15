@@ -14,8 +14,7 @@
   <div class="card__menu-wrapper">
     <app-card-menu
       (menuToggle)="onMenuBottonClick($event)"
-      [cardTitle]="card.cardTitle"
-      [cardId]="card.id"
+      [card]="card"
       cardSelectorId="card-{{card.id}}"
       ></app-card-menu>
   </div>

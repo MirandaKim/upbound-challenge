@@ -8,14 +8,15 @@
         <a *ngIf="!!item.destination; else noDestination"
           class="btn list-group-item list-group-item-action {{ item.classes }}"
           (click)="onItemClick(item)"
-          href="{{ item.destination }}">
+          [href]="item.disabled ? null : item.destination">
           <span class="card-menu__icon"><app-icon [iconType]="item.icon" iconColor="dark-grey"></app-icon></span>
           <span class="card-menu__lable">{{ item.label }}</span>
         </a>
         <ng-template #noDestination>
           <button
             class="btn list-group-item list-group-item-action {{ item.classes }}"
-            (click)="onItemClick(item)">
+            (click)="onItemClick(item)"
+            [disabled]="item.disabled">
             <span class="card-menu__icon"><app-icon [iconType]="item.icon" iconColor="dark-grey"></app-icon></span>
             <span class="card-menu__lable">{{ item.label }}</span>
           </button>
