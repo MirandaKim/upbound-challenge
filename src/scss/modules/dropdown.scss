@@ -88,4 +88,16 @@ Contains style overrides to Bootstrap's dropdown menu.
     border-bottom-right-radius: .25rem;
   }
 
+  /********************************************/
+  /*   # Button                              */
+  /******************************************/
+
+  /****************
+  *  > Disabled   *
+  ****************/
+
+  button[disabled]{
+      background-color: $colorLighterGrey;
+  }
+
 }
