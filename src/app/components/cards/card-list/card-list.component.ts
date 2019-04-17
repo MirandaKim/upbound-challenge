@@ -82,13 +82,14 @@ export class CardListComponent implements OnInit {
 
   protected cardsWatch; // watching for card list from CardManagerService
   protected filterWatch; // watching for fitler updates from FiltersService
+  protected cardUpdateWatch; // watch when the card manager is updating cards
 
   /**************
   *  > States   *
   **************/
 
-  protected apiResponseReceived = false; // Received response from API (note: 404 still counts as a response).
-
+  protected initialApiReponseReceived = false; // Received response from API (note: 404 still counts as a response).
+  protected awaitingApiResponseCt: number = 0; // wating to receive
 
   /********************************************/
   /*   # Constructor                         */
@@ -125,6 +126,8 @@ export class CardListComponent implements OnInit {
     Watch for card list updates
     */
     this.watchCardList();
+
+    this.watchUpdating();
   }
 
   /********************************************/
@@ -168,9 +171,17 @@ export class CardListComponent implements OnInit {
     this.cardsWatch = this.cardManagerService.cardListReceived.subscribe((res) => {
       this.cardList_full = res;
       this.applyFilters();
-      this.apiResponseReceived = true;
+      this.initialApiReponseReceived = true;
     });
 
+  }
+
+  protected watchUpdating(): void {
+    this.cardUpdateWatch = this.cardManagerService.cardsUpdating.subscribe((res: number) => {
+      this.awaitingApiResponseCt = res;
+      // this.awaitingApiResponseCt = 1;
+      console.log('Card List: ' + this.awaitingApiResponseCt);
+    });
   }
 
   /********************************************/
@@ -208,6 +219,7 @@ export class CardListComponent implements OnInit {
   ngOnDestroy(){
     this.cardsWatch.unsubscribe();
     this.filterWatch.unsubscribe();
+    this.cardUpdateWatch.unsubscribe();
   }
 
 

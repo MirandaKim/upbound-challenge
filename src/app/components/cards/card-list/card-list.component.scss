@@ -17,4 +17,12 @@
     /*list*/
     list-style: none;
   }
+
+  &__spinner {
+    display: none;
+
+    &--visible {
+      display: block;
+    }
+  }
 }

@@ -59,6 +59,7 @@ export class CardWorkflowComponent extends CardEditerComponent implements OnInit
 
   protected onOptionClick(menuOption: WorkFlowMenuOption){
     this.card[this.cardStatusKey] = menuOption.workflow;
+    this.onOpenChange(false); // emit event for menu closing, otherwise if the menu disapears everyone will treat it as open.
     this.resubmitCard();
   }
 
@@ -66,5 +67,6 @@ export class CardWorkflowComponent extends CardEditerComponent implements OnInit
     this.isMenuOpen = isOpen;
     this.menuToggle.emit(this.isMenuOpen);
   }
+
 
 }

@@ -61,6 +61,8 @@ export class CardManagerService {
 
   @Output()
   cardListReceived = new EventEmitter<Card[]>(); // Watch event for when a new/updated list of cards is received
+  @Output()
+  cardsUpdating = new EventEmitter<number>();
 
   /***************
   *  > Configs   *
@@ -79,6 +81,7 @@ export class CardManagerService {
   **************/
 
   protected apiResponseReceived: boolean = false; // has data been returned from the API yet?
+  protected waitingCt: number = 0; // number of services the component is currently waiting on
 
   /****************
   *  > Services   *
@@ -92,6 +95,7 @@ export class CardManagerService {
 
   private testResponseDelay: number = 0; // delay the return of data by the given milliseconds, this is to mimic processing time.
   private testing: boolean = true; // is the site being tested (i.e. should test data be allowed to display)
+  private updateResDelayTime: number = 5000;
 
   /********************************************/
   /*   # Constructor                         */
@@ -143,11 +147,19 @@ export class CardManagerService {
            Each update may override the entire file of cards.
   */
   public updateCards(): void{
+    this.cardsAreUpdating(true);
     this.cardsService.updateAll(this.cardList).subscribe((res: CrudResponse) => {
       if(res.items){
         this.cardList = res.items;
-        this.onCardListReceived(); // Emit an event for the updated list of cards
       }
+      setTimeout(() =>{
+        this.onCardListReceived(); // Emit an event for the updated list of cards
+      }, this.updateResDelayTime);
+    }, (error) => {
+      console.log(error);
+      setTimeout(() => {
+        this.onCardListReceived();
+      }, this.updateResDelayTime);
     });
   }
 
@@ -184,6 +196,7 @@ export class CardManagerService {
   services/components via the 'cardListReceived' event emitter.
   */
   protected accessCards(){
+    this.cardsAreUpdating(true);
     /*Subscribe to Cards Service*/
     this.cardsService.readAll().subscribe((res: CrudResponse) => {
       /*
@@ -223,6 +236,7 @@ export class CardManagerService {
   */
   protected onCardListReceived (){
     this.apiResponseReceived = true;
+    this.cardsAreUpdating(false);
     this.cardListReceived.emit(this.cardList);
   }
 
@@ -244,6 +258,23 @@ export class CardManagerService {
       }
     }
     return index;
+  }
+
+  /*
+  Cards Are Updating
+
+  */
+  private cardsAreUpdating(isUpdating: boolean){
+    if(isUpdating){
+      this.waitingCt++;
+      console.log(`Card list update in progress. In queue: ${this.waitingCt}`);
+      this.cardsUpdating.emit(this.waitingCt);
+    }else{
+      this.waitingCt--;
+      console.log(`Card list update complete. In queue: ${this.waitingCt}`);
+      this.cardsUpdating.emit(this.waitingCt);
+    }
+
   }
 
   /********************************************/
