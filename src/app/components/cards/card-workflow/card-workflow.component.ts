@@ -3,10 +3,49 @@ import { Card } from 'src/app/interfaces/card.interface';
 import { CardManagerService } from 'src/app/services/card-manager.service';
 import { CardEditerComponent } from 'src/app/components/abstracts/card-editer/card-editer.component';
 
-interface WorkFlowMenuOption {
+/**********************************************************/
+/*                                                       */
+/*   Card Workflow Component (card-workflow.component.ts)
+/*                                                     */
+/******************************************************/
+/*
+
+Menu with a list of workflow options dependent on the card's current workflow value.
+Clicking on an option will edit the card's currentWorkflow value to the selected option.
+
+*****************
+*   Contents:   *
+*****************
+
+  # Interfaces
+    > Card Info
+    > Event Emitters
+    > States
+    > Menu Options
+  # Component
+  # Properties
+  # Constructor
+  # User Events
+
+******************/
+
+
+/********************************************/
+/*   # Interfaces                          */
+/******************************************/
+
+interface WorkflowOptions {
+  [name: string]: WorkflowMenuOption[]
+}
+
+interface WorkflowMenuOption {
   label: string;
   workflow: string;
 }
+
+/********************************************/
+/*   # Component                           */
+/******************************************/
 
 @Component({
   selector: 'app-card-workflow',
@@ -15,17 +54,37 @@ interface WorkFlowMenuOption {
 })
 export class CardWorkflowComponent extends CardEditerComponent implements OnInit {
 
+  /********************************************/
+  /*   # Properties                          */
+  /******************************************/
+
+  /*****************
+  *  > Card Info   *
+  *****************/
+
   @Input()
   card: Card;
 
   @Input()
   cardEditable: boolean = false;
 
+  /**********************
+  *  > Event Emitters   *
+  **********************/
+
   @Output()
   menuToggle = new EventEmitter<boolean>();
+
+  /**************
+  *  > States   *
+  **************/
   protected isMenuOpen: boolean = false;
 
-  protected workflowMenuOptions = {
+  /********************
+  *  > Menu Options   *
+  ********************/
+
+  protected workflowMenuOptions: WorkflowOptions = {
     active: [
       {
         label: 'Pause',
@@ -50,19 +109,40 @@ export class CardWorkflowComponent extends CardEditerComponent implements OnInit
     ]
   }
 
+  /********************************************/
+  /*   # Constructor                         */
+  /******************************************/
+
   constructor(cardManagerService: CardManagerService) {
-    super(cardManagerService);
+    super(cardManagerService); // send card manager service object to parent class
   }
 
-  ngOnInit() {
-  }
+  /********************************************/
+  /*   # On Init                             */
+  /******************************************/
 
-  protected onOptionClick(menuOption: WorkFlowMenuOption){
+  ngOnInit() {}
+
+  /********************************************/
+  /*   # User Events                         */
+  /******************************************/
+
+  /*
+  On Option Click
+  Triggered when the user clicks one of the times in menu created by this component's template
+  */
+  protected onOptionClick(menuOption: WorkflowMenuOption){
     this.card[this.cardStatusKey] = menuOption.workflow;
     this.onOpenChange(false); // emit event for menu closing, otherwise if the menu disapears everyone will treat it as open.
     this.resubmitCard();
   }
 
+  /*
+  On Open Change
+  Triggered when the user toggles the diplay of the menu.
+  Note: this is so the parent card component knows not to exit out of 'editable'
+        if this menu is still open.
+  */
   protected onOpenChange(isOpen: boolean){
     this.isMenuOpen = isOpen;
     this.menuToggle.emit(this.isMenuOpen);
