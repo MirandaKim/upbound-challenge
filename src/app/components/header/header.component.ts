@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import $ from 'jquery';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +8,37 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  protected windowSize: {height: number, width: number};
+
+  protected sizeChangePt = 500;
+  protected deviceIsSmall = false;
+
+  constructor() {}
 
   ngOnInit() {
+    this.watchWindowSize();
+    this.checkWindowChange();
   }
+
+  private watchWindowSize(){
+    this.windowSize = {
+      height: window.innerHeight,
+      width: window.innerWidth
+    };
+    window.addEventListener('resize', (event: any) => {
+      this.windowSize.height = event.target.innerHeight;
+      this.windowSize.width = event.target.innerWidth;
+      this.checkWindowChange();
+    });
+  }
+
+  protected checkWindowChange(){
+    this.deviceIsSmall = this.windowSize.width < this.sizeChangePt;
+  }
+
+  protected toggleFiltersDisplay(){
+    $('#header-filter-list').toggleClass('show');
+  }
+
 
 }

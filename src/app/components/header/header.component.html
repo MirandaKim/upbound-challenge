@@ -1,24 +1,45 @@
 <div id="header" class="header">
   <nav class="header__nav navbar navbar-extend-lg navbar-light bg-light">
-    <div class="container">
-      <div class="col">
-        <div class="header__item header__campaign-filter">
-          <app-campaign-menu locationId="header-campaign-menu"></app-campaign-menu>
-        </div>
-        <div class="header__item header__status-fitler">
-          <app-status-menu locationId="header-status-menu"></app-status-menu>
-        </div>
+    <div class="container" *ngIf="deviceIsSmall; else deviceLarge">
+      <div class="header__item header__search-filter">
+        <app-search-filter locationId="header-search-bar" filterProperty="cardTitle" placeholder="Search Service Cards"></app-search-filter>
       </div>
-      <div class="col text-right">
-        <div class="header__item header__search-filter">
-          <app-search-filter locationId="header-search-bar" filterProperty="cardTitle" placeholder="Search Service Cards"></app-search-filter>
-        </div>
-      </div>
-      <div class="col text-right">
-        <div class="header__date-filter">
-          <app-date-selector></app-date-selector>
+      <div class="filters-list">
+        <button class="btn" (click)="toggleFiltersDisplay()">Filters</button>
+        <div class="filters-list__filters collapse" id="header-filter-list">
+          <div class="header__item header__campaign-filter">
+            <app-campaign-menu locationId="header-campaign-menu"></app-campaign-menu>
+          </div>
+          <div class="header__item header__status-fitler">
+            <app-status-menu locationId="header-status-menu"></app-status-menu>
+          </div>
+          <div class="header__date-filter">
+            <app-date-selector></app-date-selector>
+          </div>
         </div>
       </div>
     </div>
+    <ng-template #deviceLarge>
+      <div class="container">
+        <div class="col">
+          <div class="header__item header__campaign-filter">
+            <app-campaign-menu locationId="header-campaign-menu"></app-campaign-menu>
+          </div>
+          <div class="header__item header__status-fitler">
+            <app-status-menu locationId="header-status-menu"></app-status-menu>
+          </div>
+        </div>
+        <div class="col text-right">
+          <div class="header__item header__search-filter">
+            <app-search-filter locationId="header-search-bar" filterProperty="cardTitle" placeholder="Search Service Cards"></app-search-filter>
+          </div>
+        </div>
+        <div class="col text-right">
+          <div class="header__date-filter">
+            <app-date-selector></app-date-selector>
+          </div>
+        </div>
+      </div>
+    </ng-template>
   </nav>
 </div>
