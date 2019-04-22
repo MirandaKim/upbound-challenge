@@ -1,4 +1,4 @@
-import { Injectable, Output, EventEmitter } from '@angular/core';
+import { Injectable, Output, EventEmitter, OnDestroy } from '@angular/core';
 import { Filter } from 'src/app/interfaces/filter.interface';
 
 /**********************************************************/
@@ -14,8 +14,13 @@ This service keeps track of all the current filters,
 which can be accessed/modified/deleted/created from the outside and emits event
 to inform listening components/services of the change.
 
-This service returns a filter id when a filter is created,
+This service returns the filter id when a filter is created,
 which can be used to edit the filter (it's value or condition).
+*** Dev Note: this service no longer generates an id for each filter,
+              but uses the id value passed to it when the the filter is registered.
+ [WARNING]->  This means registering a filter with a pre-existing id will override
+              the value/conditions for that id.
+ [Useful?]->  This also means multiple filter components can modify the same filter value/condition.
 
 *************************
 *   Register a Filter   *
@@ -55,20 +60,16 @@ or use the reset method (this.resetFilter(...)) instead of deleting it.
     > Change Filter
     > Reset Filter
     > Delete Filter
-  # Protected
-    > Configs
-    > Get Cards
   # Private
     > Apply Filter Change
   # On Destroy
-  # For Testing
 
 ******************/
 
 @Injectable({
   providedIn: 'root'
 })
-export class FiltersService {
+export class FiltersService implements OnDestroy{
 
   /********************************************/
   /*   # Events                              */
@@ -83,8 +84,9 @@ export class FiltersService {
   /*   # Properties                          */
   /******************************************/
 
-  protected masterList: Filter[] = []; // stores list of current filters
+  protected masterList = {};
   protected filterCt: number = 0; // keep count of the created filters for creating filter ids
+  protected setLocationFilterIds = {};
 
   /********************************************/
   /*   # Constructor                         */
@@ -101,13 +103,32 @@ export class FiltersService {
   *******************/
 
   /*
-  Get Filters:
-  Get any filters for a given property.
-  Optional: specify the location where the filter was set.
+  Get All Filters:
+  Get an array of all the availible filters.
+  If no filters are registered, an empty array is returned.
   */
-  public getFilters(property: string, setLocation: string = ''): Filter[]{
-    let matches = this.findFilters(property, setLocation);
-    return matches;
+  public getAllFilters(): Filter[]{
+    let filters = [];
+    Object.keys(this.masterList).map((key) =>{
+      filters.push(this.masterList[key]);
+    });
+    return filters;
+  }
+
+  /*
+  Get Filters by Property
+  Return a list of filters that match the requested filterProperty value
+  (e.g. id, setLocation, valueType...)
+
+  Returns an array of filters. If no matches are found, an empty array will be returned.
+  */
+  public getFiltersByProperty(filterProp: string, value: string|number|boolean|null): Filter[]{
+    let filters = [];
+    Object.keys(this.masterList).map((key) =>{
+      let item = this.masterList[key];
+      if(item[filterProp] === value) filters.push(item);
+    });
+    return filters;
   }
 
   /*
@@ -115,15 +136,8 @@ export class FiltersService {
   Get the filter matching the provided id.
   Null will be returned if no filter has this id.
   */
-  public getFilterById(filterId): Filter|null{
-    let matches: Filter[] = this.findFilters('id', filterId);
-    let match: Filter|null = null;
-    /*If at least one filter was found,
-    return the first one.*/
-    if(matches.length > 0) {
-      match = matches[0];
-    }
-    return match;
+  public getFilterById(filterId: string): Filter|null{
+    return this.masterList[filterId];
   }
 
   /***********************
@@ -133,31 +147,23 @@ export class FiltersService {
   /*
   Register Filter:
   Register/Create a new filter to add to the master list of filters.
-  Include all initial values.
   This will emit an event to let those listening know that there is a new filter.
 
+  ** Filter Object **
+  id: a unique identifier that can be used to modify the filter being registered
   property: the item property this intends to filter by (e.g. 'id', 'name', 'state')
   value: the initial value of the filter. Leave as emtpy string for no value. (e.g. 'Hello', 'active', '')
   valueType: what is the value's type? (e.g. 'string', 'number')
   condition: the filter condition (e.g. 'match', 'is-not', 'include') See enums/filter-conditions.enum.ts for all conditions
-  setLocation: provide a location/id for where this filter is being set so components can pick filters based on where they came from.
+  setLocation: provide a location/id for where this filter is being set so components can pick filters based on where they came from (e.g. 'header', 'footer', 'advanced-filter-popup', ...).
 
   Returns a filter id (string) for your newly created filter which can be used to change/delete your filter.
   */
-  public registerFilter(property: string, value: string|number|boolean, valueType: string, condition: string, setLocation: string): string{
-    this.filterCt++;
-    let id = this.filterCt.toString();
-    let filter: Filter = {
-      id,
-      property,
-      value,
-      valueType,
-      condition,
-      setLocation
-    }
-    this.masterList.push(filter);
-    this.emitChange(filter);
-    return id;
+  public registerFilter(filter: Filter): string{
+    let id = filter.id;
+    this.masterList[id] = filter; // safe the filter to the master list under the provided id
+    this.emitChange(filter); // emit an event for the new filter
+    return id; // return the under which this new filter is stored.
   }
 
   /*********************
@@ -173,11 +179,10 @@ export class FiltersService {
   Returns true if the filter was changed successfully. Else, false.
   */
   public changeFilter(filterId: string, value: string|number|boolean, condition: string): boolean {
-    let filterIndex = this.getFilterIndex(filterId);
     try{
-      this.masterList[filterIndex].value = value;
-      this.masterList[filterIndex].condition = condition;
-      this.emitChange(this.masterList[filterIndex]);
+      this.masterList[filterId].value = value;
+      this.masterList[filterId].condition = condition;
+      this.emitChange(this.masterList[filterId]);
       return true;
     }catch(e){
       console.log(e);
@@ -194,75 +199,87 @@ export class FiltersService {
   Set the filter's value and condition to empty strings.
   This filter will still exist and can be accessed/changed, but the property will
   be considered unfiltered.
+
+  Returns false if filter does not exist or could not be reset.
   */
   public resetFilter(filterId: string): boolean{
-    return this.changeFilter(filterId, '', '');
+    if(this.masterList.hasOwnProperty(filterId)){
+      return this.changeFilter(filterId, '', '');
+    }
+    return false;
+  }
+
+  /*
+  Reset All Filters
+  Loop through each of the registered filters and
+  set their values and conditions to empty strings.
+
+  Returns the number of filters reset.
+  */
+  public resetAllFilters(): number{
+    let count = 0;
+    Object.keys(this.masterList).map((key) =>{
+      if(this.resetFilter(key)) count++;
+    });
+    return count;
+  }
+
+  /*
+  Reset Filter By Location
+  Loop through each of the registered filters and
+  reset the ones with a location matching the passed filterLocation value.
+
+  Returns the number of filters reset
+  */
+  public resetFiltersByLocation(filterLocation: string): number{
+    let count = 0;
+    Object.keys(this.masterList).map((key) => {
+      if(this.masterList[key].setLocation === filterLocation){
+        if(this.resetFilter(key)) count++;
+      }
+    });
+    return count;
   }
 
   /*********************
   *  > Delete Filter   *
   *********************/
   /*
-  Delete Filter By Id
+  Delete Filter
   Use the id of a filter to delete it from the master list.
   This will emit the delete event and send the information for the deleted filter
   to those listening for it.
+
   Returns true if the filter was successfully deleted. Else, false.
   */
-  public deleteFilterById(filterId): boolean{
-    let filterIndex = this.getFilterIndex(filterId);
-    /*
-    If the filter exists in the master list,
-    remove it, emit the delete event, and return true.
-    */
-    if(filterIndex > -1) {
-      let filterInfo = this.masterList[filterIndex]; // get filter's index
-      this.masterList.splice(filterIndex, 1); // remove filter from master list
-      this.emitDelete(filterInfo); // emit the delete event
+
+  public deleteFilter(filterId): boolean {
+    if(this.masterList.hasOwnProperty(filterId)){
+      let filterInfo = this.masterList[filterId];
+      delete this.masterList[filterId];
+      this.emitDelete(filterInfo);
       return true;
-    }else{
-      return false;
     }
+    return false;
   }
 
-  /********************************************/
-  /*   # Protected                           */
-  /******************************************/
-
-  /********************
-  *  > Find Filters   *
-  ********************/
   /*
-  Find Filters:
-  Find any and all filters for a specific property (optionally from a specific location).
-  Returns a list of filters with the correct match.
+  Delete All Filters
+  Delete all the filters from the master list.
+
+  Returns the number of filters deleted.
   */
-  protected findFilters(property: string, setLocation: string = ''): Filter[]{
-      let matches = this.masterList.filter((filter) => {
-        let locationCheck = setLocation.length > 0 ? setLocation == filter.setLocation : true;
-        let checkProperty = (property == filter['property']);
-        return locationCheck && checkProperty;
-      });
-      return matches;
+  public deleteAllFilters(): number {
+    let count = 0;
+    Object.keys(this.masterList).map((key) => {
+      if(this.deleteFilter(key)) count++;
+    });
+    return count;
   }
 
   /********************************************/
   /*   # Private                             */
   /******************************************/
-
-  /************************
-  *  > Get Filter Index   *
-  ************************/
-  /*
-  Get Filter Index:
-  Get the a filter's position in the master list.
-  */
-  private getFilterIndex(filterId: string): number{
-    let index = this.masterList.map((filter) => {
-      return filter.id;
-    }).indexOf(filterId);
-    return index;
-  }
 
   /*******************
   *  > Emit Events   *
@@ -285,4 +302,18 @@ export class FiltersService {
   private emitDelete(filterObj: Filter){
     this.onFilterDelete.emit(filterObj);
   }
+
+  /********************************************/
+  /*   # On Destroy                          */
+  /******************************************/
+
+  /*
+  On Destroy:
+
+  If an instance of this class is destroyed...
+  */
+  ngOnDestroy(){
+    this.deleteAllFilters(); // all it's filters will be deleted and delete events will be emitted to the listening components/services.
+  }
+
 }
