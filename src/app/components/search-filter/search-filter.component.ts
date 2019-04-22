@@ -61,9 +61,8 @@ export class SearchFilterComponent extends FiltererComponent implements OnInit {
   /**********************
   *  > Filter Configs   *
   **********************/
-
-  protected filterLocationIdDefault: string = 'search-filter'; // location identifier for the filter, if no other value is passed in.
-
+  @Input()
+  protected filterId: string = 'search-bar';
   @Input()
   protected filterProperty: string; // property this component intends to filter, set via parent component
   protected filterValueType: string = 'string'; // type of value this filter uses (e.g. string, number, boolean...)

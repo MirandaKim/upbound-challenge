@@ -103,7 +103,6 @@ export abstract class MenuFilterComponent extends FiltererComponent {
   **********************/
 
   protected abstract filterProperty: string; // property in data outside this component that this filter is intended to represent/affect
-  protected filterLocationIdDefault: string = 'menu-filter'; // default value if parent component does not pass a value
   protected filterValueType: string = 'string'; // type of value
   protected filterCondition: string = FilterConditions[0]; // match
 

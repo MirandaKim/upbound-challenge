@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { MenuFilterComponent } from 'src/app/components/abstracts/menu-filter/menu-filter.component'
 import { FiltersService } from 'src/app/services/filters.service';
 import { FilterConditions } from 'src/app/enums/filter-conditions.enum';
@@ -82,7 +82,8 @@ export class StatusMenuComponent extends MenuFilterComponent implements OnInit {
   *  > Filter Configs   *
   **********************/
 
-  protected filterLocationIdDefault: string = 'status-menu'; // location id used to represent this component in the FiltersService
+  @Input()
+  protected filterId: string = 'status-menu';
   protected filterProperty: string = 'currentWorkflow'; // property this filter is intended to affect/represent
 
 

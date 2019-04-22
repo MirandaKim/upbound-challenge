@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { CampaignsService } from 'src/app/services/campaigns.service';
 import { Campaign } from 'src/app/interfaces/campaign.interface';
 import { MenuFilterComponent } from 'src/app/components/abstracts/menu-filter/menu-filter.component'
@@ -51,6 +51,9 @@ export class CampaignMenuComponent extends MenuFilterComponent implements OnInit
   /*   # Properties                          */
   /******************************************/
 
+  @Input('filterId')
+  protected filterId: string = 'campaing-menu';
+
   /*********************
   *  > Campaign Info   *
   *********************/
@@ -69,7 +72,6 @@ export class CampaignMenuComponent extends MenuFilterComponent implements OnInit
   *  > Filter Configs   *
   **********************/
 
-  protected filterLocationIdDefault: string = 'campaign-menu'; // location id used to represent this component in the FiltersService
   protected filterProperty: string = 'campaignId'; // property this filter is intended to affect/represent
 
   /****************

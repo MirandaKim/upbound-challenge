@@ -1,5 +1,6 @@
 import { Input } from '@angular/core';
 import { FiltersService } from 'src/app/services/filters.service';
+import { Filter } from 'src/app/interfaces/filter.interface';
 
 /**********************************************************/
 /*                                                       */
@@ -50,9 +51,17 @@ export abstract class FiltererComponent {
   /*******************
   *  > Filter Info   *
   *******************/
-  @Input('locationId')
-  protected filterLocationId: string; // location identifier for the filter, as set by the parent component.
-  protected filterLocationIdDefault: string = 'filterer'; // location identifier for the filter, if no other value is passed in.
+
+  /*
+  Fitler Id:
+  Unique identifier for the filter.
+  Warning: There is no check for the id's unique-ness.
+           If the id is in use my multiple filters, they will override eachother.
+  */
+  protected abstract filterId: string;
+
+  @Input()
+  protected filterLocation: string = '';
 
   /**********************
   *  > Filter Configs   *
@@ -67,7 +76,6 @@ export abstract class FiltererComponent {
   *  > States   *
   **************/
 
-  protected filterId: string; // id for filter as returned by the FiltersService
   protected filterIsSet: boolean = false; // is a filter currently set
 
   /****************
@@ -82,8 +90,6 @@ export abstract class FiltererComponent {
 
   constructor(filtersService: FiltersService) {
     this.filtersService = filtersService;
-    // if location ID is not set, use the default value.
-    this.filterLocationId = this.filterLocationId || this.filterLocationIdDefault;
   }
 
   /********************************************/
@@ -100,13 +106,15 @@ export abstract class FiltererComponent {
   This filter is used to emit an event when a new campaign is selected in this component.
   */
   protected registerFilter(){
-    let filterId = this.filtersService.registerFilter(
-      this.filterProperty,
-      this.initialFilterValue,
-      this.filterValueType,
-      this.filterCondition,
-      this.filterLocationId
-    );
+    let filter: Filter = {
+        id: this.filterId,
+        property: this.filterProperty,
+        value: this.initialFilterValue,
+        valueType: this.filterValueType,
+        condition: this.filterCondition,
+        setLocation: this.filterLocation
+    };
+    let filterId = this.filtersService.registerFilter(filter);
     this.filterIsSet = true;
     this.filterId = filterId;
   }
