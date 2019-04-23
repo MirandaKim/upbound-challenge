@@ -2,7 +2,6 @@ import { Input } from '@angular/core';
 import { FiltererComponent } from 'src/app/components/abstracts/filterer/filterer.component';
 import { FiltersService } from 'src/app/services/filters.service';
 import { FilterConditions } from 'src/app/enums/filter-conditions.enum';
-import * as $ from 'jquery';
 
 /**********************************************************/
 /*                                                       */
@@ -58,7 +57,7 @@ with can be used to extend a component and make its content create a filter valu
   # Protected
     > On Item Click
     > Create Menu Items
-
+    > Pre Existing Value
 
 ******************/
 
@@ -126,11 +125,6 @@ export abstract class MenuFilterComponent extends FiltererComponent {
 
   protected createMenu() {
     /*
-    Organize campaigns into a list for the menu template.
-    This includes an 'All Campaigns' selection at the top (index: 0)
-    */
-    this.menuItems = this.createMenuItems();
-    /*
     Set currently selected campaign.
     Initial index set to 0 for all campaigns.
     */
@@ -139,6 +133,15 @@ export abstract class MenuFilterComponent extends FiltererComponent {
     Register/Create filter to emit an event when the selected campaign is changed
     */
     this.registerFilter();
+    /*
+    Organize campaigns into a list for the menu template.
+    This includes an 'All Campaigns' selection at the top (index: 0)
+    */
+    this.menuItems = this.createMenuItems();
+
+    if(this.preExistingValue !== ''){
+      this.setPreExistingSelection();
+    }
   }
 
 
@@ -187,15 +190,34 @@ export abstract class MenuFilterComponent extends FiltererComponent {
     /*
     Loop through each and create a menu item for each campaign
     */
-    $(this.optionsList).each((index) => {
+    for(let i=0; i<this.optionsList.length; i++){
       let item = {
-        label: this.optionsList[index][this.optionLabelProperty], // name
-        dataIndex: index, // index of campaign in list returned from api
-        class: 'menu-filter__item'
-      };
-      menuItems.push(item);
-    });
+          label: this.optionsList[i][this.optionLabelProperty], // name
+          dataIndex: i, // index of campaign in list returned from api
+          class: 'menu-filter__item'
+        };
+        menuItems.push(item);
+    }
     return menuItems;
+  }
+
+  /**************************
+  *  > Pre Existing Value   *
+  **************************/
+
+  /*
+  Set Pre Existing Selection
+
+  Set the selected item index based on any pre existing filter value.
+  */
+  protected setPreExistingSelection(){
+    for(let i = 0; i<this.optionsList.length; i++){
+      let isMatch = this.optionsList[i][this.optionValueProperty] === this.preExistingValue;
+      if(this.optionsList[i][this.optionValueProperty] === this.preExistingValue){
+        this.selectedItemIndex = i + 1;
+        break;
+      }
+    }
   }
 
 

@@ -88,6 +88,7 @@ export class SearchFilterComponent extends FiltererComponent implements OnInit {
 
   ngOnInit() {
     this.registerFilter(); // register a filter with the FiltersService
+    if(this.preExistingValue) this.inputValue = this.preExistingValue; // set the input value to a pre-existing value if it is set
   }
 
   /********************************************/
