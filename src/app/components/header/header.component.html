@@ -1,25 +1,28 @@
-<div id="header" class="header">
-  <nav class="header__nav navbar navbar-extend-lg navbar-light bg-light">
-    <div class="container" *ngIf="deviceIsSmall; else deviceLarge">
+<div id="header" class="header header--sticky header--no-top-space" *ngIf="deviceIsSmall; else deviceLarge">
+    <nav class="header__nav header__nav--small navbar text-right navbar--block navbar-extend-lg navbar-light bg-light">
       <div class="header__item header__search-filter">
         <app-search-filter filterId="header-search-bar" filterLocation="header" filterProperty="cardTitle" placeholder="Search Service Cards"></app-search-filter>
       </div>
-      <div class="filters-list">
-        <button class="btn" (click)="toggleFiltersDisplay()">Filters</button>
-        <div class="filters-list__filters collapse" id="header-filter-list">
-          <div class="header__item header__campaign-filter">
+      <button class="btn header__filters-button" id="header-filter-toggle" (click)="toggleFiltersDisplay()" [innerHtml]="isFilterOpen ? 'Close' : 'Filters'"></button>
+      <div class="filters-list header__drop-down">
+        <ul class="filters-list__filters list-group text-center collapse" id="header-filter-list">
+        <!-- <ul class="filters-list__filters list-group text-center" id="header-filter-list"> -->
+          <li class="list-group-item header__campaign-filter">
             <app-campaign-menu filterId="header-campaign-menu" filterLocation="header"></app-campaign-menu>
-          </div>
-          <div class="header__item header__status-fitler">
+          </li>
+          <li class="list-group-item header__status-fitler">
             <app-status-menu filterId="header-status-menu" filterLocation="header"></app-status-menu>
-          </div>
-          <div class="header__date-filter">
+          </li>
+          <li class="list-group-item header__date-filter">
             <app-date-selector></app-date-selector>
-          </div>
-        </div>
+          </li>
+        </ul>
       </div>
-    </div>
-    <ng-template #deviceLarge>
+    </nav>
+</div>
+<ng-template #deviceLarge>
+  <div id="header" class="header">
+    <nav class="header__nav navbar navbar-extend-lg navbar-light bg-light">
       <div class="container">
         <div class="col">
           <div class="header__item header__campaign-filter">
@@ -35,11 +38,12 @@
           </div>
         </div>
         <div class="col text-right">
-          <div class="header__date-filter">
+          <div class="header__item header__date-filter">
             <app-date-selector></app-date-selector>
           </div>
         </div>
       </div>
-    </ng-template>
-  </nav>
-</div>
+
+    </nav>
+  </div>
+</ng-template>

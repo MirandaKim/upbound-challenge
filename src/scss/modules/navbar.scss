@@ -1,0 +1,14 @@
+/*
+Contains overrides and additions to Bootstrap's navbar styles.
+*/
+
+/********************************************/
+/*   # Nav Bar                             */
+/******************************************/
+
+.navbar {
+
+  &--block {
+    display: block;
+  }
+}

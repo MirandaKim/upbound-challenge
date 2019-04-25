@@ -10,8 +10,10 @@ export class HeaderComponent implements OnInit {
 
   protected windowSize: {height: number, width: number};
 
-  protected sizeChangePt = 500;
+  protected sizeChangePt = 1000;
   protected deviceIsSmall = false;
+
+  protected isFilterOpen = false;
 
   constructor() {}
 
@@ -37,7 +39,9 @@ export class HeaderComponent implements OnInit {
   }
 
   protected toggleFiltersDisplay(){
+    this.isFilterOpen = !this.isFilterOpen;
     $('#header-filter-list').toggleClass('show');
+    $('#header-filter-toggle').toggleClass('open');
   }
 
 

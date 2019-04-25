@@ -1,9 +1,67 @@
 @import "src/scss/_variables";
 
+/********************************************/
+/*   # Variables                           */
+/******************************************/
+
+$header_marginTop: 9px;
+
+/********************************************/
+/*   # Header                              */
+/******************************************/
+
 .header {
+  /*position*/
+  z-index: 100;
+  position: relative;
+  /*structure*/
+  width: 100%;
   /*spacing*/
-  margin-top: 9px;
+  margin-top: $header_marginTop;
   margin-bottom: 2rem;
+
+  /*************
+  *  > After   *
+  *************/
+
+  &::after {
+    content: '';
+    /*display*/
+    display: block;
+    /*position*/
+    position: absolute;
+    top: $header_marginTop * -1;
+    /*structure*/
+    width: 100%;
+    height: $header_marginTop;
+    /*colors*/
+    background-color: rgba(255, 255, 255, .95);
+  }
+
+  /********************
+  *  > No Top Space   *
+  ********************/
+
+  &--no-top-space {
+    margin-top: -1px;
+  }
+
+  /*************
+  *  > Fixed   *
+  *************/
+
+  &--sticky {
+    /*position*/
+    position: sticky;
+    top: 0;
+    left: 0;
+  }
+
+
+
+  /********************************************/
+  /*   # Navigation                          */
+  /******************************************/
 
   &__nav {
     /*spacing*/
@@ -21,7 +79,24 @@
       padding-top: 19px;
       padding-bottom: 14px;
     }
+
+    /*************
+    *  > Small   *
+    *************/
+
+    &--small {
+      /*structure*/
+
+      /*spacing*/
+      margin-top: 0;
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
   }
+
+  /********************************************/
+  /*   # Item                                */
+  /******************************************/
 
   &__item {
     /*display*/
@@ -40,10 +115,42 @@
     }
   }
 
+  /********************************************/
+  /*   # Drop Down                           */
+  /******************************************/
+
+  &__drop-down {
+    /*structure*/
+    width: 100%;
+  }
+
+
+  /********************************************/
+  /*   # Search Filter                       */
+  /******************************************/
+
   &__search-filter {
     /*position*/
     position: relative;
     top: 3px;
+  }
+
+  /********************************************/
+  /*   # Filters Button                      */
+  /******************************************/
+
+  &__filters-button {
+    /*colors*/
+    color: $colorOrange;
+
+    &:hover {
+      /*colors*/
+      border-color: $colorLightGrey;
+    }
+
+    &.open {
+      color: $colorRed;
+    }
   }
 
 }
