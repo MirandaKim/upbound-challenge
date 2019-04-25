@@ -133,6 +133,8 @@ $header_marginTop: 9px;
     /*position*/
     position: relative;
     top: 3px;
+    /*spacing*/
+    padding-right: 4px;
   }
 
   /********************************************/
@@ -140,6 +142,8 @@ $header_marginTop: 9px;
   /******************************************/
 
   &__filters-button {
+    /*position*/
+    position: relative;
     /*colors*/
     color: $colorOrange;
 
@@ -149,8 +153,18 @@ $header_marginTop: 9px;
     }
 
     &.open {
-      color: $colorRed;
+      color: transparent;
+      background-color: rgb(255, 255, 255);
+      border-color: $colorLightGrey;
     }
+  }
+
+  &__filters-up-icon {
+    /*position*/
+    position: absolute;
+    // top: calc(50% - 1px);
+    top: 5px;
+    left: calc(50% - 5px);
   }
 
 }
