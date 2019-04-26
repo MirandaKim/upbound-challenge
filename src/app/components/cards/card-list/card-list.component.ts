@@ -179,8 +179,6 @@ export class CardListComponent implements OnInit {
   protected watchUpdating(): void {
     this.cardUpdateWatch = this.cardManagerService.cardsUpdating.subscribe((res: number) => {
       this.awaitingApiResponseCt = res;
-      // this.awaitingApiResponseCt = 1;
-      console.log('Card List: ' + this.awaitingApiResponseCt);
     });
   }
 

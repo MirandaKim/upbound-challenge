@@ -1,11 +1,8 @@
-<!-- <ul class="card-list card-group d-flex justify-content-between"> -->
 <div class="card-list">
   <ul class="card-list__cards card-group" *ngIf="initialApiReponseReceived">
-    <!-- <ng-template > -->
-      <li *ngFor="let card of cardList_filtered">
-        <app-card [card]="card"></app-card>
-      </li>
-    <!-- </ng-template> -->
+    <li *ngFor="let card of cardList_filtered">
+      <app-card [card]="card"></app-card>
+    </li>
     <li>
       <app-create-card></app-create-card>
     </li>
@@ -15,9 +12,6 @@
     [ngClass]="{
       'card-list__spinner--visible': !initialApiReponseReceived || awaitingApiResponseCt > 0
     }">
-    X
-    <!-- <ng-template [ngIf]="!initialApiReponseReceived || awaitingApiResponseCt > 0"> -->
-      <app-spinner color="orange" size="medium" position="fixed" overlay="true"></app-spinner>
-    <!-- </ng-template> -->
+    <app-spinner color="orange" size="medium" position="fixed" overlay="true"></app-spinner>
   </div>
 </div>
