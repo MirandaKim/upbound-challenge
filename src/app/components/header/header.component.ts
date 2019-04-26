@@ -35,13 +35,44 @@ export class HeaderComponent implements OnInit {
   }
 
   protected checkWindowChange(){
-    this.deviceIsSmall = this.windowSize.width < this.sizeChangePt;
+    let isSmall = this.windowSize.width < this.sizeChangePt;
+    if(isSmall !== this.deviceIsSmall){
+      if(isSmall){
+        this.windowChangeToSmall();
+      }else{
+        this.windowChangeToBig();
+      }
+    }
+  }
+
+  protected windowChangeToSmall(){
+    this.deviceIsSmall = true;
+    this.closeFilterDisplay();
+  }
+
+  protected windowChangeToBig(){
+    this.deviceIsSmall = false;
+    this.closeFilterDisplay();
   }
 
   protected toggleFiltersDisplay(){
-    this.isFilterOpen = !this.isFilterOpen;
-    $('#header-filter-list').toggleClass('show');
-    $('#header-filter-toggle').toggleClass('open');
+    if(this.isFilterOpen){
+      this.closeFilterDisplay();
+    }else{
+      this.openFilterDisplay();
+    }
+  }
+
+  protected openFilterDisplay(){
+    this.isFilterOpen = true;
+    $('#header-filter-list').addClass('show');
+    $('#header-filter-toggle').addClass('open');
+  }
+
+  protected closeFilterDisplay(){
+    this.isFilterOpen = false;
+    $('#header-filter-list').removeClass('show');
+    $('#header-filter-toggle').removeClass('open');
   }
 
 
