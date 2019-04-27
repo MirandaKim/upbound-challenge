@@ -6,9 +6,35 @@ Contains style overrides to Bootstrap's container class.
 /*   # Container                           */
 /******************************************/
 
-.container {
+$container_leftPadding: 10px;
+$container_rightPadding: 10px;
+$container_totalSidePadding: $container_leftPadding + $container_rightPadding;
 
-  @media (min-width: 1400px) {
-    max-width: 1300px;
+
+.container { // default: 1 card width
+  /*structure*/
+  min-width: calc(#{$cardOuterWidth} + #{$container_totalSidePadding});
+  max-width: calc(#{$cardOuterWidth} + #{$container_totalSidePadding});
+  /*spacing*/
+  padding-left: $container_leftPadding;
+  padding-right: $container_rightPadding;
+
+  // background-color: grey; // testing only
+
+  @media (min-width: 650px) { // 2 column width
+    max-width: calc(#{$cardOuterWidth} * 2 + #{$container_totalSidePadding});
   }
+
+  @media (min-width: 1000px) { // 3 column width
+    max-width: calc(#{$cardOuterWidth} * 3 + #{$container_totalSidePadding});
+  }
+
+  @media(min-width: 1250px){ // 4 column width
+    max-width: calc(#{$cardOuterWidth} * 4 + #{$container_totalSidePadding});
+  }
+
+  @media(min-width: 1550px){ // 5 column width
+    max-width: calc(#{$cardOuterWidth} * 5 + #{$container_totalSidePadding});
+  }
+
 }

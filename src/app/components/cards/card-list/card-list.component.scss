@@ -6,11 +6,16 @@
 .card-list {
   /*position*/
   position: relative;
+  /*structure*/
+  width: 100%;
   /*spacing*/
   margin: 0;
   padding: 0;
 
   &__cards {
+    /*structure*/
+    // width: calc(100% + $cardMarginRight);
+    width: 100%;
     /*spacing*/
     margin: 0;
     padding: 0;

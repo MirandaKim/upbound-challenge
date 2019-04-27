@@ -1,26 +1,28 @@
 <div id="header" class="header header--sticky header--no-top-space" *ngIf="deviceIsSmall; else deviceLarge">
     <nav class="header__nav header__nav--small navbar text-right navbar--block navbar-extend-lg navbar-light bg-light">
-      <div class="header__item header__search-filter">
-        <app-search-filter filterId="header-search-bar" filterLocation="header" filterProperty="cardTitle" placeholder="Search Service Cards"></app-search-filter>
-      </div>
-      <button class="btn header__filters-button" id="header-filter-toggle" (click)="toggleFiltersDisplay()">
-        Filters
-        <app-icon *ngIf="isFilterOpen" iconType="chevron-up" iconColor="orange" iconSize="small" class="header__filters-up-icon"></app-icon>
-      </button>
-      <div class="filters-list header__drop-down">
-        <ul class="filters-list__filters list-group text-center collapse" id="header-filter-list">
-        <!-- <ul class="filters-list__filters list-group text-center" id="header-filter-list"> -->
-          <li class="list-group-item header__campaign-filter">
-            <app-campaign-menu filterId="header-campaign-menu" filterLocation="header"></app-campaign-menu>
-          </li>
-          <li class="list-group-item header__status-fitler">
-            <app-status-menu filterId="header-status-menu" filterLocation="header"></app-status-menu>
-          </li>
-          <li class="list-group-item header__date-filter">
-            <app-date-selector></app-date-selector>
-          </li>
-        </ul>
-      </div>
+      <!-- <div class="container"> -->
+        <div class="header__item header__search-filter">
+          <app-search-filter filterId="header-search-bar" filterLocation="header" filterProperty="cardTitle" placeholder="Search Service Cards"></app-search-filter>
+        </div>
+        <button class="btn header__filters-button" id="header-filter-toggle" (click)="toggleFiltersDisplay()">
+          Filters
+          <app-icon *ngIf="isFilterOpen" iconType="chevron-up" iconColor="orange" iconSize="small" class="header__filters-up-icon"></app-icon>
+        </button>
+        <div class="filters-list header__drop-down">
+          <ul class="filters-list__filters list-group text-center collapse" id="header-filter-list">
+          <!-- <ul class="filters-list__filters list-group text-center" id="header-filter-list"> -->
+            <li class="list-group-item header__campaign-filter">
+              <app-campaign-menu filterId="header-campaign-menu" filterLocation="header"></app-campaign-menu>
+            </li>
+            <li class="list-group-item header__status-fitler">
+              <app-status-menu filterId="header-status-menu" filterLocation="header"></app-status-menu>
+            </li>
+            <li class="list-group-item header__date-filter">
+              <app-date-selector></app-date-selector>
+            </li>
+          </ul>
+        </div>
+      <!-- </div> -->
     </nav>
 </div>
 <ng-template #deviceLarge>

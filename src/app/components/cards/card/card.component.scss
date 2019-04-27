@@ -8,10 +8,10 @@
   /*display*/
   display: block;
   /*structure*/
-  width: 17rem;
+  width: $cardWidth;
   /*spacing*/
-  margin-left: .9rem;
-  margin-right: .9rem;
+  margin-left: $cardMarginLeft;
+  margin-right: $cardMarginRight;
   margin-top: 2.5rem;
   margin-bottom: 2.5rem;
   /*borders*/
