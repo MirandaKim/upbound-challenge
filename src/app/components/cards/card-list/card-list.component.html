@@ -1,5 +1,5 @@
 <div class="card-list">
-  <ul class="card-list__cards card-group" *ngIf="initialApiReponseReceived">
+  <ul class="card-list__cards" *ngIf="initialApiReponseReceived">
     <li *ngFor="let card of cardList_filtered">
       <app-card [card]="card"></app-card>
     </li>
