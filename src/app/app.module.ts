@@ -30,6 +30,7 @@ import { StatusMenuComponent } from './components/status-menu/status-menu.compon
 import { DateSelectorComponent } from './components/date-selector/date-selector.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { CardWorkflowComponent } from './components/cards/card-workflow/card-workflow.component';
+import { OrdinalPipe } from './pipes/ordinal.pipe';
 
 
 @NgModule({
@@ -52,7 +53,8 @@ import { CardWorkflowComponent } from './components/cards/card-workflow/card-wor
     StatusMenuComponent,
     DateSelectorComponent,
     SpinnerComponent,
-    CardWorkflowComponent
+    CardWorkflowComponent,
+    OrdinalPipe
   ],
   imports: [
     BrowserModule,
