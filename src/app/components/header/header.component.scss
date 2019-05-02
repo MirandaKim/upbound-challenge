@@ -85,13 +85,25 @@ $header_marginTop: 9px;
     *************/
 
     &--small {
-      /*structure*/
-
       /*spacing*/
       margin-top: 0;
       padding-top: 10px;
       padding-bottom: 10px;
     }
+
+    &--min-small {
+        min-width: 325px;
+    }
+  }
+
+  /********************************************/
+  /*   # Column                              */
+  /******************************************/
+
+  &__column {
+    /*spacing*/
+    margin-left: $cardMarginLeft;
+    margin-right: $cardMarginRight;
   }
 
   /********************************************/
@@ -103,16 +115,34 @@ $header_marginTop: 9px;
     display: inline-block;
     /*position*/
     position: relative;
-    /*spacing*/
-    padding-right: 17px;
 
-    &--right {
-      /*position*/
-      float: right;
+    /***************
+    *  > Padding   *
+    ***************/
+
+
+    &--padding-left {
       /*spacing*/
-      padding-right: 0;
       padding-left: 17px;
     }
+    &--padding-left-less {
+      padding-left: 10px;
+    }
+    &--padding-left-more {
+      padding-left: 30px;
+    }
+
+    &--padding-right {
+      /*spacing*/
+      padding-right: 17px;
+    }
+    &--padding-right-less {
+      padding-right: 10px;
+    }
+    &--padding-left-more {
+      padding-left: 30px;
+    }
+
   }
 
   /********************************************/
