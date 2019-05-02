@@ -59,8 +59,10 @@
   &__input {
     /*display*/
     display: inline-block;
+    /*structure*/
+    width: 160px;
     /*spacing*/
-    padding-right: 22px;
+    padding-right: 20px;
     padding-left: 5px;
     margin-right: 0;
     /*borders*/
@@ -76,6 +78,11 @@
     /*transitions*/
     transition-property: border-color;
     transition-duration: 500ms;
+
+    .search-filter--bar-hidden & {
+      padding-right: 5px;
+      
+    }
 
     /*************
     *  > Hover   *
@@ -117,12 +124,16 @@
     margin: 0;
     /*bordres*/
     border-style: none;
-    border-radius: 50%;
+    // border-radius: 50%;
     /*colors*/
-    background-color: $colorLightGrey;
+    background-color: transparent;
     /*transitions*/
     transition-property: opacity;
     transition-duration: 500ms;
+
+    .search-filter--bar-hidden & {
+      display: none;
+    }
 
     /*************
     *  > Hover   *
@@ -132,9 +143,9 @@
       opacity: 1;
     }
 
-    &:hover {
-      background-color: $colorOrange;
-    }
+    // &:hover {
+    //   background-color: $colorOrange;
+    // }
 
     /************
     *  > Icon   *
