@@ -13,8 +13,15 @@ import { Component, OnInit } from '@angular/core';
 *   This module is INCOMPLETE   *
 *********************************
 
-  - Logic to change the selected date has not been created @TODO: Loop through dates (see function shiftDate)
-  - Logic for filtering cards based on the selected date has not been created @TODO: filter cards by selected date.
+  - Logic for filtering cards based on the selected date has not been created
+    @TODO: filter cards by selected date (use the provided Filters Service and Filterer Component).
+
+
+****************
+*   WARNING:   *
+****************
+
+  Looping through dates may not account for daylight savings, leap years, or other time/calendar anomalies.
 
 *****************
 *   Contents:   *
@@ -39,16 +46,28 @@ export class DateSelectorComponent implements OnInit {
   /*   # Properties                          */
   /******************************************/
 
-  protected today: Date;
-  protected dayOffset: number = 0; // 0 is today, 1 is tomorrow, -1 is yesturday, and so on...
-  protected dayCountdown: string = '1';
+  /*************
+  *  > Today   *
+  *************/
 
+  protected today: Date;
+
+  /*********************
+  *  > Selected Date   *
+  *********************/
+
+  protected dayOffset: number = 0; // 0 is today, 1 is tomorrow, -1 is yesturday, and so on...
   protected selectedDate: Date;
 
-  protected dayPronouns: string[] = [
-    'Yesterday',
-    'Today',
-    'Tomorrow'
+  /**********************
+  *  > Display Values   *
+  **********************/
+
+  protected dayCountdown: string = '1'; //represents the day difference between today's date and the currently selected date.
+  protected dayPronouns: string[] = [ // ORDER MATTERS!
+    'Yesterday', // 0
+    'Today',    // 1
+    'Tomorrow' // 2
   ];
 
   /********************************************/
@@ -94,12 +113,13 @@ export class DateSelectorComponent implements OnInit {
   shiftValue = -1 will change the currently selected date to the previous day.
   shiftValue = 10 will change the currently selected date to 10 days ahead.
 
-  WARNING: This functionality is not complete.
+  WARNING: This functionality does not currently provide a filter for the list of cards.
   */
   protected shiftDate(shiftValue: number): void{
     this.dayOffset += shiftValue;
     this.setDayCountdown();
-    console.log('Sorry, looping through dates is not availible at this time.');
+    this.selectedDate = new Date(this.selectedDate.getFullYear(), this.selectedDate.getMonth(), (this.selectedDate.getDate() + shiftValue));
+    console.warn('Sorry, filtering cards by the date value is not availible at this time.');
   }
 
   /*************************
