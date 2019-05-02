@@ -1,16 +1,18 @@
 <div class="date-selector">
   <div class="date-selector__select-date">
-    <button class="btn date-selector__shift-icon date-selector__shift-icon--left">
+    <button class="btn date-selector__shift-icon date-selector__shift-icon--left" (click)="shiftDate(-1)">
       <app-icon iconType="chevron-left" iconColor="red" iconSize="x-small"></app-icon>
     </button>
     <div class="date-selector__calender-icon"><app-icon iconType="calender" iconColor="red" iconSize="18"></app-icon></div>
     <div class="date-selector__selected-date-full">
-        <!-- <span>{{ today | date:'EEEE, MMM d' }}</span><span>th</span> -->
-        Today, Jan 10th
+      <span [innerHtml]="dayPronouns[dayOffset + 1] || (selectedDate | date: 'EE')"></span>
+        <span>{{ selectedDate | date:', MMM d' }}{{ selectedDate | date:'d' | ordinal: false}}</span>
     </div>
-    <button class="btn date-selector__shift-icon date-selector__shift-icon--right">
+    <button class="btn date-selector__shift-icon date-selector__shift-icon--right" (click)="shiftDate(1)">
       <app-icon iconType="chevron-right" iconColor="red" iconSize="x-small"></app-icon>
     </button>
   </div>
-  <span class="date-selector__day-count">1d</span>
+  <span class="date-selector__day-count">
+    <div class="date-selector__day-count-text">{{dayCountdown}}d</div>
+  </span>
 </div>

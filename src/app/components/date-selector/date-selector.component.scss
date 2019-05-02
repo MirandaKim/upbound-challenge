@@ -26,6 +26,7 @@
     padding-right: 25px;
     /*typography*/
     text-align: center;
+    white-space: nowrap;
 
     /*************
     *  > Ranged  *
@@ -70,7 +71,8 @@
     display: inline-block;
     /*position*/
     position: absolute;
-    // top: -1px;
+    /*structure*/
+    // width: 10px;
     /*spacing*/
     padding-top: 0;
     padding-bottom: 0;
@@ -83,6 +85,16 @@
 
     &--right {
       right: 1px;
+    }
+
+    /************
+    *  > Hover  *
+    ************/
+
+    &:hover {
+      /*colors*/
+      border-color: $colorLightGrey;
+      background-color: $colorLighterGrey;
     }
   }
 
@@ -98,11 +110,22 @@
     /*position*/
     position: relative;
     top: -2px;
+    /*structure*/
+    width: 2.8rem;
     /*spacing*/
     margin-left: 20px;
+    padding-left: 2px;
+    padding-right: 2px;
     /*typography*/
     font-size: .7rem;
     font-weight: 300;
+
+    &-text {
+      /*position*/
+      position: relative;
+      /*typography*/
+      text-align: center;
+    }
   }
 
 
