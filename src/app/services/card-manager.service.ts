@@ -156,7 +156,7 @@ export class CardManagerService {
         this.onCardListReceived(); // Emit an event for the updated list of cards
       }, this.updateResDelayTime);
     }, (error) => {
-      console.log(error);
+      console.error(error);
       setTimeout(() => {
         this.onCardListReceived();
       }, this.updateResDelayTime);
@@ -209,7 +209,7 @@ export class CardManagerService {
       }
       this.onCardListReceived(); // trigger card list received event
     }, (error) => {
-      console.log(error);
+      console.error(error);
       /*
       If testing is set to true, emit a list of test data,
       else emit an empty array.
@@ -267,11 +267,9 @@ export class CardManagerService {
   private cardsAreUpdating(isUpdating: boolean){
     if(isUpdating){
       this.waitingCt++;
-      console.log(`Card list update in progress. In queue: ${this.waitingCt}`);
       this.cardsUpdating.emit(this.waitingCt);
     }else{
       this.waitingCt--;
-      console.log(`Card list update complete. In queue: ${this.waitingCt}`);
       this.cardsUpdating.emit(this.waitingCt);
     }
 
