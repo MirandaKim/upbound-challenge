@@ -97,7 +97,7 @@ export class CardWorkflowComponent extends CardEditerComponent implements OnInit
     ],
     paused: [
       {
-        label: 'Activate',
+        label: 'Publish',
         workflow: 'active'
       }
     ],
