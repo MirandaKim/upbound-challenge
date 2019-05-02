@@ -28,10 +28,15 @@ import { Component, OnInit } from '@angular/core';
 *****************
 
   # Properties
-    >
+    > Today
+    > Selected Date
+    > Display Values
   # Constructor
   # On Init
   # Protected
+    > Set Current Date
+    > Shift Date
+    > Set Day Countdown
 
 ******************/
 
