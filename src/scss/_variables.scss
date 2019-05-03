@@ -1,4 +1,14 @@
 /********************************************/
+/*   # Device Sizes                        */
+/******************************************/
+
+// anything smaller than small is considered tiny
+$deviceWidthSmall: 630px; // width to hold 2 columns
+$deviceWidthMedium: 1000px; // width to hold 3 columns
+$deviceWidthLarge: 1250px; // width to hold 4 columns
+$deviceWidthXLarge: 1550px; // width to hold 5 columns
+
+/********************************************/
 /*   # Color Variables                     */
 /******************************************/
 

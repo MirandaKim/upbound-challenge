@@ -21,19 +21,19 @@ $container_totalSidePadding: $container_leftPadding + $container_rightPadding;
 
   // background-color: grey; // testing only
 
-  @media (min-width: 650px) { // 2 column width
+  @media (min-width: $deviceWidthSmall) { // 2 column width
     max-width: calc(#{$cardOuterWidth} * 2 + #{$container_totalSidePadding});
   }
 
-  @media (min-width: 1000px) { // 3 column width
+  @media (min-width: $deviceWidthMedium) { // 3 column width
     max-width: calc(#{$cardOuterWidth} * 3 + #{$container_totalSidePadding});
   }
 
-  @media(min-width: 1250px){ // 4 column width
+  @media(min-width: $deviceWidthLarge){ // 4 column width
     max-width: calc(#{$cardOuterWidth} * 4 + #{$container_totalSidePadding});
   }
 
-  @media(min-width: 1550px){ // 5 column width
+  @media(min-width: $deviceWidthXLarge){ // 5 column width
     max-width: calc(#{$cardOuterWidth} * 5 + #{$container_totalSidePadding});
   }
 
