@@ -1,3 +1,4 @@
+@import "src/scss/_variables.scss";
 
 /********************************************/
 /*   # Card List                           */
@@ -12,9 +13,12 @@
   margin: 0;
   padding: 0;
 
+  /********************************************/
+  /*   # Cards                               */
+  /******************************************/
+
   &__cards {
     /*structure*/
-    // width: calc(100% + $cardMarginRight);
     width: 100%;
     /*spacing*/
     margin: 0;
@@ -22,13 +26,33 @@
     /*list*/
     list-style: none;
 
-    &>li {
-      /*display*/
-      display: inline-block;
-      /*position*/
-      vertical-align: top;
+  }
+
+  /********************************************/
+  /*   # Card                                */
+  /******************************************/
+
+  &__card {
+    /*display*/
+    display: inline-block;
+    /*position*/
+    vertical-align: top;
+    /*spacing*/
+    margin-left: $cardMarginLeft;
+    margin-right: $cardMarginRight;
+    margin-top: 12px;
+    margin-bottom: 12px;
+
+    @media (min-width: $deviceWidthSmall){
+      /*spacing*/
+      margin-top: 2.5rem;
+      margin-bottom: 2.5rem;
     }
   }
+
+  /********************************************/
+  /*   # Spinner                             */
+  /******************************************/
 
   &__spinner {
     display: none;
