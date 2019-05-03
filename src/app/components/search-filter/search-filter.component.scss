@@ -50,6 +50,12 @@
     .search-filter--bar-hidden:hover &{
       opacity: 1;
     }
+
+
+  }
+
+  &:focus-within &__bar{
+    opacity: 1;
   }
 
   /********************************************/
@@ -81,7 +87,7 @@
 
     .search-filter--bar-hidden & {
       padding-right: 5px;
-      
+
     }
 
     /*************
@@ -133,6 +139,10 @@
 
     .search-filter--bar-hidden & {
       display: none;
+    }
+
+    .search-filter:focus-within &{
+      opacity: 1;
     }
 
     /*************
