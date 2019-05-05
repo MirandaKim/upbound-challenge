@@ -1,4 +1,4 @@
-import { Injectable, EventEmitter, Output } from '@angular/core';
+import { Injectable, EventEmitter, Output, OnDestroy } from '@angular/core';
 import { Dimensions } from 'src/app/interfaces/dimensions.interface';
 
 /**********************************************************/
@@ -19,6 +19,7 @@ import { Dimensions } from 'src/app/interfaces/dimensions.interface';
 
   # Properties
     > Window Size
+    > Listeners
   # Constructor
   # Public
     > Get Window Size
@@ -31,7 +32,7 @@ import { Dimensions } from 'src/app/interfaces/dimensions.interface';
 @Injectable({
   providedIn: 'root'
 })
-export class DeviceStateService {
+export class DeviceStateService implements OnDestroy{
 
   /********************************************/
   /*   # Properties                          */
@@ -45,6 +46,12 @@ export class DeviceStateService {
 
   @Output()
   public windowResize = new EventEmitter<Dimensions>();
+
+  /*****************
+  *  > Listeners   *
+  *****************/
+
+  protected windowListener;
 
   /********************************************/
   /*   # Constructor                         */
@@ -75,11 +82,19 @@ export class DeviceStateService {
     Watch the window for a window resize event
     and emit an event whenever there is a new window size.
     */
-    window.addEventListener('resize', (event: any) => {
+    this.windowListener = window.addEventListener('resize', (event: any) => {
       this.windowSize.height = event.target.innerHeight;
       this.windowSize.width = event.target.innerWidth;
       this.windowResize.emit(this.windowSize);
     });
+  }
+
+  /********************************************/
+  /*   # On Destroy                          */
+  /******************************************/
+
+  ngOnDestroy(){
+    this.windowListener.removeEventListener();
   }
 
 
