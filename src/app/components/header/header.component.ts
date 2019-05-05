@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Dimensions } from 'src/app/interfaces/dimensions.interface';
+import { DeviceStateService } from 'src/app/services/device-state.service';
 import $ from 'jquery';
 
 @Component({
@@ -8,34 +10,28 @@ import $ from 'jquery';
 })
 export class HeaderComponent implements OnInit {
 
-  protected windowSize: {height: number, width: number};
-
   protected sizeChangePt = 1000;
   protected deviceIsSmall = false;
 
   protected isFilterOpen = false;
 
-  constructor() {}
+
+  constructor(private deviceStateService: DeviceStateService) {}
 
   ngOnInit() {
     this.watchWindowSize();
-    this.checkWindowChange();
   }
 
   private watchWindowSize(){
-    this.windowSize = {
-      height: window.innerHeight,
-      width: window.innerWidth
-    };
-    window.addEventListener('resize', (event: any) => {
-      this.windowSize.height = event.target.innerHeight;
-      this.windowSize.width = event.target.innerWidth;
-      this.checkWindowChange();
-    });
+    let initialWindowSize = this.deviceStateService.getWindowSize();
+    this.checkWindowChange(initialWindowSize);
+    this.deviceStateService.windowResize.subscribe((windowSize: Dimensions) => {
+        this.checkWindowChange(windowSize);
+    })
   }
 
-  protected checkWindowChange(){
-    let isSmall = this.windowSize.width < this.sizeChangePt;
+  protected checkWindowChange(windowSize: Dimensions){
+    let isSmall = windowSize.width < this.sizeChangePt;
     if(isSmall !== this.deviceIsSmall){
       if(isSmall){
         this.windowChangeToSmall();
