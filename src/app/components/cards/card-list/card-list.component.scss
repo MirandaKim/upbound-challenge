@@ -1,4 +1,5 @@
-@import "src/scss/_variables.scss";
+@import "src/scss/_variables";
+@import "src/scss/_mixins";
 
 /********************************************/
 /*   # Card List                           */
@@ -12,6 +13,22 @@
   /*spacing*/
   margin: 0;
   padding: 0;
+
+  &--header-allotment { // create top space to allow for absolute/fixed header
+    padding-top: $headerAllotmentTiny;
+    @include atSmall {
+      padding-top: $headerAllotmentSmall;
+    }
+    @include atMedium {
+      padding-top: $headerAllotmentMedium;
+    }
+    @include atLarge {
+      padding-top: $headerAllotmentLarge;
+    }
+    @include atXLarge {
+      padding-top: $headerAllotmentXLarge;
+    }
+  }
 
   /********************************************/
   /*   # Cards                               */
@@ -43,10 +60,12 @@
     margin-top: 12px;
     margin-bottom: 12px;
 
-    @media (min-width: $deviceWidthSmall){
-      /*spacing*/
-      margin-top: 2.5rem;
-      margin-bottom: 2.5rem;
+    &--more-padding-at-small{
+      @include atSmall{
+        /*spacing*/
+        margin-top: 2.5rem;
+        margin-bottom: 2.5rem;
+      }
     }
   }
 

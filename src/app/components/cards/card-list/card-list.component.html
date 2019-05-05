@@ -1,9 +1,9 @@
-<div class="card-list">
-  <ul class="card-list__cards" *ngIf="initialApiReponseReceived">
-    <li *ngFor="let card of cardList_filtered" class="card-list__card">
+<div class="card-list card-list--header-allotment">
+  <ul class="card-list__cards card-list__cards--top-padding-for-header" *ngIf="initialApiReponseReceived">
+    <li *ngFor="let card of cardList_filtered" class="card-list__card card-list__card--more-padding-at-small">
       <app-card [card]="card"></app-card>
     </li>
-    <li class="card-list__card">
+    <li class="card-list__card card-list__card--more-padding-at-small">
       <app-create-card></app-create-card>
     </li>
   </ul>
