@@ -1,4 +1,40 @@
 /********************************************/
+/*   # Device Sizes                        */
+/******************************************/
+
+@mixin forTiny{
+  @media (max-width: ($deviceWidthSmall - 1)){
+    @content;
+  }
+}
+
+@mixin atSmall{
+    @media (min-width: $deviceWidthSmall){
+      @content;
+    }
+}
+
+@mixin atMedium{
+  @media (min-width: $deviceWidthMedium){
+    @content;
+  }
+}
+
+@mixin atLarge {
+  @media (min-width: $deviceWidthLarge){
+    @content;
+  }
+}
+
+@mixin atXLarge {
+  @media (min-width: $deviceWidthXLarge){
+    @content;
+  }
+}
+
+
+
+/********************************************/
 /*   # Text Styles                         */
 /******************************************/
 
