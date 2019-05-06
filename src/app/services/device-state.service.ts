@@ -25,8 +25,10 @@ import { Dimensions } from 'src/app/interfaces/dimensions.interface';
   # Constructor
   # Public
     > Get Window Size
+    > Has Touch
   # Private
     > Watch Window Size
+    > Watch Touch Event
   # On Destroy
 
 ******************/
@@ -79,6 +81,10 @@ export class DeviceStateService implements OnDestroy{
   /*   # Public                              */
   /******************************************/
 
+  /***********************
+  *  > Get Window Size   *
+  ***********************/
+
   /*
   Get Window Size
   What is the current window size of this device
@@ -86,6 +92,10 @@ export class DeviceStateService implements OnDestroy{
   public getWindowSize(){
     return this.windowSize;
   }
+
+  /*****************
+  *  > Has Touch   *
+  *****************/
 
   /*
   Has Touch
@@ -98,6 +108,10 @@ export class DeviceStateService implements OnDestroy{
   /********************************************/
   /*   # Private                             */
   /******************************************/
+
+  /*************************
+  *  > Watch Window Size   *
+  *************************/
 
   /*
   Watch Window Size
@@ -120,6 +134,10 @@ export class DeviceStateService implements OnDestroy{
     };
     window.addEventListener('resize', this.windowListener, false); // trigger events when the window is resized
   }
+
+  /*************************
+  *  > Watch Touch Event   *
+  *************************/
 
   /*
   Watch Touch Event
