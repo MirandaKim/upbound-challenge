@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { DeviceStateService } from 'src/app/services/device-state.service';
+import $ from 'jquery';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,19 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'upbound-cards';
+
+  protected hasTouchClass = 'has-touch';
+  protected bodySelector = 'body';
+
+  constructor(private deviceStateService: DeviceStateService){
+    this.watchForTouchEvent();
+  }
+
+  private watchForTouchEvent(){
+    var touchListener = this.deviceStateService.firstTouch.subscribe((e: TouchEvent) => {
+        $(this.bodySelector).addClass(this.hasTouchClass); 
+        touchListener.unsubscribe();
+    });
+  }
+
 }
