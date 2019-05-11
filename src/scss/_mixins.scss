@@ -32,7 +32,21 @@
   }
 }
 
+/********************************************/
+/*   # Touch Device                        */
+/******************************************/
 
+@mixin hasTouch() {
+  .has-touch :host {
+    @content;
+  }
+}
+
+@mixin hasNoTouch() {
+  .has-no-touch :host {
+    @content;
+  }
+}
 
 /********************************************/
 /*   # Text Styles                         */
