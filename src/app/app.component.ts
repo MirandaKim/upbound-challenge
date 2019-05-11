@@ -14,8 +14,11 @@ import $ from 'jquery';
 *****************
 
   # Properties
+    > Element Selectors
+    > Style Classes
   # Constructor
   # Private
+    > Watch For Touch
 
 ******************/
 
@@ -30,8 +33,19 @@ export class AppComponent {
   /*   # Properties                          */
   /******************************************/
 
-  protected hasTouchClass = 'has-touch';
+  /*************************
+  *  > Element Selectors   *
+  *************************/
+
   protected bodySelector = 'body';
+
+  /*********************
+  *  > Style Classes   *
+  *********************/
+
+  protected hasTouchClass = 'has-touch';
+  protected hasNoTouchClass = 'has-no-touch';
+  protected waitingForTouchClass = 'waiting-for-touch';
 
   /********************************************/
   /*   # Constructor                         */
@@ -45,10 +59,28 @@ export class AppComponent {
   /*   # Private                             */
   /******************************************/
 
+  /***********************
+  *  > Watch For Touch   *
+  ***********************/
+
   private watchForTouchEvent(){
+    /*
+    Add initial classes to the body
+    */
+    let body = $(this.bodySelector);
+    body.addClass(this.hasNoTouchClass);
+    body.addClass(this.waitingForTouchClass);
+    /*
+    Listen for the first touch event.
+    Once a touch event is detected,
+    swap out the appropriate class names
+    and unsubscribe to the event.
+    */
     var touchListener = this.deviceStateService.firstTouch.subscribe((e: TouchEvent) => {
-        $(this.bodySelector).addClass(this.hasTouchClass);
-        touchListener.unsubscribe();
+      body.removeClass(this.hasNoTouchClass);
+      body.removeClass(this.waitingForTouchClass);
+      body.addClass(this.hasTouchClass);
+      touchListener.unsubscribe();
     });
   }
 
