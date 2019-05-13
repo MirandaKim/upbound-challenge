@@ -1,4 +1,5 @@
 @import "src/scss/_variables.scss";
+@import "src/scss/_mixins.scss";
 
 /********************************************/
 /*   # Card                                */
@@ -63,6 +64,8 @@
   /******************************************/
 
   &__body {
+    /*position*/
+    z-index: 50;
     /*spacing*/
     padding-top: 12px;
     padding-bottom: 18px;
@@ -77,9 +80,9 @@
 
   &__menu-wrapper {
     /*display*/
-    // visibility: hidden;
     opacity: 0;
     /*position*/
+    z-index: 50;
     position: absolute;
     top: 10px;
     right: 10px;
@@ -100,5 +103,46 @@
     opacity: 1;
   }
 
+  /********************************************/
+  /*   # Status Wrapper                      */
+  /******************************************/
+
+  &__status-wrapper {
+    position: relative;
+    z-index: 10;
+  }
+
+  /********************************************/
+  /*   # Footer                              */
+  /******************************************/
+
+  &__footer {}
+
+
+
+}
+
+/********************************************/
+/*   # Has Touch                           */
+/******************************************/
+
+@include hasTouch {
+
+  .card--editable .card__feature-image {
+    opacity: 1;
+  }
+
+  .card__menu-wrapper {
+    /*display*/
+    opacity: 1;
+    /*position*/
+    top: 15px;
+    right: 15px;
+    /*transform*/
+    transform: scale(1.4);
+    /*transition*/
+    transition-property: opacity;
+    transition-duration: 500ms;
+  }
 
 }

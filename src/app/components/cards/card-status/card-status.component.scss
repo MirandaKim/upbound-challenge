@@ -1,4 +1,5 @@
 @import 'src/scss/_variables';
+@import 'src/scss/_mixins';
 
 /********************************************/
 /*   # Card States                         */
@@ -22,4 +23,24 @@
   }
 
   &__progress-bar {}
+
+  /********************************************/
+  /*   # Workflow                            */
+  /******************************************/
+
+  &__workflow {
+    position: relative;
+  }
+
+}
+
+@include hasTouch {
+
+  .card-status__workflow {
+    /*transform*/
+    transform: scale(1.2);
+    /*transition*/
+    transition-property: transform;
+    transition-duration: 500ms;
+  }
 }

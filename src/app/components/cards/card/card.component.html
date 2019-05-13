@@ -15,7 +15,11 @@
         cardSelectorId="card-{{card.id}}"
         ></app-card-menu>
     </div>
-    <app-card-status [card]="card" [cardEditable]="cardEditable || cardMenusOpenCt > 0" (menuToggled)="onStatusMenuButtonClick($event)"></app-card-status>
+    <div class="card__status-wrapper">
+      <app-card-status [card]="card" [cardEditable]="cardEditable || cardMenusOpenCt > 0" (menuToggled)="onStatusMenuButtonClick($event)"></app-card-status>
+    </div>
   </div>
-  <app-card-footer [card]="card"></app-card-footer>
+  <div class="card__footer">
+    <app-card-footer [card]="card"></app-card-footer>
+  </div>
 </div>

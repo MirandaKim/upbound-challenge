@@ -1,4 +1,27 @@
 @import 'src/scss/_variables';
+@import 'src/scss/_mixins';
+
+/**********************************************************/
+/*                                                       */
+/*   Card Workflow (card-workflow.component.scss)       */
+/*                                                     */
+/******************************************************/
+/*
+
+
+*****************
+*   Contents:   *
+*****************
+
+  # Workflow
+  # Label
+  # Indicator
+  # Dropdown
+  # Menu Toggle
+    > Card Editable
+  # Has Touch
+
+******************/
 
 /********************************************/
 /*   # Workflow                            */
@@ -23,20 +46,6 @@
 
   }
 
-  /*********************
-  *  > Card Editable   *
-  *********************/
-
-  &--editable &__dropdown &__label {
-    /*display*/
-    display: inline-block;
-    max-width: 16px;
-    max-height: 0;
-    overflow: hidden;
-    /*spacing*/
-    margin: 0;
-    padding: 0;
-  }
 
   /********************************************/
   /*   # Indicator                           */
@@ -104,4 +113,41 @@
     }
   }
 
+}
+
+/********************************************/
+/*   # Has Touch                           */
+/******************************************/
+
+@include hasTouch {
+  .card-workflow {
+
+    /*position*/
+    position: relative;
+    right: 8px;
+    top: -1px;
+
+    &__menu-toggle {
+      border-color: $colorLightGrey;
+    }
+  }
+}
+
+/********************************************/
+/*   # Has No Touch                        */
+/******************************************/
+
+@include hasNoTouch {
+  .card-workflow {
+    &--editable &__dropdown &__label {
+      /*display*/
+      display: inline-block;
+      max-width: 16px;
+      max-height: 0;
+      overflow: hidden;
+      /*spacing*/
+      margin: 0;
+      padding: 0;
+    }
+  }
 }
