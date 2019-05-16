@@ -4,9 +4,9 @@
         <div class="header__item header__search-filter">
           <app-search-filter filterId="header-search-bar" filterLocation="header" filterProperty="cardTitle" placeholder="Search Cards"></app-search-filter>
         </div>
-        <button class="btn header__filters-button" id="header-filter-toggle" (click)="toggleFiltersDisplay()">
+        <button class="btn header__filters-button" id="header-filter-toggle" (click)="toggleFiltersDisplay()" [innerHtml]="isFilterDropdownOpen ? 'Close' : 'Filters'">
           Filters
-          <app-icon *ngIf="isFilterDropdownOpen" iconType="chevron-up" iconColor="orange" iconSize="small" class="header__filters-up-icon"></app-icon>
+          <!-- <app-icon *ngIf="isFilterDropdownOpen" iconType="chevron-up" iconColor="orange" iconSize="small" class="header__filters-up-icon"></app-icon> -->
         </button>
       </div>
       <div class="filters-list header__drop-down">
