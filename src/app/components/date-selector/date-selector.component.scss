@@ -2,6 +2,14 @@
 @import "src/scss/mixins";
 
 /********************************************/
+/*   # Variables                           */
+/******************************************/
+
+ // when the date count element wraps down,
+// this will be the amount of margin between it and the date selector.
+$ds_verticalSpaceWhenWrapped: 8px;
+
+/********************************************/
 /*   # Date Selector                       */
 /******************************************/
 
@@ -9,6 +17,8 @@
   /*position*/
   position: relative;
   top: 3px;
+  /*spacing*/
+  margin-top: $ds_verticalSpaceWhenWrapped * -1;
 
   /********************************************/
   /*   # Date Loop                           */
@@ -24,6 +34,7 @@
     /*spacing*/
     padding-left: 25px;
     padding-right: 25px;
+    margin-top: $ds_verticalSpaceWhenWrapped;
     /*typography*/
     text-align: center;
     white-space: nowrap;
@@ -113,6 +124,7 @@
     /*structure*/
     width: 2.8rem;
     /*spacing*/
+    margin-top: $ds_verticalSpaceWhenWrapped;
     margin-left: 20px;
     padding-left: 2px;
     padding-right: 2px;
