@@ -52,6 +52,7 @@ with can be used to extend a component and make its content create a filter valu
     > List Info
     > Menu Configs
     > Filter Configs
+    > Style Configs
     > States
   # Constructor
   # Protected
@@ -104,6 +105,13 @@ export abstract class MenuFilterComponent extends FiltererComponent {
   protected abstract filterProperty: string; // property in data outside this component that this filter is intended to represent/affect
   protected filterValueType: string = 'string'; // type of value
   protected filterCondition: string = FilterConditions[0]; // match
+
+  /*********************
+  *  > Style Configs   *
+  *********************/
+
+  @Input('toggleStyleType') // How should the toggle for the button be styled?
+  public toggleStyleType: string = 'button'; // NOTE: style and options are handled by the inheriting component. 
 
   /**************
   *  > States   *
