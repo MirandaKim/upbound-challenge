@@ -1,4 +1,5 @@
 @import "src/scss/_variables";
+@import "src/scss/_mixins";
 
 /********************************************/
 /*   # Variables                           */
@@ -170,9 +171,13 @@ $header_marginTop: 9px;
   &__search-filter {
     /*position*/
     position: relative;
-    top: 3px;
+    top: 1px;
     /*spacing*/
-    padding-right: 4px;
+    padding-right: 8px;
+
+    @include atMedium {
+      top: 3px;
+    }
   }
 
   /********************************************/
@@ -182,18 +187,21 @@ $header_marginTop: 9px;
   &__filters-button {
     /*position*/
     position: relative;
+    /*structure*/
+    width: 4rem;
+    /*spacing*/
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    /*typography*/
+    text-align: center;
     /*colors*/
     color: $colorOrange;
-
-    &:hover {
-      /*colors*/
-      border-color: $colorLightGrey;
-    }
+    border-color: $colorLightGrey;
 
     &.open {
-      color: transparent;
-      background-color: rgb(255, 255, 255);
-      border-color: $colorLightGrey;
+      color: $colorRed;
     }
   }
 
@@ -205,4 +213,17 @@ $header_marginTop: 9px;
     left: calc(50% - 5px);
   }
 
+}
+
+/********************************************/
+/*   # Has No Touch                        */
+/******************************************/
+
+@include hasNoTouch(){
+
+  .header__filters-button:hover {
+    /*colors*/
+    background-color: $colorLighterGrey;
+    // border-color: $colorLightGrey;
+  }
 }
