@@ -1,0 +1,13 @@
+@import "src/scss/_variables";
+
+// WARNING: Value dependent on the menu's position on the screen.
+$sm_headerAllotment: 9rem;
+
+.status-menu__menu {
+
+  &--max-height {
+    max-height: calc(100vh - #{$sm_headerAllotment}); // prevent menu from going off screen
+    overflow-y: scroll;
+  }
+
+}
