@@ -13,9 +13,18 @@ Contains style overrides to Bootstrap's dropdown menu.
   /******************************************/
 
   &-toggle {
+
+    /**************************
+    *  > Override Bootstrap   *
+    **************************/
+
     &::after {
       display: none;
     }
+
+    /*****************
+    *  > Modifiers   *
+    *****************/
 
     &--outline {
         /*borders*/
@@ -23,6 +32,28 @@ Contains style overrides to Bootstrap's dropdown menu.
         border-width: 1px;
         /*colors*/
         border-color: $colorLightGrey;
+    }
+
+    &--button {}
+
+    &--list-item {
+      /*structure*/
+      width: 100%;
+      /*borders*/
+      border-style: none;
+      /*typography*/
+      text-align: left;
+      /*colors*/
+      background-color: transparent;
+
+    }
+
+    /*************
+    *  > Hover   *
+    *************/
+
+    &--lighter-hover:hover {
+      background-color: $colorLighterGrey;
     }
   }
 

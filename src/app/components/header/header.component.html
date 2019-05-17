@@ -7,13 +7,13 @@
         <button class="btn header__filters-button" id="header-filter-toggle" (click)="toggleFiltersDisplay()" [innerHtml]="isFilterDropdownOpen ? 'Close' : 'Filters'"></button>
         <div class="filters-list header__drop-down">
           <ul class="filters-list__filters list-group text-center collapse" id="header-filter-list">
-            <li class="list-group-item header__campaign-filter">
-              <app-campaign-menu filterId="header-campaign-menu" filterLocation="header"></app-campaign-menu>
+            <li class="list-group-item header__campaign-filter filters-list__filter--no-padding">
+              <app-campaign-menu toggleStyleType="list-item" filterId="header-campaign-menu" filterLocation="header"></app-campaign-menu>
             </li>
-            <li class="list-group-item header__status-fitler">
-              <app-status-menu filterId="header-status-menu" filterLocation="header"></app-status-menu>
+            <li class="list-group-item header__status-fitler filters-list__filter--no-padding">
+              <app-status-menu toggleStyleType="list-item" filterId="header-status-menu" filterLocation="header"></app-status-menu>
             </li>
-            <li class="list-group-item header__date-filter">
+            <li class="list-group-item header__date-filter filters-list__filter filters-list__filter--light-side-padding">
               <app-date-selector></app-date-selector>
             </li>
           </ul>

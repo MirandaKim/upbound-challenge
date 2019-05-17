@@ -1,7 +1,14 @@
+/********************************************/
+/*   # Filters List                        */
+/******************************************/
+
 .filters-list {
   /*display*/
   display: block;
 
+  /********************************************/
+  /*   # Filters                             */
+  /******************************************/
 
   &__filters {
     /*display*/
@@ -12,6 +19,32 @@
     margin-top: 10px;
     /*colors*/
     background-color: rgb(255, 255, 255);
+
+  }
+
+  /********************************************/
+  /*   # Filter                              */
+  /******************************************/
+
+  &__filter {
+
+    /*****************
+    *  > Modifiers   *
+    *****************/
+
+    &--no-padding {
+      /*spacing*/
+      padding-top: 0;
+      padding-bottom: 0;
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    &--light-side-padding {
+      padding-left: 5px;
+      padding-right: 5px;
+    }
+
   }
 
 

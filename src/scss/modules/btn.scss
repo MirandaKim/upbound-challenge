@@ -104,9 +104,14 @@ Contains overrides and additions to Bootstrap's btn styles.
       margin-left: 18px;
     }
 
+    &--float-right {
+      float: right;
+    }
+
     &--px-down {
       top: 1px;
     }
+
 
   }
 

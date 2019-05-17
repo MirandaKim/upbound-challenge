@@ -1,18 +1,32 @@
 <div ngbDropdown class="dropdown drop-menu">
-  <button ngbDropdownToggle class="drop-menu__toggle btn btn--outline btn-light btn--smidge-larger">
-    <span class="btn__label">{{menuItems[selectedItemIndex]['label']}}</span>
-    <span class="btn__icon btn__icon--right">
-      <app-icon iconType="chevron-down" iconSize="x-small" iconColor="dark-grey"></app-icon>
-    </span>
-  </button>
+  <!-- Switch: Toggle Style -->
+  <ng-container [ngSwitch]="toggleStyleType">
+    <!-- Case: List Item Style -->
+    <ng-template ngSwitchCase="list-item">
+      <button ngbDropdownToggle
+      class="dropdown-toggle dropdown-toggle--list-item dropdown-toggle--lighter-hover btn btn--outline btn-light">
+        <span class="btn__label">{{menuItems[selectedItemIndex]['label']}}</span>
+        <span class="btn__icon btn__icon--float-right">
+          <app-icon iconType="chevron-down" iconSize="x-small" iconColor="dark-grey"></app-icon>
+        </span>
+      </button>
+    </ng-template>
+    <!-- Case: Button Style / Default-->
+    <ng-template ngSwitchDefault>
+      <button ngbDropdownToggle class="dropdown-toggle dropdown-toggle--button btn btn--outline btn-light btn--smidge-larger">
+        <span class="btn__label">{{menuItems[selectedItemIndex]['label']}}</span>
+        <span class="btn__icon btn__icon--right">
+          <app-icon iconType="chevron-down" iconSize="x-small" iconColor="dark-grey"></app-icon>
+        </span>
+      </button>
+    </ng-template>
+  </ng-container>
   <div ngbDropdownMenu class="drop-menu">
-    <!-- <ng-container > -->
-      <div *ngFor="let item of menuItems" class="dropdown-item drop-menu__item">
-        <button (click)="onItemClick(item)"
-          class="btn list-group-item list-group-item-action {{ item.class }}">
-          <span class="card-menu__lable">{{ item.label }}</span>
-        </button>
-      </div>
-    <!-- </ng-container> -->
+    <div *ngFor="let item of menuItems" class="dropdown-item drop-menu__item">
+      <button (click)="onItemClick(item)"
+        class="btn list-group-item list-group-item-action {{ item.class }}">
+        <span class="card-menu__lable">{{ item.label }}</span>
+      </button>
+    </div>
   </div>
 </div>
