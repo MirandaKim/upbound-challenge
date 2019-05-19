@@ -38,7 +38,7 @@
 
   .card-status__workflow {
     /*transform*/
-    transform: scale(1.2);
+    @include touchTransform();
     /*transition*/
     transition-property: transform;
     transition-duration: 500ms;

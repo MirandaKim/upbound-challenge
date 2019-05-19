@@ -9,6 +9,12 @@ $deviceWidthLarge: 1250px; // width to hold 4 columns
 $deviceWidthXLarge: 1550px; // width to hold 5 columns
 
 /********************************************/
+/*   # Touch Device                        */
+/******************************************/
+
+$touchDropMenuIncrease: 1.2; // scale increase (see mixin touchTransform: ./_mixins.scss)
+
+/********************************************/
 /*   # Color Variables                     */
 /******************************************/
 

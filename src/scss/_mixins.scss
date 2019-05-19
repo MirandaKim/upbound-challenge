@@ -48,6 +48,10 @@
   }
 }
 
+@mixin touchTransform($scale: $touchDropMenuIncrease){
+  transform: scale($scale);
+}
+
 /********************************************/
 /*   # Text Styles                         */
 /******************************************/
