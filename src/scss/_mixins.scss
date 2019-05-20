@@ -217,6 +217,9 @@
 
   /*Pseudo element containing the ellipsis*/
   &::before {
+    /*speak*/
+    speak: none;
+    /*content*/
     content: '...';
     /*position*/
     position: absolute;
