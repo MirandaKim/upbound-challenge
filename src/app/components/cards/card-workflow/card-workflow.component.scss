@@ -137,17 +137,16 @@
 /*   # Has No Touch                        */
 /******************************************/
 
-@include hasNoTouch {
-  .card-workflow {
-    &--editable &__dropdown &__label {
-      /*display*/
-      display: inline-block;
-      max-width: 16px;
-      max-height: 0;
-      overflow: hidden;
-      /*spacing*/
-      margin: 0;
-      padding: 0;
-    }
+
+@include hasNoTouch ('card--editable'){
+  .card-workflow__label--shrink-on-edit--no-touch {
+    /*display*/
+    display: inline-block;
+    max-width: 16px;
+    max-height: 0;
+    overflow: hidden;
+    /*spacing*/
+    margin: 0;
+    padding: 0;
   }
 }

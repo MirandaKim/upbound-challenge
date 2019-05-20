@@ -6,7 +6,7 @@
   placement="bottom-right"
   (openChange)="onOpenChange($event)">
     <button ngbDropdownToggle class="drop-menu__toggle btn btn--stelth card-workflow__menu-toggle">
-      <span class="card-workflow__label">{{ card.currentWorkflow | titlecase }}</span>
+      <span class="card-workflow__label card-workflow__label--shrink-on-edit--no-touch">{{ card.currentWorkflow | titlecase }}</span>
       <span class="card-workflow__indi card-workflow__indi--{{card.currentWorkflow}}"></span>
     </button>
     <ul ngbDropdownMenu class="drop-menu dropdown-menu-right dropdown-menu--narrow">
