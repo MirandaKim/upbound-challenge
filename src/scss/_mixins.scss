@@ -36,17 +36,85 @@
 /*   # Touch Device                        */
 /******************************************/
 
-@mixin hasTouch() {
-  .has-touch :host {
-    @content;
+/*****************
+*  > Has Touch   *
+*****************/
+
+/*
+  Has Touch:
+  Use the contents when an outter wrapper contains the 'has-touch' class
+  (meaning a user touch event has been detected).
+
+  $wrapperClass (default: false)
+    add a class selector BETWEEN the wrapper with the 'has-touch' class
+    and the element being styled.
+
+    Example:
+    @include hasTouch('editable'){
+      input {
+        opacity: 1;
+      }
+    }
+    Would style:
+    <body class="has-touch">
+      <div class="editable">
+        <input ...>
+      </div>
+    </body>
+*/
+@mixin hasTouch($wrapperClass: false) {
+  @if($wrapperClass){
+    .has-touch .#{$wrapperClass} :host {
+      @content;
+    }
+  }@else {
+    .has-touch :host {
+      @content;
+    }
   }
 }
 
-@mixin hasNoTouch() {
-  .has-no-touch :host {
-    @content;
+/********************
+*  > Has No Touch   *
+********************/
+
+/*
+  Has No Touch:
+  Use the contents when an outter wrapper contains the 'has-no-touch' class
+  (meaning no user touch event has been detected, yet).
+
+  $wrapperClass (default: false)
+    add a class selector BETWEEN the wrapper with the 'has-no-touch' class
+    and the element being styled.
+
+    Example:
+    @include hasNoTouch('editable'){
+      input {
+        opacity: .5;
+      }
+    }
+    Would style:
+    <body class="has-no-touch">
+      <div class="editable">
+        <input ...>
+      </div>
+    </body>
+*/
+@mixin hasNoTouch($wrapperClass: false) {
+  @if($wrapperClass){
+    .has-no-touch .#{$wrapperClass} :host {
+      @content;
+    }
+  }@else {
+    .has-no-touch :host {
+      @content;
+    }
   }
 }
+
+/********************
+*  > Touch Styles   *
+********************/
 
 @mixin touchTransform($scale: $touchDropMenuIncrease){
   transform: scale($scale);
