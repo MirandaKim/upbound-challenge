@@ -144,6 +144,10 @@
 /*   # Text Styles                         */
 /******************************************/
 
+/***************
+*  > Capsule   *
+***************/
+
 /*
   Text Capsule
   Give a small piece of text the shape of a capsule/pill.
@@ -161,6 +165,81 @@
   /*colors*/
   background-color: $bkgdColor;
   color: $textColor;
+}
+
+/****************
+*  > Ellipsis   *
+****************/
+
+/*
+  Ellipsis Overflow:
+
+  Display an ellipsis in place of overflowing text for a SINGLE LINE.
+  If the text is multi line, see mixin ellipsisOverflow--multiline(...)
+*/
+@mixin ellipsisOverflow(){
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/*
+  Ellipsis Overflow (multiline)
+
+  Display an ellipsis in place of overflowing text for MULTIPLE LINES.
+  If the text is single line, see mixin ellipsisOverflow()
+
+  Uses two pseudo elements: one contains the ellipsis, the other covers it.
+  When the text get's long enough, the covering pseudo element is pushed down
+  to reveal the pseudo element with the ellipsis.
+
+  Parameters:
+    $backgroundColor: the color for the pseudo element that covers the ellipsis when not needed.
+    $maxHeight: A max width is required to create overflow text.
+    $outsideEdge: keep the ellipsis on the outside edge of the text instead of using
+                  right padding to reserve a spot for the ellipsis.
+
+  Requirements:
+    - Give the element this is applied to a position
+    - This element or the element it sits over must have a solid
+      & consistant background color.
+*/
+@mixin ellipsisOverflow--multiline($backgroundColor, $maxHeight, $outsideEdge: false){
+  /*overflow*/
+  overflow: hidden;
+  /*structure*/
+  max-height: $maxHeight;
+  /*spacing*/
+  padding-right: 1em;
+  @if($outsideEdge){
+    margin-right: -1em;
+  }
+
+  /*Pseudo element containing the ellipsis*/
+  &::before {
+    content: '...';
+    /*position*/
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    /*structure*/
+    width: 1em;
+  }
+
+  /*Pseudo element that covers the ellipsis when not needed*/
+  &::after {
+    content: '';
+    /* position */
+    position: absolute;
+    right: 0;
+    /*structure */
+    width: 1em;
+    height: 1em;
+    /*spacing*/
+    margin-top: 0.2em;
+    /*colors*/
+    background-color: $backgroundColor;
+  }
 }
 
 /********************************************/
