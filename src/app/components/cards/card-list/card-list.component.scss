@@ -74,10 +74,16 @@
   /******************************************/
 
   &__spinner {
+    /*display*/
     display: none;
+    /*position*/
+    position: absolute;
+    z-index: 500;
+
 
     &--visible {
       display: block;
+
     }
   }
 }
