@@ -14,9 +14,7 @@ export class CardComponent implements OnInit {
 
   @Input() card: Card;
 
-  public maxTitleStrLength = 55;
-  public testTitle = "Create a site no Programming skills required in 2 weeks";
-
+  public testTitle = "Create a site no Programming skills required in 2 weeks.";
 
   protected cardEditable: boolean = false;
   protected cardMenusOpenCt: number = 0;

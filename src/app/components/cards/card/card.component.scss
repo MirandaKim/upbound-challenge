@@ -13,6 +13,7 @@
   /*borders*/
   border-radius: $cardBorderRadius;
   /*colors*/
+  background-color: $cardBackgroundColor;
   border-color: rgb(238, 239, 240);
   /*shadows*/
   box-shadow: 2px 1px 1px rgb(235, 236, 237);
@@ -57,15 +58,17 @@
   /******************************************/
 
   &__title {
+    /*mixins*/
+    @include ellipsisOverflow--multiline($cardBackgroundColor, 3rem);
+    /*position*/
+    position: relative;
     /*structure*/
-    min-height: 3rem;
+    height: 3rem;
     /*typography*/
+    line-height: 1.5em;
     font-size: 1rem;
-    line-height: 1.5;
-    letter-spacing: .27px;
     font-weight: 200;
-    /*colors*/
-    color: $colorBlack;
+
   }
 
   /********************************************/
