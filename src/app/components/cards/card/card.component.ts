@@ -19,6 +19,12 @@ export class CardComponent implements OnInit {
   protected cardEditable: boolean = false;
   protected cardMenusOpenCt: number = 0;
 
+  /*******************
+  *  > Lazy Images   *
+  *******************/
+
+  protected lazyLoadOffset: number = 300; // how far before the image reaches the viewport will it load.
+
   /********************************************/
   /*   # Constructor                         */
   /******************************************/

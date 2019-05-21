@@ -328,7 +328,7 @@ export class CardManagerService {
         "campaignId": "CN201701182",
         "cardTitle": "Title 2",
         "cardDescription": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, ",
-        "primaryMediaUrl": "https://loremflickr.com/750/400",
+        "primaryMediaUrl": "https://loremflickr.com/750/401",
         "cardStartDate": "0001-01-01T00:00:00Z",
         "cardEndDate": "0001-01-01T00:00:00Z",
         "availableQuantity": 32,
@@ -365,7 +365,7 @@ export class CardManagerService {
         "campaignId": "CN201701182!!",
         "cardTitle": "Title 1",
         "cardDescription": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, ",
-        "primaryMediaUrl": "https://loremflickr.com/750/400",
+        "primaryMediaUrl": "https://loremflickr.com/750/402",
         "cardStartDate": "0001-01-01T00:00:00Z",
         "cardEndDate": "0001-01-01T00:00:00Z",
         "availableQuantity": 32,
@@ -404,7 +404,85 @@ export class CardManagerService {
         "campaignId": "CN201701!",
         "cardTitle": "Title 1",
         "cardDescription": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, ",
-        "primaryMediaUrl": "https://loremflickr.com/750/400",
+        "primaryMediaUrl": "https://loremflickr.com/750/403",
+        "cardStartDate": "0001-01-01T00:00:00Z",
+        "cardEndDate": "0001-01-01T00:00:00Z",
+        "availableQuantity": 32,
+        "likes": 10,
+        "shares": 20,
+        "views": 30,
+        "subscribers": 0,
+        "unSubscribers": 0,
+        "open": 0,
+        "discard": 0,
+        "totalRevenue": 0,
+        "listOfPlans": [
+          {
+            "price": { "amount": "47800", "currency": "JPY", "currencySymbol": "¥" }
+          }
+        ],
+        "locations": [
+          {
+            "latitude": "",
+            "longitude": "",
+            "area": "",
+            "city": "",
+            "country": "",
+            "placeId": "ChIJx8SRZhAEGTkRwsZ7Hq_dJPs",
+            "description": "Seattle, Washington, USA"
+          }
+        ],
+        "currentWorkflow": "active",
+        "campaignEndDate": "2017-02-28T18:59:59.999Z",
+        "id": "c3d444c3d2774263ab93598fb0705374",
+        "userId": "5d6117b9ae114c83bb53cfdd8c722e78",
+        "createdAt": "2017-02-06T11:14:45.131Z",
+        "updatedAt": "2017-02-06T11:16:44.344Z"
+      },
+      {
+        "campaignId": "CN201701!",
+        "cardTitle": "Title 1",
+        "cardDescription": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, ",
+        "primaryMediaUrl": "https://loremflickr.com/750/404",
+        "cardStartDate": "0001-01-01T00:00:00Z",
+        "cardEndDate": "0001-01-01T00:00:00Z",
+        "availableQuantity": 32,
+        "likes": 10,
+        "shares": 20,
+        "views": 30,
+        "subscribers": 0,
+        "unSubscribers": 0,
+        "open": 0,
+        "discard": 0,
+        "totalRevenue": 0,
+        "listOfPlans": [
+          {
+            "price": { "amount": "47800", "currency": "JPY", "currencySymbol": "¥" }
+          }
+        ],
+        "locations": [
+          {
+            "latitude": "",
+            "longitude": "",
+            "area": "",
+            "city": "",
+            "country": "",
+            "placeId": "ChIJx8SRZhAEGTkRwsZ7Hq_dJPs",
+            "description": "Seattle, Washington, USA"
+          }
+        ],
+        "currentWorkflow": "active",
+        "campaignEndDate": "2017-02-28T18:59:59.999Z",
+        "id": "c3d444c3d2774263ab93598fb0705374",
+        "userId": "5d6117b9ae114c83bb53cfdd8c722e78",
+        "createdAt": "2017-02-06T11:14:45.131Z",
+        "updatedAt": "2017-02-06T11:16:44.344Z"
+      },
+      {
+        "campaignId": "CN201701!",
+        "cardTitle": "Title 1",
+        "cardDescription": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, ",
+        "primaryMediaUrl": "https://loremflickr.com/750/405",
         "cardStartDate": "0001-01-01T00:00:00Z",
         "cardEndDate": "0001-01-01T00:00:00Z",
         "availableQuantity": 32,

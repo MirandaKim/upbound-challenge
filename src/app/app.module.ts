@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
+import {LazyLoadImageModule} from 'ng-lazyload-image';
+
 import { CrudService } from './services/crud.service';
 import { CardsService } from './services/cards.service';
 import { CardManagerService } from './services/card-manager.service';
@@ -60,7 +62,8 @@ import { OrdinalPipe } from './pipes/ordinal.pipe';
     BrowserModule,
     NgbModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    LazyLoadImageModule 
   ],
   providers: [
     FilterListService
