@@ -1,0 +1,22 @@
+
+/********************************************/
+/*   # Lazy Load                           */
+/******************************************/
+
+.lazyload {
+
+  /********************************************/
+  /*   # Fade In                             */
+  /******************************************/
+
+  &--fade-in {
+    opacity: 0;
+
+    /*style when the image is loaded*/
+    &.ng-lazyloaded {
+      animation-name: fadeIn;
+      animation-duration: 400ms;
+      animation-fill-mode: forwards;
+    }
+  }
+}

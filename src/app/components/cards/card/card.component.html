@@ -5,7 +5,7 @@
     'card--editable': cardEditable == true || cardMenusOpenCt > 0
   }">
   <!-- <img class="card__feature-image card-img-top" alt="" src="{{ card.primaryMediaUrl }}"> -->
-  <img class="card__feature-image card-img-top"
+  <img class="card__feature-image card-img-top lazyload--fade-in"
   defaultImage=""
   [lazyLoad]="card.primaryMediaUrl"
   [offset]="lazyLoadOffset">
