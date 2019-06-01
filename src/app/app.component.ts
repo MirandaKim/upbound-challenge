@@ -19,6 +19,7 @@ import $ from 'jquery';
   # Constructor
   # Private
     > Watch For Touch
+    > Handle Browsers
 
 ******************/
 
@@ -43,9 +44,14 @@ export class AppComponent {
   *  > Style Classes   *
   *********************/
 
+  /* Touch Device */
   protected hasTouchClass = 'has-touch';
   protected hasNoTouchClass = 'has-no-touch';
   protected waitingForTouchClass = 'waiting-for-touch';
+
+  /* Browsers */
+
+  protected browserIsEdgeClass = "browser-is-edge";
 
   /********************************************/
   /*   # Constructor                         */
@@ -53,6 +59,7 @@ export class AppComponent {
 
   constructor(private deviceStateService: DeviceStateService){
     this.watchForTouchEvent();
+    this.handleBrowsers();
   }
 
   /********************************************/
@@ -82,6 +89,29 @@ export class AppComponent {
       body.addClass(this.hasTouchClass);
       touchListener.unsubscribe();
     });
+  }
+
+  /***********************
+  *  > Handle Browsers   *
+  ***********************/
+
+  /*
+  Handle Browsers:
+  Handle any logic based on browser
+  */
+  private handleBrowsers(){
+    /*Edge*/
+    if(this.deviceStateService.isEdge()){
+      this.handleBrowser_edge();
+    }
+  }
+
+  /*
+  Handle Browser (Edge):
+  Handle any logic for an Edge browser
+  */
+  private handleBrowser_edge(){
+    $(this.bodySelector).addClass(this.browserIsEdgeClass);
   }
 
 }

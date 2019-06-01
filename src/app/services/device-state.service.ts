@@ -26,6 +26,7 @@ import { Dimensions } from 'src/app/interfaces/dimensions.interface';
   # Public
     > Get Window Size
     > Has Touch
+    > Browser Detection
   # Private
     > Watch Window Size
     > Watch Touch Event
@@ -103,6 +104,14 @@ export class DeviceStateService implements OnDestroy{
   */
   public hasTouch(){
     return this.touchDetected;
+  }
+
+  /*************************
+  *  > Browser Detection   *
+  *************************/
+
+  public isEdge(): boolean{
+    return navigator.userAgent.indexOf('Edge') >= 0;
   }
 
   /********************************************/
