@@ -10,13 +10,13 @@ export class SkipToContentComponent implements OnInit {
   @Input()
   contentId: string = 'main-content';
 
+  @Input()
+  linkText: string = 'Skip to Main Content';
+
   constructor() { }
 
   ngOnInit() {
   }
 
-  protected onClick(){
-    alert('Clicked!');
-  }
 
 }
