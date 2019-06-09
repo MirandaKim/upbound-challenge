@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
-import {LazyLoadImageModule} from 'ng-lazyload-image';
+import { LazyLoadImageModule, intersectionObserverPreset } from 'ng-lazyload-image';
 
 import { CrudService } from './services/crud.service';
 import { CardsService } from './services/cards.service';
@@ -63,7 +63,9 @@ import { OrdinalPipe } from './pipes/ordinal.pipe';
     NgbModule,
     HttpClientModule,
     AppRoutingModule,
-    LazyLoadImageModule 
+    LazyLoadImageModule.forRoot({
+      preset: intersectionObserverPreset
+    })
   ],
   providers: [
     FilterListService
