@@ -49,14 +49,14 @@ Contains overrides and additions to Bootstrap's btn styles.
     color: $colorBlack;
   }
 
-  /**************
-  *  > Stelth   *
-  **************/
+  /***************
+  *  > Stealth   *
+  ***************/
 
   /*
   The button won't appear as a button (visually) until hovered
   */
-  &--stelth {
+  &--stealth {
     /*position*/
     position: relative;
     /*spacing*/
