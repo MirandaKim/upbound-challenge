@@ -1,0 +1,26 @@
+@import 'src/scss/_variables';
+
+.skip-to-content {
+  /*display*/
+  display: block;
+  /*position*/
+  z-index: 1000;
+  position: absolute;
+  /*spacing*/
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  /*colors*/
+  background-color: $colorOrange;
+  color: $colorWhite;
+  /*transform*/
+  transform: translateX(-100%);
+  /*transition*/
+  transition-property: transform;
+  transition-duration: 500ms;
+
+  &:focus {
+    transform: translateX(0);
+  }
+}
