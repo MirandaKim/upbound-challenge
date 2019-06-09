@@ -33,6 +33,7 @@ import { DateSelectorComponent } from './components/date-selector/date-selector.
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { CardWorkflowComponent } from './components/cards/card-workflow/card-workflow.component';
 import { OrdinalPipe } from './pipes/ordinal.pipe';
+import { SkipToContentComponent } from './components/skip-to-content/skip-to-content.component';
 
 
 @NgModule({
@@ -56,7 +57,8 @@ import { OrdinalPipe } from './pipes/ordinal.pipe';
     DateSelectorComponent,
     SpinnerComponent,
     CardWorkflowComponent,
-    OrdinalPipe
+    OrdinalPipe,
+    SkipToContentComponent
   ],
   imports: [
     BrowserModule,
