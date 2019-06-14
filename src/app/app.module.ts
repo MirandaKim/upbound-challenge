@@ -34,6 +34,7 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
 import { CardWorkflowComponent } from './components/cards/card-workflow/card-workflow.component';
 import { OrdinalPipe } from './pipes/ordinal.pipe';
 import { SkipToContentComponent } from './components/skip-to-content/skip-to-content.component';
+import { TruncateWithSuffixPipe } from './pipes/truncate-with-suffix.pipe';
 
 
 @NgModule({
@@ -58,7 +59,8 @@ import { SkipToContentComponent } from './components/skip-to-content/skip-to-con
     SpinnerComponent,
     CardWorkflowComponent,
     OrdinalPipe,
-    SkipToContentComponent
+    SkipToContentComponent,
+    TruncateWithSuffixPipe
   ],
   imports: [
     BrowserModule,
