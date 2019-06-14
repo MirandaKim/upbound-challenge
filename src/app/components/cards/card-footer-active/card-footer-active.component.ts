@@ -11,6 +11,9 @@ export class CardFooterActiveComponent implements OnInit {
   @Input()
   card: Card;
 
+  @Input()
+  totalRevenueCurrency: string = 'USD';
+
   constructor() { }
 
   ngOnInit() {

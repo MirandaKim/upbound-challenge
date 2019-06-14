@@ -1,11 +1,11 @@
 <div class="card-states">
   <div class="row">
-    <div class="col"><span class="prefix prefix--currency">$</span>5000 / Month</div>
+    <div class="col"><span class="prefix prefix--currency">{{ perMonthCurrencySymbol }}</span>{{ perMonthValue | truncateWithSuffix: 5 }} / Month</div>
     <div class="col text-right card-status__workflow">
       <app-card-workflow [card]="card" [cardEditable]="cardEditable" (menuToggle)="onMenuToggle($event)"></app-card-workflow>
     </div>
   </div>
   <div class="card-states__progress progress">
-    <div class="card-states__progress-bar progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+    <div class="card-states__progress-bar progress-bar" role="progressbar" [ngStyle]="{ width: progressBarPercent + '%' }" attr.aria-valuenow="{{ progressBarPercent }}" aria-valuemin="0" aria-valuemax="100"></div>
   </div>
 </div>

@@ -4,14 +4,12 @@
   [ngClass]="{
     'card--editable': cardEditable == true || cardMenusOpenCt > 0
   }">
-  <!-- <img class="card__feature-image card-img-top" alt="" src="{{ card.primaryMediaUrl }}"> -->
   <img class="card__feature-image card-img-top lazyload--fade-in"
   defaultImage=""
   [lazyLoad]="card.primaryMediaUrl"
   [offset]="lazyLoadOffset">
   <div class="card__body card-body">
     <h5 class="card__title card-title">{{ card.cardTitle }}</h5>
-    <!-- <h5 class="card__title card-title">{{ testTitle }}</h5> -->
     <div class="card__menu-wrapper">
       <app-card-menu
         (menuToggle)="onMenuBottonClick($event)"
@@ -20,7 +18,9 @@
         ></app-card-menu>
     </div>
     <div class="card__status-wrapper">
-      <app-card-status [card]="card" [cardEditable]="cardEditable || cardMenusOpenCt > 0" (menuToggled)="onStatusMenuButtonClick($event)"></app-card-status>
+      <app-card-status [card]="card"
+      [cardEditable]="cardEditable || cardMenusOpenCt > 0"
+      (menuToggled)="onStatusMenuButtonClick($event)"></app-card-status>
     </div>
   </div>
   <div class="card__footer">

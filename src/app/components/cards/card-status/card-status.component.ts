@@ -21,6 +21,15 @@ export class CardStatusComponent implements OnInit {
   @Output()
   menuToggled = new EventEmitter <boolean>();
 
+  protected perMonthValue: number = 5000;
+  protected perMonthCurrencySymbol: string = '$';
+
+  protected progressBarPercent: number = 0;
+
+  private cardWorkflowProperty = 'currentWorkflow';
+  private activeWorkflowValue = 'active';
+
+
   /********************************************/
   /*   # Constructor                         */
   /******************************************/
@@ -32,6 +41,11 @@ export class CardStatusComponent implements OnInit {
   /******************************************/
 
   ngOnInit() {
+    this.setBarPercentage();
+  }
+
+  protected setBarPercentage(){
+    this.progressBarPercent = this.card[this.cardWorkflowProperty] === this.activeWorkflowValue ? 100 : 0;
   }
 
   protected onMenuToggle(isOpen: boolean){
