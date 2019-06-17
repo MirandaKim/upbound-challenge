@@ -356,7 +356,7 @@ export class CardManagerService {
         ],
         "currentWorkflow": "expired",
         "campaignEndDate": "2017-02-28T18:59:59.999Z",
-        "id": "c3d444c3d2774263ab93598fb0705374",
+        "id": "c3d444c3d2774263ab93598fb07053745",
         "userId": "5d6117b9ae114c83bb53cfdd8c722e78",
         "createdAt": "2017-02-06T11:14:45.131Z",
         "updatedAt": "2017-02-06T11:16:44.344Z"
@@ -395,7 +395,7 @@ export class CardManagerService {
         ],
         "currentWorkflow": "declined",
         "campaignEndDate": "2017-02-28T18:59:59.999Z",
-        "id": "c3d444c3d2774263ab93598fb0705374",
+        "id": "c3d444c3d2774263ab93598fb0705376",
         "userId": "5d6117b9ae114c83bb53cfdd8c722e78",
         "createdAt": "2017-02-06T11:14:45.131Z",
         "updatedAt": "2017-02-06T11:16:44.344Z"
@@ -434,7 +434,7 @@ export class CardManagerService {
         ],
         "currentWorkflow": "active",
         "campaignEndDate": "2017-02-28T18:59:59.999Z",
-        "id": "c3d444c3d2774263ab93598fb0705374",
+        "id": "c3d444c3d2774263ab93598fb0705377",
         "userId": "5d6117b9ae114c83bb53cfdd8c722e78",
         "createdAt": "2017-02-06T11:14:45.131Z",
         "updatedAt": "2017-02-06T11:16:44.344Z"
@@ -473,7 +473,7 @@ export class CardManagerService {
         ],
         "currentWorkflow": "active",
         "campaignEndDate": "2017-02-28T18:59:59.999Z",
-        "id": "c3d444c3d2774263ab93598fb0705374",
+        "id": "c3d444c3d2774263ab93598fb0705378",
         "userId": "5d6117b9ae114c83bb53cfdd8c722e78",
         "createdAt": "2017-02-06T11:14:45.131Z",
         "updatedAt": "2017-02-06T11:16:44.344Z"
@@ -512,7 +512,7 @@ export class CardManagerService {
         ],
         "currentWorkflow": "active",
         "campaignEndDate": "2017-02-28T18:59:59.999Z",
-        "id": "c3d444c3d2774263ab93598fb0705374",
+        "id": "c3d444c3d2774263ab93598fb0705379",
         "userId": "5d6117b9ae114c83bb53cfdd8c722e78",
         "createdAt": "2017-02-06T11:14:45.131Z",
         "updatedAt": "2017-02-06T11:16:44.344Z"
