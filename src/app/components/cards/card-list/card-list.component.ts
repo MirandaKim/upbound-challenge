@@ -32,6 +32,7 @@ This list can be filtered at the component level.
     > Configs
     > Watch Filters
     > Watch Cards
+    > Track By
   # Private
     > Apply Filter Change
   # On Destroy
@@ -45,6 +46,8 @@ This list can be filtered at the component level.
   styleUrls: ['./card-list.component.scss']
 })
 export class CardListComponent implements OnInit {
+
+  protected modCt: number = 0;
 
   /********************************************/
   /*   # Properties                          */
@@ -180,6 +183,20 @@ export class CardListComponent implements OnInit {
     this.cardUpdateWatch = this.cardManagerService.cardsUpdating.subscribe((res: number) => {
       this.awaitingApiResponseCt = res;
     });
+  }
+
+  /****************
+  *  > Track By   *
+  ****************/
+
+  /*
+  Track By State
+  Use as to track each card while looping through the list of cards.
+  This is to keep all cards from re-renderingn when one is updated.
+  */
+  protected trackByState(i, item){
+    let state = item.id + item.currentWorkflow;
+    return state;
   }
 
   /********************************************/
