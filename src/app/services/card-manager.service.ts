@@ -319,7 +319,7 @@ export class CardManagerService {
         ],
         "currentWorkflow": "paused",
         "campaignEndDate": "2017-02-28T18:59:59.999Z",
-        "id": "c3d444c3d2774263ab93598fb0705374",
+        "id": "c3d444c3d2774263ab93598fb0705371",
         "userId": "5d6117b9ae114c83bb53cfdd8c722e78",
         "createdAt": "2017-02-06T11:14:45.131Z",
         "updatedAt": "2017-02-06T11:16:44.344Z"
@@ -356,7 +356,7 @@ export class CardManagerService {
         ],
         "currentWorkflow": "expired",
         "campaignEndDate": "2017-02-28T18:59:59.999Z",
-        "id": "c3d444c3d2774263ab93598fb07053745",
+        "id": "c3d444c3d2774263ab93598fb07053742",
         "userId": "5d6117b9ae114c83bb53cfdd8c722e78",
         "createdAt": "2017-02-06T11:14:45.131Z",
         "updatedAt": "2017-02-06T11:16:44.344Z"
@@ -395,7 +395,7 @@ export class CardManagerService {
         ],
         "currentWorkflow": "declined",
         "campaignEndDate": "2017-02-28T18:59:59.999Z",
-        "id": "c3d444c3d2774263ab93598fb0705376",
+        "id": "c3d444c3d2774263ab93598fb0705373",
         "userId": "5d6117b9ae114c83bb53cfdd8c722e78",
         "createdAt": "2017-02-06T11:14:45.131Z",
         "updatedAt": "2017-02-06T11:16:44.344Z"
@@ -434,7 +434,7 @@ export class CardManagerService {
         ],
         "currentWorkflow": "active",
         "campaignEndDate": "2017-02-28T18:59:59.999Z",
-        "id": "c3d444c3d2774263ab93598fb0705377",
+        "id": "c3d444c3d2774263ab93598fb0705374",
         "userId": "5d6117b9ae114c83bb53cfdd8c722e78",
         "createdAt": "2017-02-06T11:14:45.131Z",
         "updatedAt": "2017-02-06T11:16:44.344Z"
@@ -473,7 +473,7 @@ export class CardManagerService {
         ],
         "currentWorkflow": "active",
         "campaignEndDate": "2017-02-28T18:59:59.999Z",
-        "id": "c3d444c3d2774263ab93598fb0705378",
+        "id": "c3d444c3d2774263ab93598fb0705375",
         "userId": "5d6117b9ae114c83bb53cfdd8c722e78",
         "createdAt": "2017-02-06T11:14:45.131Z",
         "updatedAt": "2017-02-06T11:16:44.344Z"
@@ -512,7 +512,159 @@ export class CardManagerService {
         ],
         "currentWorkflow": "active",
         "campaignEndDate": "2017-02-28T18:59:59.999Z",
+        "id": "c3d444c3d2774263ab93598fb0705376",
+        "userId": "5d6117b9ae114c83bb53cfdd8c722e78",
+        "createdAt": "2017-02-06T11:14:45.131Z",
+        "updatedAt": "2017-02-06T11:16:44.344Z"
+      },
+      {
+        "campaignId": "CN201701182",
+        "cardTitle": "title--3",
+        "cardDescription": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, ",
+        "primaryMediaUrl": "https://loremflickr.com/750/400",
+        "cardStartDate": "0001-01-01T00:00:00Z",
+        "cardEndDate": "0001-01-01T00:00:00Z",
+        "availableQuantity": 32,
+        "likes": 10,
+        "shares": 20,
+        "views": 30,
+        "subscribers": 0,
+        "unSubscribers": 0,
+        "open": 0,
+        "discard": 0,
+        "totalRevenue": 0,
+        "listOfPlans": [
+          {
+            "price": { "amount": "47800", "currency": "JPY", "currencySymbol": "¥" }
+          }
+        ],
+        "locations": [
+          {
+            "latitude": "",
+            "longitude": "",
+            "area": "",
+            "city": "",
+            "country": "",
+            "placeId": "ChIJx8SRZhAEGTkRwsZ7Hq_dJPs",
+            "description": "Seattle, Washington, USA"
+          }
+        ],
+        "currentWorkflow": "active",
+        "campaignEndDate": "2017-02-28T18:59:59.999Z",
+        "id": "c3d444c3d2774263ab93598fb0705377",
+        "userId": "5d6117b9ae114c83bb53cfdd8c722e78",
+        "createdAt": "2017-02-06T11:14:45.131Z",
+        "updatedAt": "2017-02-06T11:16:44.344Z"
+      },
+      {
+        "campaignId": "CN201701188",
+        "cardTitle": "title--4",
+        "cardDescription": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, ",
+        "primaryMediaUrl": "https://loremflickr.com/750/400",
+        "cardStartDate": "0001-01-01T00:00:00Z",
+        "cardEndDate": "0001-01-01T00:00:00Z",
+        "availableQuantity": 32,
+        "likes": 10,
+        "shares": 20,
+        "views": 30,
+        "subscribers": 0,
+        "unSubscribers": 0,
+        "open": 0,
+        "discard": 0,
+        "totalRevenue": 0,
+        "listOfPlans": [
+          { "price": { "amount": 8900, "currency": "USD", "currencySymbol": "$" } }
+        ],
+        "locations": [
+          {
+            "latitude": "",
+            "longitude": "",
+            "area": "",
+            "city": "",
+            "country": "",
+            "placeId": "ChIJx8SRZhAEGTkRwsZ7Hq_dJPs",
+            "description": "Seattle, Washington, USA"
+          }
+        ],
+        "currentWorkflow": "active",
+        "campaignEndDate": "2017-02-28T18:59:59.999Z",
+        "id": "c3d444c3d2774263ab93598fb0705378",
+        "userId": "5d6117b9ae114c83bb53cfdd8c722e78",
+        "createdAt": "2017-02-06T11:14:45.131Z",
+        "updatedAt": "2017-02-06T11:16:44.344Z"
+      },
+      {
+        "campaignId": "CN201701188",
+        "cardTitle": "title--5",
+        "cardDescription": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, ",
+        "primaryMediaUrl": "https://loremflickr.com/750/400",
+        "cardStartDate": "0001-01-01T00:00:00Z",
+        "cardEndDate": "0001-01-01T00:00:00Z",
+        "availableQuantity": 32,
+        "likes": 10,
+        "shares": 20,
+        "views": 30,
+        "subscribers": 0,
+        "unSubscribers": 0,
+        "open": 0,
+        "discard": 0,
+        "totalRevenue": 0,
+        "listOfPlans": [
+          {
+            "price": { "amount": "3500", "currency": "CAD", "currencySymbol": "$" }
+          }
+        ],
+        "locations": [
+          {
+            "latitude": "",
+            "longitude": "",
+            "area": "",
+            "city": "",
+            "country": "",
+            "placeId": "ChIJx8SRZhAEGTkRwsZ7Hq_dJPs",
+            "description": "Seattle, Washington, USA"
+          }
+        ],
+        "currentWorkflow": "terminated",
+        "campaignEndDate": "2017-02-28T18:59:59.999Z",
         "id": "c3d444c3d2774263ab93598fb0705379",
+        "userId": "5d6117b9ae114c83bb53cfdd8c722e78",
+        "createdAt": "2017-02-06T11:14:45.131Z",
+        "updatedAt": "2017-02-06T11:16:44.344Z"
+      },
+      {
+        "campaignId": "CN201701188",
+        "cardTitle": "title--6",
+        "cardDescription": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, ",
+        "primaryMediaUrl": "https://loremflickr.com/750/400",
+        "cardStartDate": "0001-01-01T00:00:00Z",
+        "cardEndDate": "0001-01-01T00:00:00Z",
+        "availableQuantity": 32,
+        "likes": 10,
+        "shares": 20,
+        "views": 30,
+        "subscribers": 0,
+        "unSubscribers": 0,
+        "open": 0,
+        "discard": 0,
+        "totalRevenue": 0,
+        "listOfPlans": [
+          { "price": { "amount": 8900, "currency": "USD", "currencySymbol": "$" } }
+        ],
+        "locations": [
+          {
+            "latitude": "",
+            "longitude": "",
+            "area": "",
+            "city": "",
+            "country": "",
+            "placeId": "ChIJx8SRZhAEGTkRwsZ7Hq_dJPs",
+            "description": "Seattle, Washington, USA"
+          }
+        ],
+        "currentWorkflow": "saved",
+        "campaignEndDate": "2017-02-28T18:59:59.999Z",
+        "id": "c3d444c3d2774263ab93598fb0705310",
         "userId": "5d6117b9ae114c83bb53cfdd8c722e78",
         "createdAt": "2017-02-06T11:14:45.131Z",
         "updatedAt": "2017-02-06T11:16:44.344Z"
