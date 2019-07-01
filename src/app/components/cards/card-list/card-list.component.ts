@@ -48,6 +48,7 @@ This list can be filtered at the component level.
 export class CardListComponent implements OnInit {
 
   protected modCt: number = 0;
+  protected displayList = {};
 
   /********************************************/
   /*   # Properties                          */
@@ -224,6 +225,7 @@ export class CardListComponent implements OnInit {
   Apply any and all valid filters to the filtered card list.
   */
   private applyFilters(){
+    // this.displayList = this.filterListService.getDisplayList(this.cardList_full, 'id');
     this.cardList_filtered = this.filterListService.filterList(this.cardList_full);
   }
 

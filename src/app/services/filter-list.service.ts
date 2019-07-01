@@ -21,12 +21,23 @@ Service to filter a list of items (objects).
 
  1. Provide a list of properties from that are allowed to be used as filters
     EX: filterListService.setConfig(['id', 'name', 'state']);
+
  2. Apply new/changed filters by passing in a filter object (filter.interface.ts) provided by the FiltersService output (filter.service.ts).
     If the filtered property is considered valid (in list of allowed properties), the filter value will be stored and ready to use for filtering items.
     EX: filterListService.applyFilter({id: '0', property: 'name', value: 'Hello World', valueType: 'string', condition: 'includes', setLocation: 'search-filter'}, [...])
- 3. Get a list of filtered items by passing your full list to be filtered into the filterList method.
+
+ 3a. Get a list of filtered items by passing your full list to be filtered into the filterList method.
     Those items will be filtered based on the filter critera stored in the instance of this object.
     Ex: filterListService.filterList([{name: "Hello World", id: "12345", state: "live"}, {name: "Hello Again", id: "12346", state: "paused"}])
+    Ex result: [{name: "Hello Again", id: "12346", state: "paused"}]
+
+    [OR]
+
+ 3b. Get a object of the item ids and whether or not the item should be displayed or hidden
+    as determined by the filter results.
+    Ex: filterListService.getDisplayList([{name: "Hello World", id: "12345", state: "live"}, {name: "Hello Again", id: "12346", state: "paused"}], 'id');
+    Ex result: {'12345': true, '12346': false}
+    *** CAUTION: this will only work as intended if all ids are unique to each item.
 
 *****************
 *   Contents:   *
@@ -58,6 +69,10 @@ interface FilterInfo {
   itemProperty: string; // property to filter (e.g. "name")
   condition: string; // condition to filter by (e.g. "match")
   value: string; // value to filter with (e.g. "Hello World")
+}
+
+interface DisplayList {
+  [key: string]: boolean
 }
 
 export class FilterListService {
@@ -146,6 +161,48 @@ export class FilterListService {
       }
     }
     return filteredItems;
+  }
+
+  /*
+  Get Display List:
+  Get a object of the item ids and whether or not the item should be displayed or hidden
+  as determined by the filter results.
+
+  *************  This only works properly if the item id are unique values.
+  *  Caution  *  This uses the ids to create object properties with boolean values,
+  *************  and if items share ids they will also share results despite their actual values.
+
+  */
+  public getDisplayList(fullItemList: Object[], idProperty: string = 'id'): DisplayList{
+    /*
+    Get the filtered list of items
+    */
+    let filteredItems = this.filterList(fullItemList);
+    let filtersApplied = filteredItems.length !== fullItemList.length;
+    /*
+    Loop through the full list of items to create the display list.
+    Default the display values to false (hidden) if the filters had any effect on the full list,
+    else set all displays to true (because nothing has been filtered out).
+    */
+    let displayList: DisplayList = {};
+    for(let i=0; i<fullItemList.length; i++){
+      let id = fullItemList[i][idProperty];
+      /* set all displays to true if no filters were applied,
+      else default to false (hidden) */
+      displayList[id] = !filtersApplied;
+    }
+    /*
+    If filters were applied,
+    loop through each of the filtered items and set their display to true
+    in the display list.
+    */
+    if(filtersApplied){
+      for(let i=0; i<filteredItems.length; i++){
+        let id = filteredItems[i][idProperty];
+        displayList[id] = true;
+      }
+    }
+    return displayList;
   }
 
   /********************************************/
@@ -250,7 +307,7 @@ export class FilterListService {
   */
   private filterByCondition_isNot(filteredItems, filterProperty): Object[]{
     let itemProperty = this.filterDetails[filterProperty]['itemProperty'];
-    return filteredItems.filter((item) => {
+    return filteredItems.filter((item, i) => {
       return item[itemProperty] != this.filterDetails[filterProperty].value;
     });
   }

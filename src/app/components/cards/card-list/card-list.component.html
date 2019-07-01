@@ -3,6 +3,12 @@
     <li *ngFor="let card of cardList_filtered; trackBy: trackByState" class="card-list__card card-list__card--more-padding-at-small">
       <app-card [card]="card"></app-card>
     </li>
+    <!-- <li *ngFor="let card of cardList_full; trackBy: trackByState" class="card-list__card card-list__card--more-padding-at-small"
+    [ngClass]="{
+      'hidden': displayList[card.id] === false
+    }"> 
+      <app-card [card]="card"></app-card>
+    </li> -->
     <li class="card-list__card card-list__card--more-padding-at-small">
       <app-create-card></app-create-card>
     </li>
