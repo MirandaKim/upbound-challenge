@@ -2,6 +2,7 @@ import { Injectable, EventEmitter, Output } from '@angular/core';
 import { CardsService } from 'src/app/services/cards.service';
 import { Card } from 'src/app/interfaces/card.interface';
 import { CrudResponse } from 'src/app/interfaces/crud-response.interface';
+import { isDevMode } from '@angular/core';
 
 /**********************************************************/
 /*                                                       */
@@ -19,9 +20,10 @@ modify the values in the referene to the list of cards, then trigger this object
 *   Testing:   *
 ****************
 
-- NOTE: When the testing property is set to true,
+- NOTE: When the testing property is set to true and
+  the site is running in development mode (not production)
   a list of test cards will be used for the list of cards
-  when the API can't be accessed.
+  when the API can't be accessed. (see method this.getTestData() for the JSON data)
 
 *****************
 *   Contents:   *
@@ -211,10 +213,11 @@ export class CardManagerService {
     }, (error) => {
       console.error(error);
       /*
-      If testing is set to true, emit a list of test data,
+      If testing is set to true & site is in dev mode,
+      emit a list of test data,
       else emit an empty array.
       */
-      if(this.testing){
+      if(this.testing && isDevMode()){
         this.cardList = this.getTestData(); // if testing is set to true, use the test card values.
         setTimeout(() => {
           this.onCardListReceived(); // emit test data
