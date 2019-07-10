@@ -10,7 +10,7 @@ import $ from 'jquery';
 /******************************************************/
 /*
 
-  Header component. Contains the main navigation for the site.
+  Site header component. Contains the main navigation for the site.
 
 
   ** Different Headers for Different Sizes **

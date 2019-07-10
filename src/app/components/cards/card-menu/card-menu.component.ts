@@ -3,6 +3,41 @@ import { Card } from 'src/app/interfaces/card.interface';
 import { CardEditerComponent } from 'src/app/components/abstracts/card-editer/card-editer.component';
 import { CardManagerService } from 'src/app/services/card-manager.service';
 
+/**********************************************************/
+/*                                                       */
+/*   Card Menu                                          */
+/*                                                     */
+/******************************************************/
+/*
+
+  Menu providing options/links for individual cards (e.g. edit, publish...)
+
+  INCOMPLETE:
+  Some of the card menu features have not been completed. 
+
+*****************
+*   Contents:   *
+*****************
+
+  # Interfaces
+  # Component
+  # Properties
+    > Menu Events
+    > Card
+    > Menu Item
+  # Constructor
+  # On Init
+  # Protected
+    > Disabled Checks
+    > On Open Change
+    > On Item Click
+  # Private
+    > Publish Card
+    > Share Card
+    > Delete Card
+
+******************/
+
 /********************************************/
 /*   # Interfaces                          */
 /******************************************/
@@ -17,7 +52,7 @@ interface cardMenuItem {
 }
 
 /********************************************/
-/*   # Conponent                           */
+/*   # Component                           */
 /******************************************/
 
 @Component({

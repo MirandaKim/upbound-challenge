@@ -4,7 +4,7 @@ import { CrudService } from 'src/app/services/crud.service';
 
 /**********************************************************/
 /*                                                       */
-/*   Cards Service                                      */
+/*   Cards Service (cards.service.ts)                   */
 /*                                                     */
 /******************************************************/
 /*

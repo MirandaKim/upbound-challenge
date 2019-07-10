@@ -3,7 +3,7 @@ import { FilterConditions } from 'src/app/enums/filter-conditions.enum';
 
 /**********************************************************/
 /*                                                       */
-/*   Filter List Service                                */
+/*   Filter List Service (filter-list.service.ts)       */
 /*                                                     */
 /******************************************************/
 /*

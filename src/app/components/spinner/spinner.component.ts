@@ -14,7 +14,8 @@ This component can be customized by the parent component by including some attri
 *   Contents:   *
 *****************
 
-  # Inputs
+  # Properties
+    > Inputs
   # Constructor
   # On Init
 
@@ -29,8 +30,12 @@ This component can be customized by the parent component by including some attri
 export class SpinnerComponent implements OnInit {
 
   /********************************************/
-  /*   # Inputs                              */
+  /*   # Properties                          */
   /******************************************/
+
+  /*************
+  *  > Inputs  *
+  *************/
 
   @Input('color')
   spinnerColor: string = 'medium-grey'; // the color of the svg spinner

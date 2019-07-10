@@ -6,7 +6,7 @@ import { Campaign } from 'src/app/interfaces/campaign.interface';
 
 /**********************************************************/
 /*                                                       */
-/*   Campaigns Service                                  */
+/*   Campaigns Service (campaigns.service.ts)           */
 /*                                                     */
 /******************************************************/
 /*

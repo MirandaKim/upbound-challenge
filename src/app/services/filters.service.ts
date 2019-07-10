@@ -3,7 +3,7 @@ import { Filter } from 'src/app/interfaces/filter.interface';
 
 /**********************************************************/
 /*                                                       */
-/*   Filters Service                                    */
+/*   Filters Service (filters.service.ts)               */
 /*                                                     */
 /******************************************************/
 /*

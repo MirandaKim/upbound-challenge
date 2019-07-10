@@ -6,7 +6,7 @@ import { isDevMode } from '@angular/core';
 
 /**********************************************************/
 /*                                                       */
-/*   Card Manager Service                               */
+/*   Card Manager Service (card-manager.service.ts)     */
 /*                                                     */
 /******************************************************/
 /*

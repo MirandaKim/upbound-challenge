@@ -1,9 +1,21 @@
 @import "src/scss/_variables";
 
+/********************************************/
+/*   # Variables                           */
+/******************************************/
+
 // WARNING: Value dependent on the menu's position on the screen.
 $sm_headerAllotment: 9rem;
 
+/********************************************/
+/*   # Status Menu                         */
+/******************************************/
+
 .status-menu__menu {
+
+  /*****************
+  *  > Max Value   *
+  *****************/
 
   &--max-height {
     max-height: calc(100vh - #{$sm_headerAllotment}); // prevent menu from going off screen
