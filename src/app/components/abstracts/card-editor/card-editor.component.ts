@@ -4,7 +4,7 @@ import { CardManagerService } from 'src/app/services/card-manager.service';
 
 /**********************************************************/
 /*                                                       */
-/*   Card Editer                                        */
+/*   Card editor                                        */
 /*                                                     */
 /******************************************************/
 /*
@@ -21,7 +21,7 @@ Abstract class for components involved in editing/updating card data.
 
 ******************/
 
-export abstract class CardEditerComponent {
+export abstract class CardeditorComponent {
 
   /********************************************/
   /*   # Properties                          */

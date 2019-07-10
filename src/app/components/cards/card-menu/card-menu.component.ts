@@ -1,6 +1,6 @@
 import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
 import { Card } from 'src/app/interfaces/card.interface';
-import { CardEditerComponent } from 'src/app/components/abstracts/card-editer/card-editer.component';
+import { CardeditorComponent } from 'src/app/components/abstracts/card-editor/card-editor.component';
 import { CardManagerService } from 'src/app/services/card-manager.service';
 
 /**********************************************************/
@@ -60,7 +60,7 @@ interface cardMenuItem {
   templateUrl: './card-menu.component.html',
   styleUrls: ['./card-menu.component.scss']
 })
-export class CardMenuComponent extends CardEditerComponent implements OnInit {
+export class CardMenuComponent extends CardeditorComponent implements OnInit {
 
   /********************************************/
   /*   # Properties                          */

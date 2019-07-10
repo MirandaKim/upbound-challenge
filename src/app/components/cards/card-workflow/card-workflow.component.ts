@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Card } from 'src/app/interfaces/card.interface';
 import { CardManagerService } from 'src/app/services/card-manager.service';
-import { CardEditerComponent } from 'src/app/components/abstracts/card-editer/card-editer.component';
+import { CardeditorComponent } from 'src/app/components/abstracts/card-editor/card-editor.component';
 
 /**********************************************************/
 /*                                                       */
@@ -52,7 +52,7 @@ interface WorkflowMenuOption {
   templateUrl: './card-workflow.component.html',
   styleUrls: ['./card-workflow.component.scss']
 })
-export class CardWorkflowComponent extends CardEditerComponent implements OnInit {
+export class CardWorkflowComponent extends CardeditorComponent implements OnInit {
 
   /********************************************/
   /*   # Properties                          */

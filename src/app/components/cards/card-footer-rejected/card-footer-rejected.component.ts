@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Card } from 'src/app/interfaces/card.interface';
 import { CardManagerService } from 'src/app/services/card-manager.service';
-import { CardEditerComponent } from 'src/app/components/abstracts/card-editer/card-editer.component';
+import { CardeditorComponent } from 'src/app/components/abstracts/card-editor/card-editor.component';
 
 /**********************************************************/
 /*                                                       */
@@ -28,7 +28,7 @@ This is to be used in place of the original card footer component, not in additi
   templateUrl: './card-footer-rejected.component.html',
   styleUrls: ['./card-footer-rejected.component.scss']
 })
-export class CardFooterRejectedComponent extends CardEditerComponent implements OnInit {
+export class CardFooterRejectedComponent extends CardeditorComponent implements OnInit {
 
   /********************************************/
   /*   # Constructor                          */
