@@ -84,6 +84,17 @@ export class CardWorkflowComponent extends CardeditorComponent implements OnInit
   *  > Menu Options   *
   ********************/
 
+  protected workflowLabels = {
+    saved: 'Saved',
+    pending: 'Pending',
+    active: 'Live',
+    paused: 'Paused',
+    expired: 'Expired',
+    declined: 'Rejected',
+    terminated: 'Terminated'
+  }
+
+
   protected workflowMenuOptions: WorkflowOptions = {
     active: [
       {

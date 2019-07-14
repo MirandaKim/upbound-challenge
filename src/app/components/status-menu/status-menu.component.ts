@@ -33,9 +33,6 @@ See components/abstracts/menu-filter/menu-filter.component.ts for more info.
     > Services
   # Constructor
   # On Init
-  # Protected
-    > Get Card Status List
-  # For Testing
 
 ******************/
 
@@ -59,23 +56,46 @@ export class StatusMenuComponent extends MenuFilterComponent implements OnInit {
   *  > Status Info   *
   *******************/
 
-  protected optionsList: CardStatus[];
-  protected statusList: string[] = [
-    "saved",
-    "pending",
-    "active",
-    "paused",
-    "expired",
-    "declined",
-    "terminated"
-  ];
+  /*
+  List of workflow options including thier value and thier label.
+  */
+  protected optionsList: CardStatus[] = [
+      {
+        label: "Saved",
+        workflow: "saved"
+      },
+      {
+        label: "Pending",
+        workflow: "pending"
+      },
+      {
+        label: "Live",
+        workflow: "active"
+      },
+      {
+        label: "Paused",
+        workflow: "paused"
+      },
+      {
+        label: "Expired",
+        workflow: "expired"
+      },
+      {
+        label: "Rejected",
+        workflow: "declined"
+      },
+      {
+        label: "Terminated",
+        workflow: "terminated"
+      }
+  ]
 
   /********************
   *  > Menu Configs   *
   ********************/
 
   @Input('showAllLabel')
-  protected optionShowAllLabel: string = "All"; // Label for the menu item with represents an upset filter (e.g. "All")
+  public optionShowAllLabel: string = "All"; // Label for the menu item with represents an upset filter (e.g. "All")
 
   protected optionLabelProperty: string = 'label'; // name of property that holds the value that will be used as the option label
   protected optionValueProperty: string = 'workflow'; // property in the campaign data to ge the value for the filter
@@ -104,32 +124,9 @@ export class StatusMenuComponent extends MenuFilterComponent implements OnInit {
   /******************************************/
 
   ngOnInit() {
-    /*
-    Get Campaign Data
-    */
-    this.optionsList = this.getCardStatusList(); // not the actual data--use instead of api for testing
     this.createMenu(); // this creates the menu items and sets up the filter events
   }
 
-  /********************************************/
-  /*   # Protected                           */
-  /******************************************/
-
-  /****************************
-  *  > Get Card Status List   *
-  ****************************/
-
-  protected getCardStatusList(): CardStatus[]{
-    let formattedList: CardStatus[] = [];
-    /*Loop through each status value and create a formatted list of items*/
-    for (let i=0; i<this.statusList.length; i++){
-      formattedList.push({
-        label: this.statusList[i].charAt(0).toUpperCase() + this.statusList[i].slice(1), // capitalize status value for label
-        workflow: this.statusList[i]
-      });
-    }
-    return formattedList;
-  }
 
 
 }
