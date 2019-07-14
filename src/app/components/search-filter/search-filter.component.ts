@@ -55,6 +55,12 @@ export class SearchFilterComponent extends FiltererComponent implements OnInit {
   *  > Search Bar Config   *
   *************************/
 
+  /* Create inline search bar that displays when hovered.
+    When set to false, there will be no inline search bar created.
+    When set to true, a functional inline search bar will be created.*/
+  @Input()
+  protected allowInlineSearchBar: boolean = true;
+
   @Input('placeholder')
   protected inputPlaceHolder: string = 'search'; // placeholder value for search bar input field
 

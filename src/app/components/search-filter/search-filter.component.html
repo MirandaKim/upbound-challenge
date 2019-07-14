@@ -3,12 +3,14 @@
   'search-filter--active': inputValue.length > 0,
   'search-filter--bar-hidden': inputValue.length === 0
 }">
-  <div class="search-filter__bar">
-    <input id="card-search" type="text" [value]="inputValue" (input)="onTextInput($event)" placeholder="{{inputPlaceHolder}}" class="search-filter__input">
-    <button class="search-filter__cancel" (click)="onCancelClick()">
-      <app-icon iconType="x" iconSize="x-small" iconColorOnHover="red" iconColor="orange"></app-icon>
-    </button>
-  </div>
+  <ng-template [ngIf]="allowInlineSearchBar">
+    <div class="search-filter__bar">
+      <input id="card-search" type="text" [value]="inputValue" (input)="onTextInput($event)" placeholder="{{inputPlaceHolder}}" class="search-filter__input">
+      <button class="search-filter__cancel" (click)="onCancelClick()">
+        <app-icon iconType="x" iconSize="x-small" iconColorOnHover="red" iconColor="orange"></app-icon>
+      </button>
+    </div>
+  </ng-template>
   <div class="search-filter__icon">
     <app-icon iconType="search" iconColor="dark-grey" iconSize="x-large"></app-icon>
   </div>
