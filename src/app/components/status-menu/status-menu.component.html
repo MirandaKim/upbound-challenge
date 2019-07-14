@@ -9,7 +9,7 @@
         <app-icon iconType="chevron-down" iconSize="x-small" iconColor="dark-grey"></app-icon>
       </span>
         <span>
-          Pending
+          {{ menuItems[selectedItemIndex].label }}
         </span>
       </button>
     </ng-template>
@@ -21,7 +21,7 @@
           <app-icon iconType="list" iconSize="large" iconColor="dark-grey"></app-icon>
         </span>
         <span>
-          Pending
+          {{ menuItems[selectedItemIndex].label }}
         </span>
       </button>
     </ng-template>

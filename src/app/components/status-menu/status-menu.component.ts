@@ -74,9 +74,11 @@ export class StatusMenuComponent extends MenuFilterComponent implements OnInit {
   *  > Menu Configs   *
   ********************/
 
+  @Input('showAllLabel')
+  protected optionShowAllLabel: string = "All"; // Label for the menu item with represents an upset filter (e.g. "All")
+
   protected optionLabelProperty: string = 'label'; // name of property that holds the value that will be used as the option label
   protected optionValueProperty: string = 'workflow'; // property in the campaign data to ge the value for the filter
-  protected optionShowAllLabel: string = "All"; // Label for the menu item with represents an upset filter (e.g. "All")
 
   /**********************
   *  > Filter Configs   *
