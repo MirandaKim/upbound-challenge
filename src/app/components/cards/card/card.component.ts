@@ -8,7 +8,7 @@ import { Card } from 'src/app/interfaces/card.interface';
 /******************************************************/
 /*
 
-Componet for a single card.
+Component for a single card.
 
 *****************
 *   Contents:   *
