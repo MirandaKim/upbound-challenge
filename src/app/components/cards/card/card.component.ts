@@ -1,6 +1,34 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Card } from 'src/app/interfaces/card.interface';
 
+/**********************************************************/
+/*                                                       */
+/*   Card                                               */
+/*                                                     */
+/******************************************************/
+/*
+
+Componet for a single card.
+
+*****************
+*   Contents:   *
+*****************
+
+  # Properties
+    > Card Data
+    > Card States
+    > Lazy Images
+  # Constructor
+  # On Init
+  # User Events
+    > On Mouse Enter
+    > On Mouse Leave
+    > On Menu Button Click
+  # Private
+    > Menu is Toggled
+
+******************/
+
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
@@ -12,18 +40,25 @@ export class CardComponent implements OnInit {
   /*   # Properties                          */
   /******************************************/
 
-  @Input() card: Card;
+  /*****************
+  *  > Card Data   *
+  *****************/
 
-  public testTitle = "Create a site no Programming skills required in 2 weeks.";
+  @Input()
+  public card: Card;
 
-  protected cardEditable: boolean = false;
-  protected cardMenusOpenCt: number = 0;
+  /*******************
+  *  > Card States   *
+  *******************/
+
+  public cardEditable: boolean = false;
+  public cardMenusOpenCt: number = 0;
 
   /*******************
   *  > Lazy Images   *
   *******************/
 
-  protected lazyLoadOffset: number = 300; // how far before the image reaches the viewport will it load.
+  public lazyLoadOffset: number = 300; // how far before the image reaches the viewport will it load.
 
   /********************************************/
   /*   # Constructor                         */
@@ -35,19 +70,17 @@ export class CardComponent implements OnInit {
   /*   # On Init                             */
   /******************************************/
 
-  ngOnInit() {
-
-  }
+  ngOnInit() {}
 
   /********************************************/
-  /*   # Protected                           */
+  /*   # User Events                         */
   /******************************************/
 
   /**********************
   *  > On Mouse Enter   *
   **********************/
 
-  protected onMouseEnter(){
+  public onMouseEnter(){
     this.cardEditable = true;
   }
 
@@ -55,7 +88,7 @@ export class CardComponent implements OnInit {
   *  > On Mouse Leave   *
   **********************/
 
-  protected onMouseLeave(){
+  public onMouseLeave(){
     this.cardEditable = false;
   }
 
@@ -63,17 +96,21 @@ export class CardComponent implements OnInit {
   *  > On Menu Button Click   *
   ****************************/
 
-  protected onMenuBottonClick(isOpen: boolean){
+  public onMenuBottonClick(isOpen: boolean){
     this.menuIsToggled(isOpen);
   }
 
-  protected onStatusMenuButtonClick(isOpen: boolean){
+  public onStatusMenuButtonClick(isOpen: boolean){
     this.menuIsToggled(isOpen);
   }
 
   /********************************************/
   /*   # Private                             */
   /******************************************/
+
+  /***********************
+  *  > Menu is Toggled   *
+  ***********************/
 
   private menuIsToggled(isOpen: boolean){
     if(isOpen){
