@@ -32,7 +32,7 @@ export abstract class CardeditorComponent {
   *************/
 
   @Input()
-  protected card: Card; // get the card data from parent component
+  public card: Card; // get the card data from parent component
 
   /***************
   *  > Configs   *

@@ -49,19 +49,19 @@ export class IconComponent implements OnInit {
 
   /*Type: image/shape of the icon (e.g. pencil, trash, ...)*/
   @Input()
-  iconType: string; // e.g. icon-trash, icon-database, icon-eye (see src/assets/symbol-defs.svg all svg ids)
+  public iconType: string; // e.g. icon-trash, icon-database, icon-eye (see src/assets/symbol-defs.svg all svg ids)
 
   /*Size: the resulting size of the icon*/
   @Input()
-  iconSize: string = "medium"; // e.g. small, medium, large (see ./icon.component.scss for all size options)
+  public iconSize: string = "medium"; // e.g. small, medium, large (see ./icon.component.scss for all size options)
 
   /*Color: the fill color of the icon*/
   @Input()
-  iconColor: string = "medium-grey"; // e.g. black, white, orange (see ./icon.component.scss for all size options)
+  public iconColor: string = "medium-grey"; // e.g. black, white, orange (see ./icon.component.scss for all size options)
 
   /*Color on Hover: the icon's fill color when hovered*/
   @Input()
-  iconColorOnHover: string = "none"; // e.g. black, white, orange (see ./icon.component.scss for all size options)
+  public iconColorOnHover: string = "none"; // e.g. black, white, orange (see ./icon.component.scss for all size options)
 
   /********************************************/
   /*   # Constructor                         */

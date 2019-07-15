@@ -63,10 +63,10 @@ export class CardWorkflowComponent extends CardeditorComponent implements OnInit
   *****************/
 
   @Input()
-  card: Card;
+  public card: Card;
 
   @Input()
-  cardEditable: boolean = false;
+  public cardEditable: boolean = false;
 
   /**********************
   *  > Event Emitters   *
@@ -94,8 +94,7 @@ export class CardWorkflowComponent extends CardeditorComponent implements OnInit
     terminated: 'Terminated'
   }
 
-
-  protected workflowMenuOptions: WorkflowOptions = {
+  public workflowMenuOptions: WorkflowOptions = {
     active: [
       {
         label: 'Pause',

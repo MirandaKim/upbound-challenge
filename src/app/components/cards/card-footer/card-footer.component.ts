@@ -31,7 +31,8 @@ export class CardFooterComponent implements OnInit {
   /*   # Properties                          */
   /******************************************/
 
-  @Input() card: Card;
+  @Input()
+  public card: Card;
 
   /********************************************/
   /*   # Constructor                         */

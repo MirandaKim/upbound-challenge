@@ -13,7 +13,7 @@ import { CardManagerService } from 'src/app/services/card-manager.service';
   Menu providing options/links for individual cards (e.g. edit, publish...)
 
   INCOMPLETE:
-  Some of the card menu features have not been completed. 
+  Some of the card menu features have not been completed.
 
 *****************
 *   Contents:   *
@@ -27,10 +27,11 @@ import { CardManagerService } from 'src/app/services/card-manager.service';
     > Menu Item
   # Constructor
   # On Init
-  # Protected
-    > Disabled Checks
+  # User Events
     > On Open Change
     > On Item Click
+  # Protected
+    > Disabled Checks
   # Private
     > Publish Card
     > Share Card
@@ -71,7 +72,7 @@ export class CardMenuComponent extends CardeditorComponent implements OnInit {
   *******************/
 
   @Output()
-  menuToggle = new EventEmitter<boolean>();
+  public menuToggle = new EventEmitter<boolean>();
   public isMenuOpen = false;
 
   /************
@@ -79,15 +80,16 @@ export class CardMenuComponent extends CardeditorComponent implements OnInit {
   ************/
 
   @Input()
-  card: Card;
+  public card: Card;
+
   @Input()
-  cardSelectorId: string;
+  public cardSelectorId: string;
 
   /******************
   *  > Menu Items   *
   ******************/
 
-  protected listItems: cardMenuItem[] = [];
+  public listItems: cardMenuItem[] = [];
 
   /********************************************/
   /*   # Constructor                         */
@@ -141,6 +143,40 @@ export class CardMenuComponent extends CardeditorComponent implements OnInit {
   }
 
   /********************************************/
+  /*   # User Events                         */
+  /******************************************/
+
+    /**********************
+    *  > On Open Change   *
+    **********************/
+
+    /*
+    On Open Change
+    On the bootstrap event that the dropdown menu's open state has changed,
+    set the new value within this component and emit the new value to let
+    the parent component know.
+    */
+
+    public onOpenChange(isOpen: boolean){
+      this.isMenuOpen = isOpen;
+      this.menuToggle.emit(this.isMenuOpen);
+    }
+
+    /*********************
+    *  > On Item Click   *
+    *********************/
+
+    /*
+    On Item Click
+    Event when the menu item is clicked by the user.
+    */
+    public onItemClick(item: cardMenuItem){
+      /* Trigger the item's callback function if it exists*/
+      if(item.onClickCallback) item.onClickCallback();
+    }
+
+
+  /********************************************/
   /*   # Protected                           */
   /******************************************/
 
@@ -163,36 +199,6 @@ export class CardMenuComponent extends CardeditorComponent implements OnInit {
     */
     if(isAble.indexOf(this.card[this.cardStatusKey]) > -1) return false;
     return true;
-  }
-
-  /**********************
-  *  > On Open Change   *
-  **********************/
-
-  /*
-  On Open Change
-  On the bootstrap event that the dropdown menu's open state has changed,
-  set the new value within this component and emit the new value to let
-  the parent component know.
-  */
-
-  protected onOpenChange(isOpen: boolean){
-    this.isMenuOpen = isOpen;
-    this.menuToggle.emit(this.isMenuOpen);
-
-  }
-
-  /*********************
-  *  > On Item Click   *
-  *********************/
-
-  /*
-  On Item Click
-  Event when the menu item is clicked by the user.
-  */
-  protected onItemClick(item: cardMenuItem){
-    /* Trigger the item's callback function if it exists*/
-    if(item.onClickCallback) item.onClickCallback();
   }
 
   /********************************************/

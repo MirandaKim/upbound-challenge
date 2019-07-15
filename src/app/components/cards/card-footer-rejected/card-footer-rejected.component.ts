@@ -17,9 +17,9 @@ This is to be used in place of the original card footer component, not in additi
 *   Contents:   *
 *****************
 
-  # Properties
   # Constructor
   # On Init
+  # User Events
 
 ******************/
 
@@ -45,10 +45,10 @@ export class CardFooterRejectedComponent extends CardeditorComponent implements 
   ngOnInit() {}
 
   /********************************************/
-  /*   # Events                              */
+  /*   # User Events                         */
   /******************************************/
 
-  protected onResubmitClick(){
+  public onResubmitClick(){
     this.card[this.cardStatusKey] = this.statusPendingValue;
     this.resubmitCard();
   }

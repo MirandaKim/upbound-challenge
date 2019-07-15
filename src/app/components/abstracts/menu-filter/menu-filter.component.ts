@@ -87,7 +87,7 @@ export abstract class MenuFilterComponent extends FiltererComponent {
   *  > List Info   *
   *****************/
 
-  protected menuItems: MenuItem[]; // list of campaign information for the html template to create a menu
+  public menuItems: MenuItem[]; // list of campaign information for the html template to create a menu
   protected abstract optionsList: any[]; // list of availible filter options
 
   /********************
@@ -111,7 +111,7 @@ export abstract class MenuFilterComponent extends FiltererComponent {
   *********************/
 
   @Input('toggleStyleType') // How should the toggle for the button be styled?
-  public toggleStyleType: string = 'button'; // NOTE: style and options are handled by the inheriting component. 
+  public toggleStyleType: string = 'button'; // NOTE: style and options are handled by the inheriting component.
 
   /**************
   *  > States   *

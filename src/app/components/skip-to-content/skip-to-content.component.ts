@@ -38,10 +38,10 @@ export class SkipToContentComponent implements OnInit {
   /******************************************/
 
   @Input()
-  contentId: string = 'main-content';
+  public contentId: string = 'main-content';
 
   @Input()
-  linkText: string = 'Skip to Main Content';
+  public linkText: string = 'Skip to Main Content';
 
   /********************************************/
   /*   # Constructor                         */

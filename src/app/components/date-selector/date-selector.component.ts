@@ -33,9 +33,10 @@ import { Component, OnInit } from '@angular/core';
     > Display Values
   # Constructor
   # On Init
+  # User Events
+    > Shift Date
   # Protected
     > Set Current Date
-    > Shift Date
     > Set Day Countdown
 
 ******************/
@@ -55,21 +56,21 @@ export class DateSelectorComponent implements OnInit {
   *  > Today   *
   *************/
 
-  protected today: Date;
+  public today: Date;
 
   /*********************
   *  > Selected Date   *
   *********************/
 
-  protected dayOffset: number = 0; // 0 is today, 1 is tomorrow, -1 is yesturday, and so on...
-  protected selectedDate: Date;
+  public dayOffset: number = 0; // 0 is today, 1 is tomorrow, -1 is yesturday, and so on...
+  public selectedDate: Date;
 
   /**********************
   *  > Display Values   *
   **********************/
 
-  protected dayCountdown: string = '1'; //represents the day difference between today's date and the currently selected date.
-  protected dayPronouns: string[] = [ // ORDER MATTERS!
+  public dayCountdown: string = '1'; //represents the day difference between today's date and the currently selected date.
+  public dayPronouns: string[] = [ // ORDER MATTERS!
     'Yesterday', // 0
     'Today',    // 1
     'Tomorrow' // 2
@@ -90,21 +91,8 @@ export class DateSelectorComponent implements OnInit {
   }
 
   /********************************************/
-  /*   # Protected                           */
+  /*   # User Events                         */
   /******************************************/
-
-  /************************
-  *  > Set Current Date   *
-  ************************/
-
-  /*
-  Set Current Date
-  Find today's date and use it as the initialy selected date.
-  */
-  protected setCurrentDate(): void{
-    this.today = new Date();
-    this.selectedDate = new Date();
-  }
 
   /******************
   *  > Shift Date   *
@@ -120,11 +108,28 @@ export class DateSelectorComponent implements OnInit {
 
   WARNING: This functionality does not currently provide a filter for the list of cards.
   */
-  protected shiftDate(shiftValue: number): void{
+  public shiftDate(shiftValue: number): void{
     this.dayOffset += shiftValue;
     this.setDayCountdown();
     this.selectedDate = new Date(this.selectedDate.getFullYear(), this.selectedDate.getMonth(), (this.selectedDate.getDate() + shiftValue));
     console.warn('Sorry, filtering cards by the date value is not availible at this time.');
+  }
+
+  /********************************************/
+  /*   # Protected                           */
+  /******************************************/
+
+  /************************
+  *  > Set Current Date   *
+  ************************/
+
+  /*
+  Set Current Date
+  Find today's date and use it as the initialy selected date.
+  */
+  protected setCurrentDate(): void{
+    this.today = new Date();
+    this.selectedDate = new Date();
   }
 
   /*************************

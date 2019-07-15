@@ -21,6 +21,8 @@ Card sub component: contains the card's status data (e.g. workflow, progress bar
   # Properties
   # Constructor
   # On Init
+  # User Events
+  # Protected
 
 ******************/
 
@@ -36,21 +38,21 @@ export class CardStatusComponent implements OnInit {
   /******************************************/
 
   @Input()
-  card: Card;
+  public card: Card;
 
   @Input()
-  cardEditable: boolean = false;
+  public cardEditable: boolean = false;
 
   @Output()
-  menuToggled = new EventEmitter <boolean>();
+  public menuToggled = new EventEmitter <boolean>();
 
-  protected perMonthValue: number = 5000;
-  protected perMonthCurrencySymbol: string = '$';
+  public perMonthValue: number = 5000;
+  public perMonthCurrencySymbol: string = '$';
 
-  protected progressBarPercent: number = 0;
+  public progressBarPercent: number = 0;
 
-  private cardWorkflowProperty = 'currentWorkflow';
-  private activeWorkflowValue = 'active';
+  public cardWorkflowProperty = 'currentWorkflow';
+  public activeWorkflowValue = 'active';
 
 
   /********************************************/
@@ -68,15 +70,25 @@ export class CardStatusComponent implements OnInit {
   }
 
   /********************************************/
+  /*   # User Events                         */
+  /******************************************/
+
+  public onMenuToggle(isOpen: boolean){
+    this.menuToggled.emit(isOpen);
+  }
+
+  /********************************************/
   /*   # Protected                           */
   /******************************************/
 
+  /*
+  Set Bar Percentage:
+  Set the value displayed in the progress bar, if the currentWorkflow is active, set it to 100%.
+  Else set it to 0%.
+  */
   protected setBarPercentage(){
     this.progressBarPercent = this.card[this.cardWorkflowProperty] === this.activeWorkflowValue ? 100 : 0;
   }
 
-  protected onMenuToggle(isOpen: boolean){
-    this.menuToggled.emit(isOpen);
-  }
 
 }

@@ -33,10 +33,10 @@ export class CardFooterActiveComponent implements OnInit {
   /******************************************/
 
   @Input()
-  card: Card;
+  public card: Card;
 
   @Input()
-  totalRevenueCurrency: string = 'USD';
+  public totalRevenueCurrency: string = 'USD';
 
   /********************************************/
   /*   # Constructor                         */

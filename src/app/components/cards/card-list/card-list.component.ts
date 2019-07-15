@@ -92,8 +92,8 @@ export class CardListComponent implements OnInit {
   *  > States   *
   **************/
 
-  protected initialApiReponseReceived = false; // Received response from API (note: 404 still counts as a response).
-  protected awaitingApiResponseCt: number = 0; // wating to receive
+  public initialApiReponseReceived = false; // Received response from API (note: 404 still counts as a response).
+  public awaitingApiResponseCt: number = 0; // wating to receive
 
   /********************************************/
   /*   # Constructor                         */

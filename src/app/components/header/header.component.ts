@@ -48,8 +48,8 @@ export class HeaderComponent implements OnInit {
   *  > Device   *
   **************/
 
+  public deviceIsSmall: boolean = false; // is the device's width currently smaller than the sizeChangePt?
   protected sizeChangePt: number = 1000; // (pixels) the point at which the device is considered small or not small.
-  protected deviceIsSmall: boolean = false; // is the device's width currently smaller than the sizeChangePt?
 
   /***********************
   *  > Filter Dropdown   *

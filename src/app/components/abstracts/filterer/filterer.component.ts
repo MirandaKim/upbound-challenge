@@ -61,7 +61,7 @@ export abstract class FiltererComponent {
   protected abstract filterId: string;
 
   @Input()
-  protected filterLocation: string = '';
+  public filterLocation: string = '';
 
   /**********************
   *  > Filter Configs   *

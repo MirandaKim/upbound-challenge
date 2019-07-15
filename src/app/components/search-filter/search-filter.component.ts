@@ -59,18 +59,18 @@ export class SearchFilterComponent extends FiltererComponent implements OnInit {
     When set to false, there will be no inline search bar created.
     When set to true, a functional inline search bar will be created.*/
   @Input()
-  protected allowInlineSearchBar: boolean = true;
+  public allowInlineSearchBar: boolean = true;
 
   @Input('placeholder')
-  protected inputPlaceHolder: string = 'search'; // placeholder value for search bar input field
+  public inputPlaceHolder: string = 'search'; // placeholder value for search bar input field
 
   /**********************
   *  > Filter Configs   *
   **********************/
   @Input()
-  protected filterId: string = 'search-bar';
+  public filterId: string = 'search-bar';
   @Input()
-  protected filterProperty: string; // property this component intends to filter, set via parent component
+  public filterProperty: string; // property this component intends to filter, set via parent component
   protected filterValueType: string = 'string'; // type of value this filter uses (e.g. string, number, boolean...)
   protected filterCondition: string = FilterConditions[2]; // includes
 
@@ -78,7 +78,7 @@ export class SearchFilterComponent extends FiltererComponent implements OnInit {
   *  > States   *
   **************/
 
-  protected inputValue: string = ''; // value currently in search input
+  public inputValue: string = ''; // value currently in search input
 
   /********************************************/
   /*   # Constructor                         */

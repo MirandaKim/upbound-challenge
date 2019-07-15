@@ -52,7 +52,7 @@ export class CampaignMenuComponent extends MenuFilterComponent implements OnInit
   /******************************************/
 
   @Input('filterId')
-  protected filterId: string = 'campaing-menu';
+  public filterId: string = 'campaing-menu';
 
   /*********************
   *  > Campaign Info   *
