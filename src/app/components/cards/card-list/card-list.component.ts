@@ -196,7 +196,7 @@ export class CardListComponent implements OnInit {
   This is to keep all cards from re-renderingn when one is updated.
   */
   protected trackByState(i, item){
-    let state = item.id + item.currentWorkflow;
+    let state = i + item.currentWorkflow;
     return state;
   }
 

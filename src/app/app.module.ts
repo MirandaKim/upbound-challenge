@@ -68,7 +68,7 @@ import { TruncateWithSuffixPipe } from './pipes/truncate-with-suffix.pipe';
     HttpClientModule,
     AppRoutingModule,
     LazyLoadImageModule.forRoot({
-      // preset: intersectionObserverPreset // removed to prevent svg icons from disappearing in Chrome production build.
+      preset: intersectionObserverPreset // removed to prevent svg icons from disappearing in Chrome production build.
     })
   ],
   providers: [
