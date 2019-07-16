@@ -114,6 +114,18 @@ export class DeviceStateService implements OnDestroy{
     return navigator.userAgent.indexOf('Edge') >= 0;
   }
 
+  public isChrome(): boolean {
+    return navigator.userAgent.indexOf('Chrome') >= 0;
+  }
+
+  public isFirefox(): boolean {
+    return navigator.userAgent.indexOf('Firefox') >= 0;
+  }
+
+  public isSafari(): boolean {
+    return navigator.userAgent.indexOf('Safari') >= 0 && !this.isChrome();
+  }
+
   /********************************************/
   /*   # Private                             */
   /******************************************/

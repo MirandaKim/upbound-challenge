@@ -52,6 +52,7 @@ export class AppComponent {
   /* Browsers */
 
   protected browserIsEdgeClass = "browser-is-edge";
+  protected browserIsChromeClass = "browser-is-chrome";
 
   /********************************************/
   /*   # Constructor                         */
@@ -104,6 +105,10 @@ export class AppComponent {
     if(this.deviceStateService.isEdge()){
       this.handleBrowser_edge();
     }
+    /*Chrome*/
+    if(this.deviceStateService.isChrome()){
+      this.handleBrowser_chrome();
+    }
   }
 
   /*
@@ -112,6 +117,14 @@ export class AppComponent {
   */
   private handleBrowser_edge(){
     $(this.bodySelector).addClass(this.browserIsEdgeClass);
+  }
+
+  /*
+  Handle Browser (Chrome):
+  Handle any logic for a Chrome browser
+  */
+  private handleBrowser_chrome(){
+    $(this.bodySelector).addClass(this.browserIsChromeClass);
   }
 
 }
