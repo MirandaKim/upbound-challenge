@@ -3,5 +3,6 @@
 'icon--fill-' + iconColor,
 'icon--size-' + iconSize,
 'icon--fill-on-hover-' + iconColorOnHover]">
-  <use attr.xlink:href="assets/symbol-defs.svg#icon-{{iconType}}"></use>
+  <!-- <use attr.xlink:href="assets/symbol-defs.svg#icon-{{iconType}}"></use> -->
+  <use attr.xlink:href="{{ iconHref }}"/>
 </svg>

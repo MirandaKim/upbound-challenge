@@ -1,4 +1,5 @@
 @import "src/scss/_variables.scss";
+@import "src/scss/_mixins.scss";
 
 /**********************************************************/
 /*                                                       */
@@ -149,12 +150,21 @@ svg{
   display: inline-block;
   /*position*/
   position: relative;
-  top: -1px;
+  top: -2px;
   /*structure*/
   width: $iconDefaultSize;
   height: $iconDefaultSize;
   /*colors*/
   fill: $colorMediumGrey;
+
+
+}
+
+
+.browser-is-chrome :host {
+  svg {
+    top: -1px;
+  }
 }
 
 /********************************************/

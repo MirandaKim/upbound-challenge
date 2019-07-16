@@ -63,6 +63,8 @@ export class IconComponent implements OnInit {
   @Input()
   public iconColorOnHover: string = "none"; // e.g. black, white, orange (see ./icon.component.scss for all size options)
 
+  public iconHref: string;
+
   /********************************************/
   /*   # Constructor                         */
   /******************************************/
@@ -74,6 +76,7 @@ export class IconComponent implements OnInit {
   /******************************************/
 
   ngOnInit() {
+    this.iconHref = `assets/symbol-defs.svg#icon-${this.iconType}`;
   }
 
 
