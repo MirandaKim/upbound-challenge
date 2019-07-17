@@ -20,6 +20,10 @@ WARNING: This does not handle strings, which means it will not handle aready for
 *   Parameters   *
 ******************
 
+withSpace --> (boolean) add a space between the value and the suffix
+              Default: false
+              '100K'(false) vs '100 K'(true)
+
 notTillLength --> (number) Don't truncate a number till it reaches this digit count.
                   Default: 4
                   Want to show 1000, but truncate once it reaches 10K? notTillLength: 5
@@ -31,13 +35,13 @@ notTillLength --> (number) Don't truncate a number till it reaches this digit co
 ****************
 
 {{ 1000 | truncateWithSuffix }} -> 1K
-{{ 1000 | truncateWithSuffix: 5 }} -> 1000
-{{ 10000 | truncateWithSuffix: 5 }} -> 10K
+{{ 1000 | truncateWithSuffix: false : 5 }} -> 1000
+{{ 10000 | truncateWithSuffix: false : 5 }} -> 10K
 {{ 3000000 | truncateWithSuffix }}-> 3M
-{{ 3000000 | truncateWithSuffix: 8 }}-> 3000000
-{{ 30000000 | truncateWithSuffix: 8 }}-> 30M
+{{ 3000000 | truncateWithSuffix: true : 8 }}-> 3000000
+{{ 30000000 | truncateWithSuffix: true : 8 }}-> 30 M
 {{ 400000000 | truncateWithSuffix }}-> 400M
-{{ 5000000000 | truncateWithSuffix }}-> 5B
+{{ 5000000000 | truncateWithSuffix : true }}-> 5 B
 {{ 60000000000000 | truncateWithSuffix }} -> 60T
 
 *****************
@@ -82,7 +86,7 @@ export class TruncateWithSuffixPipe implements PipeTransform {
   /*   # Transform                           */
   /******************************************/
 
-  transform(value: number, notTillLength: number = 4): string | number {
+  transform(value: number, withSpace: boolean = false, notTillLength: number = 4): string | number {
     /* Check is number greater than 0 (will only work value is a number) */
     if(isNaN(value) || value === null || value === 0) return value;
     /*Check if the number is large enough to be truncated*/
@@ -102,7 +106,7 @@ export class TruncateWithSuffixPipe implements PipeTransform {
         let truncated = abs / this.suffixOptions[i].value; // get the shortened version
         truncated = Math.round(truncated * 10) / 10;
         if (truncated >= 1) {
-            let suffix = this.suffixOptions[i].suffix;
+            let suffix = (withSpace ? ' ' : '') + this.suffixOptions[i].suffix;
             return (isNegative ? '-' : '') + truncated + suffix;
         }
     }
