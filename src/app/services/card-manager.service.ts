@@ -96,7 +96,7 @@ export class CardManagerService {
   **********************/
 
   private testResponseDelay: number = 0; // delay the return of data by the given milliseconds, this is to mimic processing time.
-  private testing: boolean = true; // is the site being tested (i.e. should test data be allowed to display)
+  private testingMode: boolean = true; // is the site being tested (i.e. should test data be allowed to display)
   private updateResDelayTime: number = 5000;
 
   /********************************************/
@@ -213,12 +213,15 @@ export class CardManagerService {
     }, (error) => {
       console.error(error);
       /*
-      If testing is set to true & site is in dev mode,
+      If testingMode is set to true & site is in dev mode,
       emit a list of test data,
       else emit an empty array.
       */
-      if(this.testing && isDevMode()){
-        this.cardList = this.getTestData(); // if testing is set to true, use the test card values.
+      if(this.testingMode && isDevMode()){
+        this.cardList = this.getTestData(); // if testingMode is set to true, use the test card values.
+        console.warn(`Test data in use.
+          This data is used because there was an error accessing the API and testing mode is enabled in the card manager service.
+          To prevent test data from displaying, run the build in production mode (ng build --prod) or set the property 'testingMode' to false in card-manager.service.ts`);
         setTimeout(() => {
           this.onCardListReceived(); // emit test data
         }, this.testResponseDelay);
