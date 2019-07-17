@@ -1,14 +1,17 @@
 <ul class="list-inline card-footer__icon-group">
-  <li class="list-inline-item">
-    <span class="card-footer__icon icon"><app-icon iconType="database" iconColor="black-grey" iconSize="small"></app-icon></span>
-    <span>{{ card.totalRevenue | currency: totalRevenueCurrency : 'symbol' : '1.0' }}</span>
+  <li class="card-footer__icon-column card-footer__icon-column--first">
+    <span class="card-footer__icon card-footer__icon--less-right-padding icon"><app-icon iconType="database" iconColor="black-grey" iconSize="small"></app-icon></span>
+    <span class="card-footer__icon-value">{{ card.totalRevenue | currency: totalRevenueCurrency : 'symbol' : '1.0' }}</span>
+    <!-- <span class="card-footer__icon-value">{{ 15000 | currency: totalRevenueCurrency : 'symbol' : '1.0' }}</span> -->
   </li>
-  <li class="list-inline-item text-center">
+  <li class="card-footer__icon-column card-footer__icon-column--middle">
     <span class="card-footer__icon icon"><app-icon iconType="people" iconColor="medium-grey" iconSize="small"></app-icon></span>
-    {{ card.subscribers | truncateWithSuffix }}
+    <span class="card-footer__icon-value">{{ card.subscribers | truncateWithSuffix }}</span>
+    <!-- <span class="card-footer__icon-value">{{ 500000 | truncateWithSuffix: true }}</span> -->
   </li>
-  <li class="list-inline-item text-right">
+  <li class="card-footer__icon-column card-footer__icon-column--last">
     <span class="card-footer__icon icon"><app-icon iconType="eye" iconColor="medium-grey" iconSize="small"></app-icon></span>
-    {{ card.views | truncateWithSuffix }}
+    <span class="card-footer__icon-value">{{ card.views | truncateWithSuffix }}</span>
+    <!-- <span class="card-footer__icon-value">{{ 150000 | truncateWithSuffix: true}}</span> -->
   </li>
 </ul>

@@ -1,7 +1,7 @@
 <div class="card-states">
   <div class="row">
-    <div class="col"><span class="prefix prefix--currency">{{ perMonthCurrencySymbol }}</span>{{ perMonthValue | truncateWithSuffix: 5 }} / Month</div>
-    <div class="col text-right card-status__workflow">
+    <div class="col card-states__per"><span class="prefix prefix--currency card-states__per-prefix">{{ perMonthCurrencySymbol }}</span><span class="card-states__per-number">{{ perMonthValue | truncateWithSuffix: false: 5 }}</span><span class="card-states__per-suffix">/ Month</span></div>
+    <div class="col text-right card-states__workflow">
       <app-card-workflow [card]="card" [cardEditable]="cardEditable" (menuToggle)="onMenuToggle($event)"></app-card-workflow>
     </div>
   </div>

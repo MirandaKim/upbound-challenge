@@ -48,7 +48,7 @@
   /******************************************/
 
   &__icon {
-    margin-right: 17px;
+    margin-right: 14px;
   }
 
   /********************************************/
@@ -58,6 +58,7 @@
   &__lable {
     /*typography*/
     font-size: .9rem;
+    font-weight: 300;
     /*colors*/
     color: $colorBlack;
   }

@@ -14,6 +14,31 @@
   color: $colorMediumGrey;
 
   /********************************************/
+  /*   # Per Month                           */
+  /******************************************/
+
+  &__per {
+    margin-left: -1px;
+  }
+
+  &__per-prefix {
+    font-size: .9rem;
+    margin-right: 1px;
+  }
+
+  &__per-number {
+    letter-spacing: .9px;
+    font-size: .85rem;
+    margin-right: 1px;
+  }
+
+  &__per-suffix {
+    // margin-left: -1px;
+    // letter-spacing: .9px;
+    font-size: .85rem;
+  }
+
+  /********************************************/
   /*   # Progress                            */
   /******************************************/
 
@@ -30,6 +55,7 @@
 
   &__workflow {
     position: relative;
+    top: 2px;
   }
 
 }
