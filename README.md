@@ -33,7 +33,7 @@ This site was created as a test of coding ability (Angular, JavaScript, CSS, and
 #### Viewing the site
 
 - Dev site with test data (no API): Run `ng serve` then navigate to `http://localhost:4200/`
-- Production build with data (API): Run `ng build --prod` and `node serve` then navigate to `http://localhost:3000/`
+- Production build with data (API): Run `ng build --prod` and `node server` then navigate to `http://localhost:3000/`
 
 ---
 
